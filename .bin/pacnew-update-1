@@ -1,6 +1,9 @@
 #!/bin/bash
 
-DIFF="colordiff -up"
+[ -x /usr/bin/colordiff ] &&
+    DIFF="colordiff -up" ||
+    DIFF="diff -up"
+
 MERGE="vimdiff"
 
 new=$1

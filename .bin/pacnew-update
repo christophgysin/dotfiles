@@ -1,3 +1,5 @@
 #!/bin/bash
 
-sudo find /etc -name *.pacnew -exec pacnew-update-1 '{}' ';'
+[ $(id -u) = 0 ] || SUDO=sudo
+
+$SUDO find /etc -name *.pacnew -exec pacnew-update-1 '{}' ';'
