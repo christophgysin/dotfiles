@@ -1,0 +1,90 @@
+# bash aliases
+
+# shortcuts
+alias l='ls -lh --color=auto'
+alias ll='ls -la --color=auto'
+g(){ i=$1; shift; grep $i -In --color -r $*;}
+alias c='clear'
+alias t='vim ~/todo'
+alias b='vim ~/bugs'
+alias m='mplayer -fs'
+alias ml='m -framedrop -autosync 30 -cache 8192 -vfm ffmpeg -lavdopts lowres=3:fast:skiploopfilter=all'
+alias ms='m -ao null'
+alias bt='screen -S bt bittorrent-curses'
+type ack 2>/dev/null || alias ack=ack-grep
+
+# sudo
+alias r='sudo su -'
+alias svim='sudo vim'
+
+# custom commands
+alias psgrep='ps auxwww | grep -v grep | grep'
+alias histgrep='history | grep'
+addpubkey(){ ssh $1 "mkdir -p .ssh; cat>>.ssh/authorized_keys"<~/.ssh/id_rsa.pub;}
+alias grab='sudo chown -R $(id -u):$(id -g)'
+alias terminfo-urxvt='sudo ln -s rxvt /usr/share/terminfo/r/rxvt-unicode'
+alias checkmail="ssh fr33z3@luzifer.fr33z3.org fetchmail"
+alias shortprompt='export PS1="${PS1//w/W}"'
+alias sync='rsync -avy --delete --progress --stats --exclude lost+found'
+alias sync-pool='sync --exclude movies --exclude tmp /mnt/pool/ /mnt/bay/'
+alias sync-movies='sync /mnt/pool/movies/ /mnt/bay/'
+alias udevattr='/sbin/udevadm info --attribute-walk --name'
+
+# default opts
+alias vim='vim -p'
+alias man='man -a'
+alias df='df -h'
+alias du='du -h'
+alias nload='nload -i 102400 -o 102400 -t 500'
+alias ctags='exuberant-ctags'
+alias erl='rlwrap -H ~/.erl_history erl -setcookie erlang'
+
+# hosts
+alias luzifer='ssh fr33z3@luzifer.fr33z3.org'
+alias loki='ssh fr33z3@loki.fr33z3.org'
+alias azrael='ssh fr33z3@azrael.fr33z3.org'
+alias twoflower='ssh fr33z3@twoflower.fr33z3.org'
+alias xbox='ssh fr33z3@xbox.fr33z3.org'
+
+# tunnels
+alias imapstunnel='ssh -fNL 9993:luzifer.fr33z3.org:993 fr33z3@luzifer.fr33z3.org'
+alias smtptunnel='ssh -fNL 2525:mail.gmx.ch:25 fr33z3@luzifer.fr33z3.org'
+alias nntptunnel='ssh -fNL 1119:news.individual.de:119 fr33z3@luzifer.fr33z3.org'
+alias httpstunnel='ssh -fNL 4443:luzifer.fr33z3.org:443 fr33z3@luzifer.fr33z3.org'
+alias passivesshd='ssh -fNR 2222:localhost:22 fr33z3@luzifer.fr33z3.org'
+
+# gentoo
+alias esync='sudo /usr/sbin/esync'
+alias fmerge='sudo emerge -avtf'
+alias pmerge='sudo emerge -avt'
+alias unmerge='sudo emerge -avtC'
+alias cmerge='sudo emerge -avtPO'
+alias pworld='sudo emerge -avtu world'
+alias fworld='sudo emerge -avtuf world'
+alias dworld='sudo emerge -avtuD world'
+alias nworld='sudo emerge -avtN world'
+alias gcheck='glsa-check -v -l'
+keywords() { grep -EH '^KEYWORDS=' /usr/portage/*/$1/*.ebuild|
+sed -e 's:/usr/portage/::' -e 's/.ebuild:/: /' -e 's:/.*/:/:';}
+usedesc() { grep $1 /usr/portage/profiles/use.*; }
+addline() { f=$1; shift; sudo bash -c "(echo -n '# '; date; echo \"$*\") >> $f"; }
+alias addkeyword='addline /etc/portage/package.keywords/local'
+alias adduse='addline /etc/portage/package.use/local'
+alias addmask='addline /etc/portage/package.mask/local'
+alias addunmask='addline /etc/portage/package.unmask/local'
+alias update-config="sudo dispatch-conf; sudo etc-update"
+alias revdep-fix="sudo revdep-rebuild -i -- -avt"
+
+# debian
+alias apti='sudo aptitude install'
+alias aptr='sudo aptitude remove'
+alias apts='sudo aptitude search'
+alias aptud='sudo aptitude update'
+alias aptug='sudo aptitude safe-upgrade'
+alias dpkgi='dpkg --get-selections | grep install | grep'
+
+export PATH=${PATH}:${HOME}/.bin
+
+[ $(id -un) = root ] &&
+   export PS1="\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] " ||
+   export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\\h\[\033[01;34m\] \w \$\[\033[00m\] "
