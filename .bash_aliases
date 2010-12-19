@@ -36,7 +36,7 @@ alias man='man -a'
 alias df='df -h'
 alias du='du -h'
 alias nload='nload -i 102400 -o 102400 -t 500'
-alias ctags='exuberant-ctags'
+#alias ctags='ctags-exuberant'
 alias erl='rlwrap -H ~/.erl_history erl -setcookie erlang'
 
 # hosts
@@ -44,7 +44,6 @@ alias luzifer='ssh fr33z3@luzifer.fr33z3.org'
 alias loki='ssh fr33z3@loki.fr33z3.org'
 alias azrael='ssh fr33z3@azrael.fr33z3.org'
 alias twoflower='ssh fr33z3@twoflower.fr33z3.org'
-alias xbox='ssh fr33z3@xbox.fr33z3.org'
 
 # tunnels
 alias imapstunnel='ssh -fNL 9993:luzifer.fr33z3.org:993 fr33z3@luzifer.fr33z3.org'
