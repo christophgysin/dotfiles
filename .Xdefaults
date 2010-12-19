@@ -1,0 +1,171 @@
+xpdf*initialZoom: 					   width
+
+! xterm
+
+XTerm*background:  #000000
+XTerm*foreground:  #cfcfcf
+XTerm*cursorColor: #cdc092
+!XTerm*underLine:           on
+!XTerm*colorMode:           on
+XTerm*colorBD:              lightyellow
+!XTerm*colorBDMode:         off
+XTerm*colorUL:              blue
+!XTerm*colorULMode:         on
+XTerm*dynamicColors:        on
+XTerm*highlightSelection:   true
+XTerm*eightBitInput:        false
+XTerm*metaSendsEscape:      true
+!XTerm*oldXtermFKeys:        true
+XTerm*charClass:             33:48,35-38:48,39:43,42-47:48,58-59:48,61:48,63-64:48,126:48
+!XTerm*charClass:            46-47:48,58:48,64:48,63:48,95:48,126:48,61:48,37:48,35:48,43:48,36:48
+XTerm*VT100.Translations: #override <Key>BackSpace: string(0x7F)
+!\n\
+!               <Key>Delete:    string("\033[3~")\n\
+! 	      <Key>Home:      string("\033OH")\n\
+!               <Key>End:       string("\033[4~")
+!              <Key>Home:      string("\033[1~")\n\
+XTerm*ttyModes: erase ^?
+! Suggested by denek
+! *VT100*backarrowKey: false
+!XTerm*backarrowKeyIsErase:  true
+!XTerm*backarrowKey:         true
+!XTerm*borderWidth:         0 doesnt do anything
+XTerm*internalBorder:       0
+!XTerm*modifier:             alt
+XTerm*saveLines:            2048
+XTerm*scrollBar:            false
+!XTerm*titeInhibit:         true
+!XTerm*faceName:            Vera sans mono
+!XTerm*faceName:             ter-v16b
+XTerm*faceName:             Terminus
+XTerm*faceSize:             11
+XTerm*termName:             xterm
+
+! urxvt
+
+URxvt.geometry:			126x36
+URxvt.reverseVideo:		on
+URxvt.inheritPixmap:	on
+URxvt.visualBell:		off
+URxvt.scrollBar:		off
+URxvt.tintColor:		white
+URxvt.shading:			30
+URxvt.fading:			20
+URxvt.saveLines:		10000
+URxvt.scrollTtyOutput:	false
+URxvt.scrollWithBuffer:	true
+URxvt.scrollTtyKeypress:true
+URxvt.perl-ext-common:  default,matcher
+URxvt.urlLauncher: firefox
+URxvt.colorUL: #86a2be
+!URxvt.matcher.button:   3
+URxvt.font:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
+URxvt.boldFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
+URxvt.italicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
+URxvt.boldItalicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
+
+! xcalc
+
+xcalc*geometry: 200x275
+xcalc.ti.bevel.background: #111111
+xcalc.ti.bevel.screen.background: #000000
+xcalc.ti.bevel.screen.DEG.background: #000000
+xcalc.ti.bevel.screen.DEG.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.GRAD.background: #000000
+xcalc.ti.bevel.screen.GRAD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.RAD.background: #000000
+xcalc.ti.bevel.screen.RAD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.INV.background: #000000
+xcalc.ti.bevel.screen.INV.foreground: Red
+xcalc.ti.bevel.screen.LCD.background: #000000
+xcalc.ti.bevel.screen.LCD.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.LCD.shadowWidth: 0
+xcalc.ti.bevel.screen.M.background: #000000
+xcalc.ti.bevel.screen.M.foreground: LightSeaGreen
+xcalc.ti.bevel.screen.P.background: #000000
+xcalc.ti.bevel.screen.P.foreground: Yellow
+xcalc.ti.Command.foreground: White
+xcalc.ti.Command.background: #777777
+xcalc.ti.button5.background: Orange3
+xcalc.ti.button19.background: #611161
+xcalc.ti.button18.background: #611161
+xcalc.ti.button20.background: #611111
+xcalc.ti.button25.background: #722222
+xcalc.ti.button30.background: #833333
+xcalc.ti.button35.background: #944444
+xcalc.ti.button40.background: #a55555
+xcalc.ti.button22.background: #222262
+xcalc.ti.button23.background: #222262
+xcalc.ti.button24.background: #222272
+xcalc.ti.button27.background: #333373
+xcalc.ti.button28.background: #333373
+xcalc.ti.button29.background: #333373
+xcalc.ti.button32.background: #444484
+xcalc.ti.button33.background: #444484
+xcalc.ti.button34.background: #444484
+xcalc.ti.button37.background: #555595
+xcalc.ti.button38.background: #555595
+xcalc.ti.button39.background: #555595
+XCalc*Cursor:                 hand2
+XCalc*ShapeStyle:             rectangle
+
+! xmessage
+
+.xmessage.form.*.shapeStyle: rectangle
+.xmessage.form.okay.background: #777777
+.xmessage.form.okay.foreground: snow
+xmessage*message*background: snow
+xmessage*defaultButton: okay
+Xmessage.form.message.Scroll:  WhenNeeded
+
+!-------------------------------------------------------------------------------
+!
+!	X F O N T S E L - Setting
+!
+!
+!XFontSel*sampleText.background: TEXTBG
+XFontSel*menu*showUnselectable: false
+XFontSel*MenuButton.shadowWidth: 0
+XFontsel*Toggle*ToggleStyle: check
+XFontsel*MenuButton*Justify:    left
+XFontsel*MenuButton*MenuButtonStyle: select
+.xfontsel.pane.commandBox.quitButton.background: #777777
+.xfontsel.pane.commandBox.quitButton.foreground: snow
+.xfontsel.pane.commandBox.ownButton.background: orange3
+.xfontsel.pane.commandBox.ownButton.foreground: snow
+.xfontsel.pane.commandBox.countLabel.background: snow
+.xfontsel.pane.viewPort.sampleText.background: #777777
+.xfontsel.pane.viewPort.sampleText.foreground: snow
+.xfontsel.pane.fieldBox.field0.background: #777777
+.xfontsel.pane.fieldBox.field0.foreground: snow
+.xfontsel.pane.fieldBox.field1.background: #777777
+.xfontsel.pane.fieldBox.field1.foreground: snow
+.xfontsel.pane.fieldBox.field2.background: #777777
+.xfontsel.pane.fieldBox.field2.foreground: snow
+.xfontsel.pane.fieldBox.field3.background: #777777
+.xfontsel.pane.fieldBox.field3.foreground: snow
+.xfontsel.pane.fieldBox.field4.background: #777777
+.xfontsel.pane.fieldBox.field4.foreground: snow
+.xfontsel.pane.fieldBox.field5.background: #777777
+.xfontsel.pane.fieldBox.field5.foreground: snow
+.xfontsel.pane.fieldBox.field6.background: #777777
+.xfontsel.pane.fieldBox.field6.foreground: snow
+.xfontsel.pane.fieldBox.field7.background: #777777
+.xfontsel.pane.fieldBox.field7.foreground: snow
+.xfontsel.pane.fieldBox.field8.background: #777777
+.xfontsel.pane.fieldBox.field8.foreground: snow
+.xfontsel.pane.fieldBox.field9.background: #777777
+.xfontsel.pane.fieldBox.field9.foreground: snow
+.xfontsel.pane.fieldBox.field10.background: #777777
+.xfontsel.pane.fieldBox.field10.foreground: snow
+.xfontsel.pane.fieldBox.field11.background: #777777
+.xfontsel.pane.fieldBox.field11.foreground: snow
+.xfontsel.pane.fieldBox.field12.background: #777777
+.xfontsel.pane.fieldBox.field12.foreground: snow
+.xfontsel.pane.fieldBox.field13.background: #777777
+.xfontsel.pane.fieldBox.field13.foreground: snow
+.xfontsel.pane.fieldBox*foreground: #000000
+.xfontsel.pane.fieldBox.MenuButton.borderWidth: 1
+.xfontsel.pane.fieldBox.MenuButton.internalHeight: 1
+.xfontsel.pane.fieldBox.MenuButton.internalWidth: 2
+.xfontsel.pane.fieldBox.MenuButton.shapeStyle: rectangle

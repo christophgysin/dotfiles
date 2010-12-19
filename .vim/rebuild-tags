@@ -1,0 +1,18 @@
+#!/bin/bash
+
+D=$(dirname $0)
+
+ctags -R -f ${D}/efl.tags \
+	/usr/include/Imlib2.h \
+	/usr/include/Eet.h \
+	/usr/include/Evas*.h \
+	/usr/include/Ecore*.h \
+	/usr/include/Edje*.h \
+	/usr/include/Embryo.h \
+	/usr/include/Epsilon* \
+	/usr/include/Etk_Engine_Ecore_Evas*.h \
+	/usr/include/Emotion.h \
+	/usr/include/ewl \
+	/usr/include/etk \
+	/usr/include/efreet \
+	/usr/include/eina*
