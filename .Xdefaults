@@ -1,7 +1,5 @@
 xpdf*initialZoom: 					   width
 
-! xterm
-
 XTerm*background:  #000000
 XTerm*foreground:  #cfcfcf
 XTerm*cursorColor: #cdc092
@@ -41,8 +39,6 @@ XTerm*faceName:             Terminus
 XTerm*faceSize:             11
 XTerm*termName:             xterm
 
-! urxvt
-
 URxvt.geometry:			126x36
 URxvt.reverseVideo:		on
 URxvt.inheritPixmap:	on
@@ -63,8 +59,6 @@ URxvt.font:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
 URxvt.boldFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
 URxvt.italicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
 URxvt.boldItalicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
-
-! xcalc
 
 xcalc*geometry: 200x275
 xcalc.ti.bevel.background: #111111
@@ -109,8 +103,6 @@ xcalc.ti.button39.background: #555595
 XCalc*Cursor:                 hand2
 XCalc*ShapeStyle:             rectangle
 
-! xmessage
-
 .xmessage.form.*.shapeStyle: rectangle
 .xmessage.form.okay.background: #777777
 .xmessage.form.okay.foreground: snow
@@ -118,11 +110,6 @@ xmessage*message*background: snow
 xmessage*defaultButton: okay
 Xmessage.form.message.Scroll:  WhenNeeded
 
-!-------------------------------------------------------------------------------
-!
-!	X F O N T S E L - Setting
-!
-!
 !XFontSel*sampleText.background: TEXTBG
 XFontSel*menu*showUnselectable: false
 XFontSel*MenuButton.shadowWidth: 0
