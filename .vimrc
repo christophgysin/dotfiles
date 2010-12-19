@@ -1,19 +1,25 @@
 colorscheme inkpot
 set mouse=a
 
+set hlsearch
+
+" whitespace
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set number
 
+" tags
 set tags+=~/.vim/stl.tags
 "set tags+=~/.vim/efl.tags
 
+" taglist
 let Tlist_Use_Right_Window = 1
 let Tlist_Show_Menu = 1
 let Tlist_Exit_OnlyWindow = 1
 
+" keybinds
 map <F1> <Nop>
 map <F2> :AT<cr>
 map <F3> :nohls<cr>
