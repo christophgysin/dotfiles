@@ -39,26 +39,37 @@ XTerm*faceName:             Terminus
 XTerm*faceSize:             11
 XTerm*termName:             xterm
 
-URxvt.geometry:			126x36
-URxvt.reverseVideo:		on
-URxvt.inheritPixmap:	on
-URxvt.visualBell:		off
-URxvt.scrollBar:		off
-URxvt.tintColor:		white
-URxvt.shading:			30
-URxvt.fading:			20
-URxvt.saveLines:		10000
-URxvt.scrollTtyOutput:	false
-URxvt.scrollWithBuffer:	true
+URxvt.reverseVi deo:on
+URxvt.inheritPixmap:on
+URxvt.visualBell:off
+URxvt.scrollBar:off
+URxvt.tintColor:white
+URxvt.shading:30
+URxvt.fading:20
+URxvt.saveLines:10000
+URxvt.geometry:126x36
+URxvt.scrollTtyOutput:false
+URxvt.scrollWithBuffer:true
 URxvt.scrollTtyKeypress:true
-URxvt.perl-ext-common:  default,matcher
-URxvt.urlLauncher: firefox
-URxvt.colorUL: #86a2be
-!URxvt.matcher.button:   3
+
 URxvt.font:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
 URxvt.boldFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
 URxvt.italicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
 URxvt.boldItalicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
+
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: firefox
+URxvt.colorUL: #86a2be
+!URxvt.matcher.button:   3
+
+!URxvt.keysym.A-0xff53: \033<A-0xff53>
+!URxvt.keysym.A-0xff51: \033<A-0xff51>
+!URxvt.keysym.A-Left:  <A-Left>
+!URxvt.keysym.A-Right: <A-Left>
+!URxvt.keysym.M-Up:          \033OA
+!URxvt.keysym.M-Down:        \033OB
+!URxvt.keysym.M-Right:       \033OC
+!URxvt.keysym.M-Left:        \033OD
 
 xcalc*geometry: 200x275
 xcalc.ti.bevel.background: #111111
