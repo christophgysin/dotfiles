@@ -15,3 +15,5 @@
 
 [apply]
 	whitespace = fix
+[push]
+	default = current
