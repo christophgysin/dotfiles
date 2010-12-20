@@ -28,6 +28,11 @@ alias shortprompt='export PS1="${PS1//w/W}"'
 alias sync='rsync -avy --delete --progress --stats --exclude lost+found'
 alias sync-pool='sync --exclude movies --exclude tmp /mnt/pool/ /mnt/bay/'
 alias sync-movies='sync /mnt/pool/movies/ /mnt/bay/'
+mergedir(){ sudo tar c -C "$1" . | sudo tar xvp -C "$2"; }
+alias indent="indent -bad --blank-lines-after-procedures -bli0 -i4 -l79 -ncs"\
+" -npcs -nprs -npsl -fca -lc79 -fc1 -ts4 -nsaf -nsai -nsaw"
+indentdir(){ indent $(find . -regextype posix-extended -regex '.*\.(cpp|c|h)$'); }
+urxvtcd(){ urxvtc "$@"; [ $? -eq 2 ] && urxvtd -q -o -f && urxvtc "$@"; }
 alias udevattr='/sbin/udevadm info --attribute-walk --name'
 
 # default opts
@@ -36,8 +41,10 @@ alias man='man -a'
 alias df='df -h'
 alias du='du -h'
 alias nload='nload -i 102400 -o 102400 -t 500'
+#alias ctags='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q'
 #alias ctags='ctags-exuberant'
 alias erl='rlwrap -H ~/.erl_history erl -setcookie erlang'
+alias xpdesktop='rdesktop -u gysin -d LN_DOMAIN -z -k de-ch -a 16 -N gysin.swissphone.ch'
 
 # hosts
 alias luzifer='ssh fr33z3@luzifer.fr33z3.org'
@@ -46,11 +53,13 @@ alias azrael='ssh fr33z3@azrael.fr33z3.org'
 alias twoflower='ssh fr33z3@twoflower.fr33z3.org'
 
 # tunnels
-alias imapstunnel='ssh -fNL 9993:luzifer.fr33z3.org:993 fr33z3@luzifer.fr33z3.org'
-alias smtptunnel='ssh -fNL 2525:mail.gmx.ch:25 fr33z3@luzifer.fr33z3.org'
-alias nntptunnel='ssh -fNL 1119:news.individual.de:119 fr33z3@luzifer.fr33z3.org'
-alias httpstunnel='ssh -fNL 4443:luzifer.fr33z3.org:443 fr33z3@luzifer.fr33z3.org'
-alias passivesshd='ssh -fNR 2222:localhost:22 fr33z3@luzifer.fr33z3.org'
+sshtunnel(){ sudo ssh -fNL $2:$1 fr33z3@luzifer.fr33z3.org; }
+sshRtunnel(){ sudo ssh -fNR $2:$1 fr33z3@luzifer.fr33z3.org; }
+alias imapstunnel='sshtunnel luzifer.fr33z3.org:993 9993'
+alias smtptunnel='sshtunnel luzifer.fr33z3.org:25 2525'
+alias nntptunnel='sshtunnel luzifer.fr33z3.org:119 1119'
+alias httpstunnel='sshtunnel luzifer.fr33z3.org:443 4443'
+alias passivesshd='sshRtunnel localhost:22 2222'
 
 # gentoo
 alias esync='sudo /usr/sbin/esync'
