@@ -39,7 +39,7 @@ XTerm*faceName:             Terminus
 XTerm*faceSize:             11
 XTerm*termName:             xterm
 
-URxvt.reverseVi deo:on
+URxvt.reverseVideo:on
 URxvt.inheritPixmap:on
 URxvt.visualBell:off
 URxvt.scrollBar:off

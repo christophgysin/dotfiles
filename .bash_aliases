@@ -87,6 +87,7 @@ alias revdep-fix="sudo revdep-rebuild -i -- -avt"
 alias apti='sudo aptitude install'
 alias aptr='sudo aptitude remove'
 alias apts='sudo aptitude search'
+alias aptf='sudo apt-file search'
 alias aptud='sudo aptitude update'
 alias aptug='sudo aptitude safe-upgrade'
 alias dpkgi='dpkg --get-selections | grep install | grep'
