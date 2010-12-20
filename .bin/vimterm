@@ -1,0 +1,2 @@
+#!/bin/bash
+urxvtc -g 130x70+180+80 -e vim "$@"
