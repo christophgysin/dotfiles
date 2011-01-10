@@ -11,7 +11,7 @@ alias m='mplayer -fs'
 alias ml='m -framedrop -autosync 30 -cache 8192 -vfm ffmpeg -lavdopts lowres=3:fast:skiploopfilter=all'
 alias ms='m -ao null'
 alias bt='screen -S bt bittorrent-curses'
-type ack 2>/dev/null || alias ack=ack-grep
+type ack &>/dev/null || alias ack=ack-grep
 
 # sudo
 alias r='sudo su -'
@@ -51,6 +51,9 @@ alias luzifer='ssh fr33z3@luzifer.fr33z3.org'
 alias loki='ssh fr33z3@loki.fr33z3.org'
 alias azrael='ssh fr33z3@azrael.fr33z3.org'
 alias twoflower='ssh fr33z3@twoflower.fr33z3.org'
+alias esy-server='ssh root@esy-server'
+alias esy-buildserver='ssh root@10.3.1.5'
+alias chsamlnx01='ssh chsamlnx01'
 
 # tunnels
 sshtunnel(){ sudo ssh -fNL $2:$1 fr33z3@luzifer.fr33z3.org; }
@@ -64,10 +67,10 @@ alias passivesshd='sshRtunnel localhost:22 2222'
 # gentoo
 alias esync='sudo /usr/sbin/esync'
 alias fmerge='sudo emerge -avtf'
-alias pmerge='sudo emerge -avt'
+alias pmerge='sudo emerge -avt --keep-going y'
 alias unmerge='sudo emerge -avtC'
 alias cmerge='sudo emerge -avtPO'
-alias pworld='sudo emerge -avtu world'
+alias pworld='sudo emerge -avtu --keep-going y world'
 alias fworld='sudo emerge -avtuf world'
 alias dworld='sudo emerge -avtuD world'
 alias nworld='sudo emerge -avtN world'
@@ -93,6 +96,7 @@ alias aptug='sudo aptitude safe-upgrade'
 alias dpkgi='dpkg --get-selections | grep install | grep'
 
 export PATH=${PATH}:${HOME}/.bin
+export HISTCONTROL=ignoredups
 
 [ $(id -un) = root ] &&
    export PS1="\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] " ||
