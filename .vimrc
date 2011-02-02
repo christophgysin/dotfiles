@@ -346,6 +346,9 @@ runtime! macros/matchit.vim
 " q: sucks
 nmap q: :q
 
+" save as root
+cmap w!! w !sudo tee % > /dev/null
+
 " set up some more useful digraphs
 digraph ., 8230    " ellipsis (…)
 
