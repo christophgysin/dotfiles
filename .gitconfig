@@ -12,6 +12,8 @@
 	di = diff
 	ci = commit
 	co = checkout
+	lo = log
+	sl = shortlog
 
 [apply]
 	whitespace = fix
