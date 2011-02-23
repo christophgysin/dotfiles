@@ -15,5 +15,11 @@
 
 [apply]
 	whitespace = fix
+
 [push]
 	default = current
+
+[github]
+	user = christoph.gysin
+	token = xxx
+
