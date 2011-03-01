@@ -47,10 +47,7 @@ alias erl='rlwrap -H ~/.erl_history erl -setcookie erlang'
 alias xpdesktop='rdesktop -u gysin -d LN_DOMAIN -z -k de-ch -a 16 -N gysin.swissphone.ch'
 
 # hosts
-alias luzifer='ssh fr33z3@luzifer.fr33z3.org'
-alias loki='ssh fr33z3@loki.fr33z3.org'
-alias azrael='ssh fr33z3@azrael.fr33z3.org'
-alias twoflower='ssh fr33z3@twoflower.fr33z3.org'
+alias luzifer='ssh chris@luzifer.fr33z3.org'
 alias esy-server='ssh root@esy-server'
 alias esy-buildserver='ssh root@10.3.1.5'
 alias chsamlnx01='ssh chsamlnx01'
