@@ -1,0 +1,15 @@
+#!/bin/bash
+
+[ -z "${1}" ] && echo "usage: $(basename ${0}) <name>" && exit 1
+
+N="${1}"
+
+[ -e "${N}.key" -o -e "${N}.csr" -o -e "${N}.crt" ] && echo "file exists!" && exit 1
+
+openssl genrsa -out "${N}.key" 4096 
+openssl req -new -key "${N}.key" -out "${N}.csr"
+openssl x509 -req -in "${N}.csr" -signkey "${N}.key" -out "${N}.crt"
+chmod 640 "${N}.crt"
+cat "${N}.key" >> "${N}.crt"
+
+rm "${N}.csr" "${N}.key"
