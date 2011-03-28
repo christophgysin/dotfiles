@@ -24,7 +24,7 @@ gconftool-2 --type=string --set /apps/gnome-power-manager/notify/low_capacity fa
 
 sudo aptitude install \
 vim git git-svn subversion rxvt-unicode xfonts-terminus \
-exuberant-ctags cmake gkrellm ddd apt-file \
+exuberant-ctags cscope cmake gkrellm ddd apt-file \
 openssh-server unison unison-gtk netcat nmap chromium-browser \
 mplayer k3b gimp inkscape scribus mkvtoolnix-gui deluge-gtk \
 skype flashplugin-installer cifs-utils
