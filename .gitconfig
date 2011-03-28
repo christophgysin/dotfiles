@@ -1,27 +1,31 @@
 [user]
-	name = Christoph Gysin
-	email = christoph.gysin@gmail.com
+    name = Christoph Gysin
+    email = christoph.gysin@fr33z3.org.com
 
 [core]
-	editor = vim
-    #pager = view -
-	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    editor = vim
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
-[alias] 
-	st = status
-	di = diff
-	ci = commit
-	co = checkout
-	lo = log
-	sl = shortlog
+[alias]
+    st = status
+    di = diff
+    ci = commit
+    co = checkout
+    lo = log
+    sl = shortlog
+
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 
 [apply]
-	whitespace = fix
+    whitespace = fix
 
 [push]
-	default = current
+    default = current
 
 [github]
-	user = christoph.gysin
-	token = xxx
-
+    user = christophgysin
+    #token = xxx
