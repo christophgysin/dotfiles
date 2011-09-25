@@ -18,10 +18,6 @@ XTerm*charClass:             33:48,35-38:48,39:43,42-47:48,58-59:48,61:48,63-64:
 !XTerm*charClass:            46-47:48,58:48,64:48,63:48,95:48,126:48,61:48,37:48,35:48,43:48,36:48
 XTerm*VT100.Translations: #override <Key>BackSpace: string(0x7F)
 !\n\
-!               <Key>Delete:    string("\033[3~")\n\
-! 	      <Key>Home:      string("\033OH")\n\
-!               <Key>End:       string("\033[4~")
-!              <Key>Home:      string("\033[1~")\n\
 XTerm*ttyModes: erase ^?
 ! Suggested by denek
 ! *VT100*backarrowKey: false
@@ -39,37 +35,29 @@ XTerm*faceName:             Terminus
 XTerm*faceSize:             11
 XTerm*termName:             xterm
 
-URxvt.reverseVideo:on
-URxvt.inheritPixmap:on
-URxvt.visualBell:off
-URxvt.scrollBar:off
-URxvt.tintColor:white
-URxvt.shading:30
-URxvt.fading:20
-URxvt.saveLines:10000
-URxvt.geometry:126x36
-URxvt.scrollTtyOutput:false
-URxvt.scrollWithBuffer:true
-URxvt.scrollTtyKeypress:true
+urxvt*termName:rxvt-256color
+urxvt.reverseVideo:on
+urxvt.inheritPixmap:on
+urxvt.visualBell:off
+urxvt.scrollBar:off
+urxvt.tintColor:white
+urxvt.shading:30
+urxvt.fading:20
+urxvt.saveLines:10000
+urxvt.geometry:140x29
+urxvt.scrollTtyOutput:false
+urxvt.scrollWithBuffer:true
+urxvt.scrollTtyKeypress:true
 
-URxvt.font:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
-URxvt.boldFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
-URxvt.italicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
-URxvt.boldItalicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
+!urxvt.font:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
+!urxvt.boldFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
+!urxvt.italicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
+!urxvt.boldItalicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
 
-URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: firefox
-URxvt.colorUL: #86a2be
-!URxvt.matcher.button:   3
-
-!URxvt.keysym.A-0xff53: \033<A-0xff53>
-!URxvt.keysym.A-0xff51: \033<A-0xff51>
-!URxvt.keysym.A-Left:  <A-Left>
-!URxvt.keysym.A-Right: <A-Left>
-!URxvt.keysym.M-Up:          \033OA
-!URxvt.keysym.M-Down:        \033OB
-!URxvt.keysym.M-Right:       \033OC
-!URxvt.keysym.M-Left:        \033OD
+urxvt.perl-ext-common: default,matcher
+urxvt.urlLauncher: chromium
+urxvt.colorUL: #86a2be
+!urxvt.matcher.button:   3
 
 xcalc*geometry: 200x275
 xcalc.ti.bevel.background: #111111
