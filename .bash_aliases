@@ -48,9 +48,7 @@ alias xpdesktop='rdesktop -u gysin -d LN_DOMAIN -z -k de-ch -a 16 -N gysin.swiss
 
 # hosts
 alias luzifer='ssh chris@luzifer.fr33z3.org'
-alias esy-server='ssh root@esy-server'
-alias esy-buildserver='ssh root@10.3.1.5'
-alias chsamlnx01='ssh chsamlnx01'
+alias nas='ssh root@nas.fr33z3.org'
 
 # tunnels
 sshtunnel(){ sudo ssh -fNL $2:$1 fr33z3@luzifer.fr33z3.org; }
@@ -60,6 +58,15 @@ alias smtptunnel='sshtunnel luzifer.fr33z3.org:25 2525'
 alias nntptunnel='sshtunnel luzifer.fr33z3.org:119 1119'
 alias httpstunnel='sshtunnel luzifer.fr33z3.org:443 4443'
 alias passivesshd='sshRtunnel localhost:22 2222'
+
+# arch
+alias pacu='sudo pacman -Syu'
+alias pacs='pacman -Ss'
+alias paci='sudo pacman -S'
+alias pacl='pacman -Ql'
+alias pacm='makepkg -si'
+alias pacp='sudo pacman -U'
+alias pacf='pkgfile'
 
 # gentoo
 alias esync='sudo /usr/sbin/esync'
@@ -92,9 +99,14 @@ alias aptud='sudo aptitude update'
 alias aptug='sudo aptitude safe-upgrade'
 alias dpkgi='dpkg --get-selections | grep install | grep'
 
-export PATH=${PATH}:${HOME}/.bin
-export HISTCONTROL=ignoredups
+PATH=${PATH}:${HOME}/.bin
+HISTCONTROL=ignoredups
+unset MAILCHECK
+
+complete -cf sudo
 
 [ $(id -un) = root ] &&
    export PS1="\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] " ||
    export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\\h\[\033[01;34m\] \w \$\[\033[00m\] "
+
+[ -f /usr/share/pkgtools/pkgfile-hook.bash ] && . /usr/share/pkgtools/pkgfile-hook.bash
