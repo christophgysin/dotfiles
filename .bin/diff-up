@@ -1,2 +1,1 @@
-#!/bin/bash
-exec diff -up "${@}"
+../data/scripts/diff-up
