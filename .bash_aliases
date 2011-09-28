@@ -8,6 +8,7 @@ alias c='clear'
 alias t='vim ~/todo'
 alias b='vim ~/bugs'
 alias m='mplayer -fs'
+alias tv='mplayer -fs dvb://'
 alias ml='m -framedrop -autosync 30 -cache 8192 -vfm ffmpeg -lavdopts lowres=3:fast:skiploopfilter=all'
 alias ms='m -ao null'
 alias bt='screen -S bt bittorrent-curses'
@@ -36,7 +37,7 @@ urxvtcd(){ urxvtc "$@"; [ $? -eq 2 ] && urxvtd -q -o -f && urxvtc "$@"; }
 alias udevattr='/sbin/udevadm info --attribute-walk --name'
 
 # default opts
-alias vim='vim -p'
+#alias vim='vim -p'
 alias man='man -a'
 alias df='df -h'
 alias du='du -h'
@@ -49,6 +50,7 @@ alias xpdesktop='rdesktop -u gysin -d LN_DOMAIN -z -k de-ch -a 16 -N gysin.swiss
 # hosts
 alias luzifer='ssh chris@luzifer.fr33z3.org'
 alias nas='ssh root@nas.fr33z3.org'
+alias radio='ssh root@radio.fr33z3.org'
 
 # tunnels
 sshtunnel(){ sudo ssh -fNL $2:$1 fr33z3@luzifer.fr33z3.org; }
@@ -63,6 +65,7 @@ alias passivesshd='sshRtunnel localhost:22 2222'
 alias pacu='sudo pacman -Syu'
 alias pacs='pacman -Ss'
 alias paci='sudo pacman -S'
+alias pacr='sudo pacman -R'
 alias pacl='pacman -Ql'
 alias pacm='makepkg -si'
 alias pacp='sudo pacman -U'
