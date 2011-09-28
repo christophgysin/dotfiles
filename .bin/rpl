@@ -1,1 +1,10 @@
-../data/scripts/rpl
+#!/bin/bash
+
+REMOVE="$1"
+REPLACE="$2"
+
+for FILE in *; do
+   NEW="${FILE/$REMOVE/$REPLACE}"
+   [ "$FILE" = "$NEW" ] || mv "$FILE" "$NEW"
+done
+
