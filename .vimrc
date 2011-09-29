@@ -37,7 +37,7 @@ set viminfo='1000,f1,:1000,/1000
 set backspace=indent,eol,start
 
 " Create backups
-set backup
+"set backup
 set backupdir=~/.vim/backup
 
 " Show us the command we're typing
