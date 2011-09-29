@@ -46,6 +46,14 @@ alias nload='nload -i 102400 -o 102400 -t 500'
 #alias ctags='ctags-exuberant'
 alias erl='rlwrap -H ~/.erl_history erl -setcookie erlang'
 alias xpdesktop='rdesktop -u gysin -d LN_DOMAIN -z -k de-ch -a 16 -N gysin.swissphone.ch'
+alias truecrypt='truecrypt -t'
+tcmount(){ sudo truecrypt -t -k "" --protect-hidden=no $1/.volume $1; }
+tcumount(){ sudo truecrypt -t -d $1; }
+tclist(){ truecrypt -t -l; }
+alias datamount='tcmount $HOME/data/crypt'
+alias dataumount='tcumount $HOME/data/crypt'
+alias pocketmount='tcmount /media/POCKET/crypt'
+alias pocketumount='tcumount /media/POCKET/crypt'
 
 # hosts
 alias luzifer='ssh chris@luzifer.fr33z3.org'
