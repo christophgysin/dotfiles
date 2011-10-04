@@ -1,6 +1,6 @@
 [user]
     name = Christoph Gysin
-    email = christoph.gysin@fr33z3.org.com
+    email = christoph.gysin@gmail.com
 
 [core]
     editor = vim
@@ -29,3 +29,10 @@
 [github]
     user = christophgysin
     #token = xxx
+
+[sendemail]
+    from = "Christoph Gysin <christoph.gysin@gmail.com>"
+    smtpencryption = tls
+    smtpserver = smtp.gmail.com
+    smtpuser = "christoph.gysin@fr33z3.org"
+    smtpserverport = 587
