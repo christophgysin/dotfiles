@@ -13,6 +13,7 @@ alias ml='m -framedrop -autosync 30 -cache 8192 -vfm ffmpeg -lavdopts lowres=3:f
 alias ms='m -ao null'
 alias bt='screen -S bt bittorrent-curses'
 type ack &>/dev/null || alias ack=ack-grep
+alias sx='startx'
 
 # sudo
 alias r='sudo su -'
@@ -22,6 +23,7 @@ alias svim='sudo vim'
 alias psgrep='ps auxwww | grep -v grep | grep'
 alias histgrep='history | grep'
 addpubkey(){ ssh $1 "mkdir -p .ssh; cat>>.ssh/authorized_keys"<~/.ssh/id_rsa.pub;}
+ssh-delkey(){ sed -ie "${1:-0} d" ~/.ssh/known_hosts;}
 alias grab='sudo chown -R $(id -u):$(id -g)'
 alias terminfo-urxvt='sudo ln -s rxvt /usr/share/terminfo/r/rxvt-unicode'
 alias checkmail="ssh fr33z3@luzifer.fr33z3.org fetchmail"
@@ -36,8 +38,11 @@ indentdir(){ indent $(find . -regextype posix-extended -regex '.*\.(cpp|c|h)$');
 urxvtcd(){ urxvtc "$@"; [ $? -eq 2 ] && urxvtd -q -o -f && urxvtc "$@"; }
 alias udevattr='/sbin/udevadm info --attribute-walk --name'
 
+alias sound-stereo='pax11publish -e -S radio'
+alias sound-local='pax11publish -e -r'
+
 # default opts
-#alias vim='vim -p'
+alias vim='vim -p'
 alias man='man -a'
 alias df='df -h'
 alias du='du -h'
@@ -52,13 +57,12 @@ tcumount(){ sudo truecrypt -t -d $1; }
 tclist(){ truecrypt -t -l; }
 alias datamount='tcmount $HOME/data/crypt'
 alias dataumount='tcumount $HOME/data/crypt'
-alias pocketmount='tcmount /media/POCKET/crypt'
-alias pocketumount='tcumount /media/POCKET/crypt'
+alias pocketmount='tcmount /media/pocket/crypt'
+alias pocketumount='tcumount /media/pocket/crypt'
 
 # hosts
-alias luzifer='ssh chris@luzifer.fr33z3.org'
-alias nas='ssh root@nas.fr33z3.org'
-alias radio='ssh root@radio.fr33z3.org'
+alias luzifer='ssh luzifer.fr33z3.org'
+alias radio='ssh radio.fr33z3.org'
 
 # tunnels
 sshtunnel(){ sudo ssh -fNL $2:$1 fr33z3@luzifer.fr33z3.org; }
@@ -121,3 +125,5 @@ complete -cf sudo
    export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\\h\[\033[01;34m\] \w \$\[\033[00m\] "
 
 [ -f /usr/share/pkgtools/pkgfile-hook.bash ] && . /usr/share/pkgtools/pkgfile-hook.bash
+
+eval `dircolors -b`

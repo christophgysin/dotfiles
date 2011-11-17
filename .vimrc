@@ -1,89 +1,37 @@
 scriptencoding utf-8
 
-"-----------------------------------------------------------------------
-" terminal setup
-"-----------------------------------------------------------------------
-
-" Extra terminal things
-"if ($TERM == "rxvt-unicode") && (&termencoding == "")
-"    set termencoding=utf-8
-"endif
-
-"-----------------------------------------------------------------------
-" settings
-"-----------------------------------------------------------------------
-
-" Enable mouse
+set nocompatible
 set mouse=a
-
-" Tabulator settings
 set tabstop=4
 set softtabstop=4
 set smarttab
 set shiftwidth=4
 set expandtab
-
-" Show tabs and trailing whitespace visually
 set list listchars=tab:\ \ ,trail:·,extends:…,nbsp:‗
-"set list listchars=tab:>-,trail:.,extends:>
-
-" Don't be compatible with vi
-set nocompatible
-
-" Enable a nice big viminfo file
 set viminfo='1000,f1,:1000,/1000
-
-" Make backspace delete lots of things
 set backspace=indent,eol,start
-
-" Create backups
 "set backup
 set backupdir=~/.vim/backup
-
-" Show us the command we're typing
 set showcmd
-
-" Highlight matching parens
 set showmatch
-
-" Search options: incremental search, do clever case things, highlight
-" search
 set incsearch
 set ignorecase
 set infercase
 set hlsearch
-
-" Show full tags when doing search completion
 set showfulltag
-
-" Speed up macros
 set lazyredraw
-
-" No annoying error noises
 set noerrorbells
 set visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
-" Try to show at least three lines and two columns of context when
-" scrolling
 set scrolloff=3
 set sidescrolloff=2
-
 set nowrap
-" Wrap on these
 set whichwrap+=<,>,[,]
-
-" Use the cool tab complete menu
 set wildmenu
 set wildignore=*.o,*~
-
-" Allow edit buffers to be hidden
 set hidden
-
-" 1 height windows
 set winminheight=1
-
-" Enable syntax highlighting
+set textwidth=128
 syntax on
 
 " Try to load a nice colourscheme
@@ -118,13 +66,7 @@ if has('gui')
     set guioptions-=L
     set guioptions-=r
     set guioptions-=R
-
-" Set our fonts
-    set guifont=courier"
-    "set guifont=Terminus/12/-1/5/50/0/0/0/0/0
-    "set guifont=Terminus\ 12
-    "set guifont=-xos4-terminus-medium-r-normal--10-140-72-72-c-80-iso8859-1
-    "set guifont=-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+    set guifont=courier
 end
 
 " Do clever indent things. Don't make a # force column zero.
@@ -432,9 +374,12 @@ let Tlist_File_Fold_Auto_Close = 1
 "autocmd FileType c,cpp :Tlist
 
 " Settings minibufexpl.vim
-"let g:miniBufExplModSelTarget = 1
-"let g:miniBufExplWinFixHeight = 1
-" let g:miniBufExplForceSyntaxEnable = 1
+let g:miniBufExplWinFixHeight = 1
+let g:miniBufExplForceSyntaxEnable = 1
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
 
 " Settings for showmarks.vim
 if has("gui_running")
