@@ -29,8 +29,7 @@ alias terminfo-urxvt='sudo ln -s rxvt /usr/share/terminfo/r/rxvt-unicode'
 alias checkmail="ssh fr33z3@luzifer.fr33z3.org fetchmail"
 alias shortprompt='export PS1="${PS1//w/W}"'
 alias sync='rsync -avy --delete --progress --stats --exclude lost+found'
-alias sync-pool='sync --exclude movies --exclude tmp /mnt/pool/ /mnt/bay/'
-alias sync-movies='sync /mnt/pool/movies/ /mnt/bay/'
+alias sync-fat32='sync --modify-window=1 --max-size=4294967295'
 mergedir(){ sudo tar c -C "$1" . | sudo tar xvp -C "$2"; }
 alias indent="indent -bad --blank-lines-after-procedures -bli0 -i4 -l79 -ncs"\
 " -npcs -nprs -npsl -fca -lc79 -fc1 -ts4 -nsaf -nsai -nsaw"
@@ -112,6 +111,7 @@ alias apts='sudo aptitude search'
 alias aptf='sudo apt-file search'
 alias aptud='sudo aptitude update'
 alias aptug='sudo aptitude safe-upgrade'
+alias aptfu='sudo aptitude full-upgrade'
 alias dpkgi='dpkg --get-selections | grep install | grep'
 
 PATH=${PATH}:${HOME}/.bin
