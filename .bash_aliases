@@ -115,8 +115,10 @@ alias aptug='sudo aptitude safe-upgrade'
 alias dpkgi='dpkg --get-selections | grep install | grep'
 
 PATH=${PATH}:${HOME}/.bin
-HISTCONTROL=ignoredups
 unset MAILCHECK
+export HISTCONTROL=ignoredups
+export EDITOR=vim
+export BROWSER=chromium
 
 complete -cf sudo
 
