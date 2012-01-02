@@ -105,12 +105,14 @@ alias update-config="sudo dispatch-conf; sudo etc-update"
 alias revdep-fix="sudo revdep-rebuild -i -- -avt"
 
 # debian
-alias apti='sudo aptitude install'
-alias aptr='sudo aptitude remove'
-alias apts='sudo aptitude search'
-alias aptf='sudo apt-file search'
-alias aptud='sudo aptitude update'
-alias aptug='sudo aptitude safe-upgrade'
+alias apti='sudo apt-get install'
+alias aptr='sudo apt-get remove'
+alias apts='aptitude search'
+alias aptf='apt-file search'
+alias aptl='dpkg -L'
+alias aptud='sudo apt-get update'
+alias aptug='sudo apt-get upgrade'
+alias aptsu='sudo aptitude safe-upgrade'
 alias aptfu='sudo aptitude full-upgrade'
 alias dpkgi='dpkg --get-selections | grep install | grep'
 
@@ -119,6 +121,8 @@ unset MAILCHECK
 export HISTCONTROL=ignoredups
 export EDITOR=vim
 export BROWSER=chromium
+
+[ x"$TERM" = x'rxvt-256color' ] && export TERM=rxvt-unicode
 
 complete -cf sudo
 
