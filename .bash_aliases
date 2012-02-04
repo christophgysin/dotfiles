@@ -122,8 +122,6 @@ export HISTCONTROL=ignoredups
 export EDITOR=vim
 export BROWSER=chromium
 
-[ x"$TERM" = x'rxvt-256color' ] && export TERM=rxvt-unicode
-
 complete -cf sudo
 
 [ $(id -un) = root ] &&
