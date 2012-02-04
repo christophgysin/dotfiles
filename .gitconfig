@@ -36,3 +36,5 @@
     smtpserver = smtp.gmail.com
     smtpuser = "christoph.gysin@fr33z3.org"
     smtpserverport = 587
+[mergetool "vimdiff3"]
+	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
