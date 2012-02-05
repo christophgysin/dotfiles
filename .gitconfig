@@ -11,8 +11,13 @@
     di = diff
     ci = commit
     co = checkout
-    lo = log
     sl = shortlog
+    lo = log
+    lol = log --graph --abbrev
+    lola = log --graph --abbrev -all
+    k = !gitk
+    unstage = reset HEAD --
+    last = log -1 HEAD
 
 [color]
     branch = auto
@@ -36,5 +41,6 @@
     smtpserver = smtp.gmail.com
     smtpuser = "christoph.gysin@fr33z3.org"
     smtpserverport = 587
+
 [mergetool "vimdiff3"]
 	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
