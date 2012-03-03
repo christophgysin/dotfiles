@@ -203,7 +203,7 @@ if ($ftpserver eq "") { print "ERROR: No FTP server given.\n"; $returncode+=1; }
 if ($ftpdir    eq "") { print "ERROR: No FTP directory given.\n"; $returncode+=1; }
 if ($ftpuser   eq "") { print "ERROR: No FTP user given.\n"; $returncode+=1; }
 if ($ftppasswd eq "") { print "ERROR: No FTP password given.\n"; $returncode+=1; }
-if ($returncode > 0) { die "Aborting due to missing or wrong options! Call ftpsync -? for more information.\n";  }
+if ($returncode > 0) { die "Aborting due to missing or wrong options! Call ftpsync -h for more information.\n";  }
 
 
 #print "Exiting.\n"; exit 0;
