@@ -62,6 +62,7 @@ alias pocketumount='tcumount /media/pocket/crypt'
 # hosts
 alias luzifer='ssh luzifer.fr33z3.org'
 alias radio='ssh radio.fr33z3.org'
+alias xbmc='ssh xbmc.fr33z3.org'
 
 # tunnels
 sshtunnel(){ sudo ssh -fNL $2:$1 fr33z3@luzifer.fr33z3.org; }
@@ -114,12 +115,21 @@ alias aptug='sudo aptitude safe-upgrade'
 alias aptfu='sudo aptitude full-upgrade'
 alias dpkgi='dpkg --get-selections | grep install | grep'
 
+# redhat
+alias yumi='sudo yum install -y'
+alias yumr='sudo yum remove'
+alias yums='sudo yum search'
+alias yuml='sudo repoquery -l'
+alias yumf='sudo yum provides'
+alias yumu='sudo yum update'
+
 PATH=${PATH}:${HOME}/.bin
 unset MAILCHECK
 export HISTCONTROL=ignoredups
 export EDITOR=vim
 export BROWSER=chromium
 
+setterm -blength 0
 complete -cf sudo
 
 [ $(id -un) = root ] &&
