@@ -12,7 +12,8 @@ alias tv='mplayer -fs dvb://'
 alias ml='m -framedrop -autosync 30 -cache 8192 -vfm ffmpeg -lavdopts lowres=3:fast:skiploopfilter=all'
 alias ms='m -ao null'
 alias bt='screen -S bt bittorrent-curses'
-type ack &>/dev/null || alias ack=ack-grep
+type ack &>/dev/null || if type ack-grep &>/dev/null; then
+    alias ack=ack-grep; else ack(){ grep -r --color "$@" .;}; fi
 alias sx='startx'
 
 # sudo
