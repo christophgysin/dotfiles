@@ -55,7 +55,7 @@ urxvt.scrollTtyKeypress:true
 !urxvt.boldItalicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
 
 urxvt.perl-ext-common: default,matcher
-urxvt.urlLauncher: chromium
+urxvt.urlLauncher: chromium-browser
 urxvt.colorUL: #86a2be
 !urxvt.matcher.button:   3
 
