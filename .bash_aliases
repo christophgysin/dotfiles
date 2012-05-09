@@ -23,7 +23,7 @@ alias svim='sudo vim'
 # custom commands
 alias psgrep='ps auxwww | grep -v grep | grep'
 alias histgrep='history | grep'
-addpubkey(){ ssh $1 "mkdir -p .ssh; cat>>.ssh/authorized_keys"<~/.ssh/id_rsa.pub;}
+addpubkey(){ ssh "$@" "mkdir -p .ssh; cat>>.ssh/authorized_keys"<~/.ssh/id_rsa.pub;}
 ssh-delkey(){ sed -ie "${1:-0} d" ~/.ssh/known_hosts;}
 alias grab='sudo chown -R $(id -u):$(id -g)'
 alias terminfo-urxvt='sudo ln -s rxvt /usr/share/terminfo/r/rxvt-unicode'
@@ -37,6 +37,7 @@ alias indent="indent -bad --blank-lines-after-procedures -bli0 -i4 -l79 -ncs"\
 indentdir(){ indent $(find . -regextype posix-extended -regex '.*\.(cpp|c|h)$'); }
 urxvtcd(){ urxvtc "$@"; [ $? -eq 2 ] && urxvtd -q -o -f && urxvtc "$@"; }
 alias udevattr='/sbin/udevadm info --attribute-walk --name'
+jarmanifest(){ unzip -p $1 META-INF/MANIFEST.MF; }
 
 alias sound-stereo='pax11publish -e -S radio'
 alias sound-local='pax11publish -e -r'
@@ -140,5 +141,6 @@ complete -cf sudo
    export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\\h\[\033[01;34m\] \w \$\[\033[00m\] "
 
 [ -f /usr/share/pkgtools/pkgfile-hook.bash ] && . /usr/share/pkgtools/pkgfile-hook.bash
+[ -f ~/.profile_ericsson ] && . ~/.profile_ericsson
 
 eval `dircolors -b`
