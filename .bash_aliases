@@ -142,5 +142,6 @@ complete -cf sudo
 
 [ -f /usr/share/pkgtools/pkgfile-hook.bash ] && . /usr/share/pkgtools/pkgfile-hook.bash
 [ -f ~/.profile_ericsson ] && . ~/.profile_ericsson
+for i in ~/.bash_completion.d/*; do source "$i"; done
 
 eval `dircolors -b`
