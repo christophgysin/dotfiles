@@ -110,13 +110,12 @@ alias revdep-fix="sudo revdep-rebuild -i -- -avt"
 # debian
 alias apti='sudo apt-get install'
 alias aptr='sudo apt-get remove'
-alias apts='aptitude search'
+alias apts='apt-cache search'
+alias aptv='apt-cache show'
 alias aptf='apt-file search'
 alias aptl='dpkg -L'
 alias aptud='sudo apt-get update'
 alias aptug='sudo apt-get upgrade'
-alias aptsu='sudo aptitude safe-upgrade'
-alias aptfu='sudo aptitude full-upgrade'
 alias dpkgi='dpkg --get-selections | grep install | grep'
 
 # redhat
