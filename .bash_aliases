@@ -130,7 +130,7 @@ PATH=${PATH}:${HOME}/.bin
 unset MAILCHECK
 export HISTCONTROL=ignoredups
 export EDITOR=vim
-export BROWSER=chromium
+export BROWSER=chromium-browser
 
 setterm -blength 0
 complete -cf sudo
