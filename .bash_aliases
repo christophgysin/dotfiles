@@ -139,6 +139,8 @@ complete -cf sudo
    export PS1="\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] " ||
    export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\\h\[\033[01;34m\] \w \$\[\033[00m\] "
 
+[ -f /usr/share/terminfo/${TERM:0:1}/${TERM} ] || export TERMINFO=~/.terminfo
+
 [ -f /usr/share/pkgtools/pkgfile-hook.bash ] && . /usr/share/pkgtools/pkgfile-hook.bash
 [ -f ~/.profile_ericsson ] && . ~/.profile_ericsson
 for i in ~/.bash_completion.d/*; do source "$i"; done
