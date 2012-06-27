@@ -373,9 +373,10 @@ let Tlist_File_Fold_Auto_Close = 1
 " Autostart taglist for code
 "autocmd FileType c,cpp :Tlist
 
-" Alternate extensions
+" Settings for a.vim
 let g:alternateExtensions_cc = "hh"
 let g:alternateExtensions_hh = "cc"
+let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../../src,sfr:../include,sfr:../inc,sfr:../../inc'
 
 " Settings minibufexpl.vim
 let g:miniBufExplWinFixHeight = 1
