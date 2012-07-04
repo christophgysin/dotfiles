@@ -13,7 +13,8 @@ alias ml='m -framedrop -autosync 30 -cache 8192 -vfm ffmpeg -lavdopts lowres=3:f
 alias ms='m -ao null'
 alias bt='screen -S bt bittorrent-curses'
 type ack &>/dev/null || if type ack-grep &>/dev/null; then
-    alias ack=ack-grep; else ack(){ grep -r --color "$@" .;}; fi
+    alias ack=ack-grep; else ack(){
+        [ $# -lt 2 ] && grep -r --color "$1" . || grep -r --color "$@"; }; fi
 alias sx='startx'
 
 # sudo
@@ -38,6 +39,7 @@ indentdir(){ indent $(find . -regextype posix-extended -regex '.*\.(cpp|c|h)$');
 urxvtcd(){ urxvtc "$@"; [ $? -eq 2 ] && urxvtd -q -o -f && urxvtc "$@"; }
 alias udevattr='/sbin/udevadm info --attribute-walk --name'
 jarmanifest(){ unzip -p $1 META-INF/MANIFEST.MF; }
+alias vless='vim -u /usr/share/vim/vim71/macros/less.vim'
 
 alias sound-stereo='pax11publish -e -S radio'
 alias sound-local='pax11publish -e -r'
