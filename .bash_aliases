@@ -40,9 +40,9 @@ urxvtcd(){ urxvtc "$@"; [ $? -eq 2 ] && urxvtd -q -o -f && urxvtc "$@"; }
 alias udevattr='/sbin/udevadm info --attribute-walk --name'
 jarmanifest(){ unzip -p $1 META-INF/MANIFEST.MF; }
 alias vless='/usr/share/vim/*current/macros/less.sh'
-
 alias sound-stereo='pax11publish -e -S radio'
 alias sound-local='pax11publish -e -r'
+urxvt_font(){ printf '\33]50;%s\007' "xft:${2:-Terminus}:pixelsize=${1}"; }
 
 # default opts
 alias vim='vim -p'
