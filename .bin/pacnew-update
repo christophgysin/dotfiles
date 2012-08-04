@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo find /etc -name *.pacnew -exec pacnew-update-1 '{}' ';'
