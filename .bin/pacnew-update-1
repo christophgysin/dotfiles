@@ -23,7 +23,7 @@ while true; do
         echo " s) skip this file, do nothing?"
         echo " q) quit processing (kill parent)?"
         echo
-        echo -n "Choice (k/u/s/q)? "; read CHOICE
+        echo -n "Choice (k/u/o/n/m/s/q)? "; read CHOICE
 
         case "$CHOICE" in
             k) rm "$new" && break;;
