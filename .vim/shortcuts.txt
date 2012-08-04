@@ -1,0 +1,2 @@
+Ctrl-\ s    cscope search
+Ctrl-t      go back

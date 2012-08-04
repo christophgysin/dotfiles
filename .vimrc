@@ -11,7 +11,7 @@ set list listchars=tab:\ \ ,trail:·,extends:…,nbsp:‗
 set viminfo='1000,f1,:1000,/1000
 set backspace=indent,eol,start
 "set backup
-set backupdir=~/.vim/backup
+"set backupdir=~/.vim/backup
 set showcmd
 set showmatch
 set incsearch
@@ -372,6 +372,11 @@ let Tlist_File_Fold_Auto_Close = 1
 
 " Autostart taglist for code
 "autocmd FileType c,cpp :Tlist
+
+" Settings for a.vim
+let g:alternateExtensions_cc = "hh"
+let g:alternateExtensions_hh = "cc"
+let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../../src,sfr:../include,sfr:../inc,sfr:../../inc'
 
 " Settings minibufexpl.vim
 let g:miniBufExplWinFixHeight = 1

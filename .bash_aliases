@@ -12,7 +12,9 @@ alias tv='mplayer -fs dvb://'
 alias ml='m -framedrop -autosync 30 -cache 8192 -vfm ffmpeg -lavdopts lowres=3:fast:skiploopfilter=all'
 alias ms='m -ao null'
 alias bt='screen -S bt bittorrent-curses'
-type ack &>/dev/null || alias ack=ack-grep
+type ack &>/dev/null || if type ack-grep &>/dev/null; then
+    alias ack=ack-grep; else ack(){
+        [ $# -lt 2 ] && grep -r --color "$1" . || grep -r --color "$@"; }; fi
 alias sx='startx'
 
 # sudo
@@ -22,7 +24,7 @@ alias svim='sudo vim'
 # custom commands
 alias psgrep='ps auxwww | grep -v grep | grep'
 alias histgrep='history | grep'
-addpubkey(){ ssh $1 "mkdir -p .ssh; cat>>.ssh/authorized_keys"<~/.ssh/id_rsa.pub;}
+addpubkey(){ ssh "$@" "mkdir -p .ssh; cat>>.ssh/authorized_keys"<~/.ssh/id_rsa.pub;}
 ssh-delkey(){ sed -ie "${1:-0} d" ~/.ssh/known_hosts;}
 alias grab='sudo chown -R $(id -u):$(id -g)'
 alias terminfo-urxvt='sudo ln -s rxvt /usr/share/terminfo/r/rxvt-unicode'
@@ -36,9 +38,11 @@ alias indent="indent -bad --blank-lines-after-procedures -bli0 -i4 -l79 -ncs"\
 indentdir(){ indent $(find . -regextype posix-extended -regex '.*\.(cpp|c|h)$'); }
 urxvtcd(){ urxvtc "$@"; [ $? -eq 2 ] && urxvtd -q -o -f && urxvtc "$@"; }
 alias udevattr='/sbin/udevadm info --attribute-walk --name'
-
+jarmanifest(){ unzip -p $1 META-INF/MANIFEST.MF; }
+alias vless='/usr/share/vim/*current/macros/less.sh'
 alias sound-stereo='pax11publish -e -S radio'
 alias sound-local='pax11publish -e -r'
+urxvt_font(){ printf '\33]50;%s\007' "xft:${2:-Terminus}:pixelsize=${1}"; }
 
 # default opts
 alias vim='vim -p'
@@ -108,27 +112,39 @@ alias revdep-fix="sudo revdep-rebuild -i -- -avt"
 # debian
 alias apti='sudo apt-get install'
 alias aptr='sudo apt-get remove'
-alias apts='aptitude search'
+alias apts='apt-cache search'
+alias aptv='apt-cache show'
 alias aptf='apt-file search'
 alias aptl='dpkg -L'
 alias aptud='sudo apt-get update'
 alias aptug='sudo apt-get upgrade'
-alias aptsu='sudo aptitude safe-upgrade'
-alias aptfu='sudo aptitude full-upgrade'
 alias dpkgi='dpkg --get-selections | grep install | grep'
+
+# redhat
+alias yumi='sudo yum install -y'
+alias yumr='sudo yum remove'
+alias yums='sudo yum search'
+alias yuml='sudo repoquery -l'
+alias yumf='sudo yum provides'
+alias yumu='sudo yum update'
 
 PATH=${PATH}:${HOME}/.bin
 unset MAILCHECK
 export HISTCONTROL=ignoredups
 export EDITOR=vim
-export BROWSER=chromium
+export BROWSER=chromium-browser
 
+setterm -blength 0
 complete -cf sudo
 
 [ $(id -un) = root ] &&
    export PS1="\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] " ||
    export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\\h\[\033[01;34m\] \w \$\[\033[00m\] "
 
+[ -f /usr/share/terminfo/${TERM:0:1}/${TERM} ] || export TERMINFO=~/.terminfo
+
 [ -f /usr/share/pkgtools/pkgfile-hook.bash ] && . /usr/share/pkgtools/pkgfile-hook.bash
+[ -f ~/.profile_ericsson ] && . ~/.profile_ericsson
+for i in ~/.bash_completion.d/*; do source "$i"; done
 
 eval `dircolors -b`
