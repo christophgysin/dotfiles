@@ -67,7 +67,7 @@ alias pocketumount='tcumount /media/pocket/crypt'
 alias luzifer='ssh -X luzifer.fr33z3.org'
 alias radio='ssh -X radio.fr33z3.org'
 alias xbmc='ssh -X xbmc.fr33z3.org'
-alias raspi='ssh -X root@raspi.fr33z3.org'
+alias raspi='ssh root@raspi.fr33z3.org'
 
 # tunnels
 sshtunnel(){ sudo ssh -fNL $2:$1 fr33z3@luzifer.fr33z3.org; }
