@@ -52,9 +52,9 @@ if has('gui')
     call LoadColourScheme("inkpot:torte:night:rainbow_night:darkblue:elflord")
 else
     if &t_Co == 88 || &t_Co == 256
-        call LoadColourScheme("inkpot:darkblue:elflord")
+        call LoadColourScheme("inkpot:torte:darkblue:elflord")
     else
-        call LoadColourScheme("darkblue:elflord")
+        call LoadColourScheme("torte:darkblue:elflord")
     endif
 endif
 
