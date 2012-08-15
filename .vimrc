@@ -66,7 +66,14 @@ if has('gui')
     set guioptions-=L
     set guioptions-=r
     set guioptions-=R
-    set guifont=courier
+
+    if has("gui_running")
+      if has("gui_gtk2")
+        set guifont=Courier\ New\ 7
+      elseif has("gui_win32")
+        set guifont=Consolas:h11:cANSI
+      endif
+    endif
 end
 
 " Do clever indent things. Don't make a # force column zero.
