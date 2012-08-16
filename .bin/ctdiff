@@ -1,11 +1,13 @@
 #!/bin/bash
 #
-# usage: ctdiff [ -b branch | -t TAG ] [ -r ] <path...>
+# diff checked out clearcase files
 
-for p in "$@"; do
-    cleartool lsco -s -me -r $p |
-        while read f; do
-            diff -u $f{@@/main/LATEST,}
-        done
+[ -z "$1" ] && echo "usage: $0 <path...>" && exit 1
+
+DIFF=diff
+
+[ -t 1 ] && which colordiff >/dev/null && DIFF=colordiff
+
+ctfiles "$@" | while read f; do
+    $DIFF -u $f{@@/main/LATEST,}
 done
-
