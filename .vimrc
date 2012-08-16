@@ -49,12 +49,12 @@ fun! LoadColourScheme(schemes)
 endfun
 
 if has('gui')
-    call LoadColourScheme("inkpot:night:rainbow_night:darkblue:elflord")
+    call LoadColourScheme("inkpot:torte:night:rainbow_night:darkblue:elflord")
 else
     if &t_Co == 88 || &t_Co == 256
-        call LoadColourScheme("inkpot:darkblue:elflord")
+        call LoadColourScheme("inkpot:torte:darkblue:elflord")
     else
-        call LoadColourScheme("darkblue:elflord")
+        call LoadColourScheme("torte:darkblue:elflord")
     endif
 endif
 
@@ -66,7 +66,14 @@ if has('gui')
     set guioptions-=L
     set guioptions-=r
     set guioptions-=R
-    set guifont=courier
+
+    if has("gui_running")
+      if has("gui_gtk2")
+        set guifont=Courier\ New\ 7
+      elseif has("gui_win32")
+        set guifont=Consolas:h11:cANSI
+      endif
+    endif
 end
 
 " Do clever indent things. Don't make a # force column zero.
