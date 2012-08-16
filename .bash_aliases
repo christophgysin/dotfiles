@@ -24,7 +24,8 @@ alias svim='sudo vim'
 # custom commands
 alias psgrep='ps auxwww | grep -v grep | grep'
 alias histgrep='history | grep'
-addpubkey(){ test -r ~/.ssh/id_rsa.pub || ssh-keygen -t rsa; ssh "$@" "mkdir -p .ssh; cat>>.ssh/authorized_keys"<~/.ssh/id_rsa.pub;}
+addpubkey(){ test -r ~/.ssh/id_rsa.pub || ssh-keygen -q -t rsa -N "";
+   ssh "$@" "mkdir -p .ssh; cat>>.ssh/authorized_keys"<~/.ssh/id_rsa.pub; }
 ssh-delkey(){ sed -ie "${1:-0} d" ~/.ssh/known_hosts;}
 alias grab='sudo chown -R $(id -u):$(id -g)'
 alias terminfo-urxvt='sudo ln -s rxvt /usr/share/terminfo/r/rxvt-unicode'
