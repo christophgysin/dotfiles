@@ -7,7 +7,8 @@ g(){ i=$1; shift; grep $i -In --color -r $*;}
 alias c='clear'
 alias t='vim ~/todo'
 alias b='vim ~/bugs'
-alias m='mplayer -fs'
+alias m='mplayer'
+alias mfs='mplayer -fs'
 alias tv='mplayer -fs dvb://'
 alias ml='m -framedrop -autosync 30 -cache 8192 -vfm ffmpeg -lavdopts lowres=3:fast:skiploopfilter=all'
 alias ms='m -ao null'
@@ -88,6 +89,8 @@ alias pacl='pacman -Ql'
 alias pacm='makepkg -si'
 alias pacp='sudo pacman -U'
 alias pacf='pkgfile'
+alias pacyi='yaourt -S'
+alias pacys='yaourt -Ss'
 
 # gentoo
 alias esync='sudo /usr/sbin/esync'
