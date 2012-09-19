@@ -46,7 +46,8 @@ alias sound-local='pax11publish -e -r'
 urxvt_font(){ printf '\33]50;%s\007' "xft:${2:-Terminus}:pixelsize=${1}"; }
 
 # default opts
-alias vim='vim -p'
+type vim &>/dev/null && alias vim="vim -p" || if type vim.tiny &>/dev/null; then
+    alias vim=vim.tiny; fi
 alias man='man -a'
 alias df='df -h'
 alias du='du -h'
