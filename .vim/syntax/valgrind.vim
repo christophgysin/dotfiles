@@ -63,7 +63,7 @@ syn match valgrindAt "at\s\@=" contained
 syn match valgrindAddr "\(\W\)\@<=0x\x\+" contained
 syn match valgrindFunc "\(: \)\@<=\w\+" contained
 syn match valgrindBin "\((\(with\|\)in \)\@<=\S\+\()\)\@=" contained
-syn match valgrindSrc "\((\)\@<=.*:\d\+\()\)\@=" contained
+syn match valgrindSrc "\((\)\@<=[^)]*:\d\+\()\)\@=" contained
 
 " Define the default highlighting
 
