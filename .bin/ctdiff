@@ -6,7 +6,7 @@
 
 DIFF=diff
 
-[ -t 1 ] && which colordiff >/dev/null && DIFF=colordiff
+[ -t 1 ] && which colordiff &>/dev/null && DIFF=colordiff
 
 ctfiles "$@" | while read f; do
     $DIFF -u $f{@@/main/LATEST,}
