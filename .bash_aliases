@@ -91,6 +91,7 @@ alias pacp='sudo pacman -U'
 alias pacf='pkgfile'
 alias pacyi='yaourt -S'
 alias pacys='yaourt -Ss'
+alias pacyu='yaourt -Syu'
 
 # gentoo
 alias esync='sudo /usr/sbin/esync'
