@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for i in "$@"; do
+    CREATEDATE=$(exiftool -AllDates "$i")
+    echo "$i: $CREATEDATE"
+    if echo $CREATEDATE | grep -q 2012; then
+        exiftool -AllDates-='0:0:0 0:17:0' "$i"
+    fi
+    if echo $CREATEDATE | grep -q 2011; then
+        exiftool -AllDates+='1:0:0 0:0:0' "$i"
+        exiftool -AllDates-='0:0:0 0:2:0' "$i"
+    fi
+done

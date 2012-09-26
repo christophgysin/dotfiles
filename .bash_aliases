@@ -32,8 +32,12 @@ alias grab='sudo chown -R $(id -u):$(id -g)'
 alias terminfo-urxvt='sudo ln -s rxvt /usr/share/terminfo/r/rxvt-unicode'
 alias checkmail="ssh fr33z3@luzifer.fr33z3.org fetchmail"
 alias shortprompt='export PS1="${PS1//w/W}"'
-alias sync='rsync -avy --delete --progress --stats --exclude lost+found'
-alias sync-fat32='sync --modify-window=1 --max-size=4294967295'
+alias sync-defaults='rsync --recursive --links --devices --specials --verbose --fuzzy --progress --stats --exclude lost+found'
+alias sync-perm='sync-defaults --perms'
+alias sync-time='sync-defaults --times'
+alias sync-owner='sync-defaults --group --owner'
+alias sync-delete='sync-defaults --delete'
+alias sync-fat32='sync-defaults --modify-window=1 --max-size=4294967295'
 mergedir(){ sudo tar c -C "$1" . | sudo tar xvp -C "$2"; }
 alias indent="indent -bad --blank-lines-after-procedures -bli0 -i4 -l79 -ncs"\
 " -npcs -nprs -npsl -fca -lc79 -fc1 -ts4 -nsaf -nsai -nsaw"
@@ -92,6 +96,7 @@ alias pacp='sudo pacman -U'
 alias pacf='pkgfile'
 alias pacyi='yaourt -S'
 alias pacys='yaourt -Ss'
+alias pacyu='yaourt -Syu'
 
 # gentoo
 alias esync='sudo /usr/sbin/esync'
