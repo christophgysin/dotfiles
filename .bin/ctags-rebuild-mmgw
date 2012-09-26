@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DIRS=( ~/mmgw ~/mmgw-sw )
+
+for dir in ${DIRS}; do
+    for subdir in $dir/*; do
+        d=$(basename $dir)
+        s=$(basename $subdir)
+
+        echo "scanning $subdir -> $d-$s.tags"
+
+        #ctags -R -f ~/.vim/tags/efl.tags
+    done
+done
