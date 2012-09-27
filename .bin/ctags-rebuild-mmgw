@@ -1,14 +1,26 @@
 #!/bin/bash
 
 DIRS=( ~/mmgw ~/mmgw-sw )
+IGNORE="not implemented yet"
 
-for dir in ${DIRS}; do
+TIMEFORMAT="took: %1lR"
+
+SUBDIRS=
+for dir in ${DIRS[@]}; do
     for subdir in $dir/*; do
-        d=$(basename $dir)
-        s=$(basename $subdir)
-
-        echo "scanning $subdir -> $d-$s.tags"
-
-        #ctags -R -f ~/.vim/tags/efl.tags
+        SUBDIRS+=("$subdir")
     done
+done
+
+COUNT=${#SUBDIRS[@]}
+for ((i=0; i<${COUNT}; i++)); do
+    subdir=${SUBDIRS[$i]}
+    s=${subdir##*/}
+    dir=${subdir%/*}
+    d=${dir##*/}
+    tag=$d-$s.tags
+    tagf=~/.vim/tags/$tag
+
+    echo "($[$i+1]/${COUNT}) building $tag"
+    ctags -R -f $tagf $subdir
 done
