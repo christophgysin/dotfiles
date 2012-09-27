@@ -28,6 +28,7 @@ set sidescrolloff=2
 set nowrap
 set whichwrap+=<,>,[,]
 set wildmenu
+set wildmode=list:longest
 set wildignore=*.o,*~
 set hidden
 set winminheight=1
