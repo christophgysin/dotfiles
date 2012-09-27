@@ -90,8 +90,7 @@ set nofoldenable
 set popt+=syntax:y
 
 " extra tags
-set tags+=~/.vim/tags/stl
-set tags+=~/.vim/tags/linux
+source ~/.vim/tags/tags.vim
 
 " Enable filetype settings
 filetype on
@@ -452,6 +451,11 @@ let use_xhtml=1
 
 " turn off any existing search
 autocmd VimEnter * nohls
+
+
+if filereadable("~/.vimrc.local")
+    source "~/.vimrc.local"
+endif
 
 "-----------------------------------------------------------------------
 " vim: set shiftwidth=4 softtabstop=4 expandtab tw=72                  :
