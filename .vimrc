@@ -453,9 +453,8 @@ let use_xhtml=1
 " turn off any existing search
 autocmd VimEnter * nohls
 
-
-if filereadable("~/.vimrc.local")
-    source "~/.vimrc.local"
+if filereadable(glob('~/.vimrc.local'))
+    source ~/.vimrc.local
 endif
 
 "-----------------------------------------------------------------------
