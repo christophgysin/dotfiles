@@ -149,8 +149,8 @@ setterm -blength 0
 complete -cf sudo
 
 [ $(id -un) = root ] &&
-   export PS1="\[\033[01;31m\]\h\[\033[01;34m\] \w \$\[\033[00m\] " ||
-   export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\\h\[\033[01;34m\] \w \$\[\033[00m\] "
+   export PS1="\[\033[01;31m\]\h\[\033[01;34m\] \w\[\033[00m\] \$ " ||
+   export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\\h\[\033[01;34m\] \w\[\033[00m\] \$ "
 
 [ -f /usr/share/terminfo/${TERM:0:1}/${TERM} ] || export TERMINFO=~/.terminfo
 
