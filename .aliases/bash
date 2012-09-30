@@ -1,0 +1,8 @@
+for i in ~/.aliases/*.alias; do source $i; done
+
+complete -cf sudo
+for i in ~/.bash_completion.d/*; do source "$i"; done
+
+[ -f /usr/share/pkgtools/pkgfile-hook.bash ] && . /usr/share/pkgtools/pkgfile-hook.bash
+
+# vim:ft=sh

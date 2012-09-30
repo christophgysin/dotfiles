@@ -1,0 +1,21 @@
+# shortcuts
+alias l='ls -lh --color=auto'
+alias ll='ls -la --color=auto'
+g(){ i=$1; shift; grep $i -In --color -r $*;}
+alias c='clear'
+alias t='vim ~/todo'
+alias b='vim ~/bugs'
+alias m='mplayer'
+alias mfs='mplayer -fs'
+alias tv='mplayer -fs dvb://'
+alias ml='m -framedrop -autosync 30 -cache 8192 -vfm ffmpeg -lavdopts lowres=3:fast:skiploopfilter=all'
+alias ms='m -ao null'
+alias bt='screen -S bt bittorrent-curses'
+type ack &>/dev/null || if type ack-grep &>/dev/null; then
+    alias ack=ack-grep; else ack(){
+        [ $# -lt 2 ] && grep -r --color "$1" . || grep -r --color "$@"; }; fi
+alias sx='startx'
+alias r='sudo su -'
+alias svim='sudo vim'
+
+# vim:ft=sh

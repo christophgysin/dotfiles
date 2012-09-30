@@ -1,0 +1,29 @@
+# custom commands
+alias psgrep='ps auxwww | grep -v grep | grep'
+alias histgrep='history | grep'
+addpubkey(){ test -r ~/.ssh/id_rsa.pub || ssh-keygen -q -t rsa -N "";
+   ssh "$@" "mkdir -p .ssh; cat>>.ssh/authorized_keys"<~/.ssh/id_rsa.pub; }
+ssh-delkey(){ sed -ie "${1:-0} d" ~/.ssh/known_hosts;}
+alias grab='sudo chown -R $(id -u):$(id -g)'
+alias terminfo-urxvt='sudo ln -s rxvt /usr/share/terminfo/r/rxvt-unicode'
+alias checkmail="ssh fr33z3@luzifer.fr33z3.org fetchmail"
+alias shortprompt='export PS1="${PS1//w/W}"'
+alias sync-defaults='rsync --recursive --links --devices --specials --verbose --fuzzy --progress --stats --exclude lost+found'
+alias sync-perm='sync-defaults --perms'
+alias sync-time='sync-defaults --times'
+alias sync-owner='sync-defaults --group --owner'
+alias sync-delete='sync-defaults --delete'
+alias sync-fat32='sync-defaults --modify-window=1 --max-size=4294967295'
+mergedir(){ sudo tar c -C "$1" . | sudo tar xvp -C "$2"; }
+alias indent="indent -bad --blank-lines-after-procedures -bli0 -i4 -l79 -ncs"\
+" -npcs -nprs -npsl -fca -lc79 -fc1 -ts4 -nsaf -nsai -nsaw"
+indentdir(){ indent $(find . -regextype posix-extended -regex '.*\.(cpp|c|h)$'); }
+urxvtcd(){ urxvtc "$@"; [ $? -eq 2 ] && urxvtd -q -o -f && urxvtc "$@"; }
+alias udevattr='/sbin/udevadm info --attribute-walk --name'
+jarmanifest(){ unzip -p $1 META-INF/MANIFEST.MF; }
+alias vless='/usr/share/vim/*current/macros/less.sh'
+alias sound-stereo='pax11publish -e -S radio'
+alias sound-local='pax11publish -e -r'
+urxvt_font(){ printf '\33]50;%s\007' "xft:${2:-Terminus}:pixelsize=${1}"; }
+
+# vim:ft=sh

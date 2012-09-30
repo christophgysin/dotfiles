@@ -1,0 +1,55 @@
+# arch
+alias pacu='sudo pacman -Syu'
+alias pacs='pacman -Ss'
+alias paci='sudo pacman -S'
+alias pacr='sudo pacman -R'
+alias pacl='pacman -Ql'
+alias pacm='makepkg -si'
+alias pacp='sudo pacman -U'
+alias pacf='pkgfile'
+alias pacyi='yaourt -S'
+alias pacys='yaourt -Ss'
+alias pacyu='yaourt -Syu'
+
+# gentoo
+alias esync='sudo /usr/sbin/esync'
+alias fmerge='sudo emerge -avtf'
+alias pmerge='sudo emerge -avt --keep-going y'
+alias unmerge='sudo emerge -avtC'
+alias cmerge='sudo emerge -avtPO'
+alias pworld='sudo emerge -avtu --keep-going y world'
+alias fworld='sudo emerge -avtuf world'
+alias dworld='sudo emerge -avtuD world'
+alias nworld='sudo emerge -avtN world'
+alias gcheck='glsa-check -v -l'
+keywords() { grep -EH '^KEYWORDS=' /usr/portage/*/$1/*.ebuild|
+sed -e 's:/usr/portage/::' -e 's/.ebuild:/: /' -e 's:/.*/:/:';}
+usedesc() { grep $1 /usr/portage/profiles/use.*; }
+addline() { f=$1; shift; sudo bash -c "(echo -n '# '; date; echo \"$*\") >> $f"; }
+alias addkeyword='addline /etc/portage/package.keywords/local'
+alias adduse='addline /etc/portage/package.use/local'
+alias addmask='addline /etc/portage/package.mask/local'
+alias addunmask='addline /etc/portage/package.unmask/local'
+alias update-config="sudo dispatch-conf; sudo etc-update"
+alias revdep-fix="sudo revdep-rebuild -i -- -avt"
+
+# debian
+alias apti='sudo apt-get install'
+alias aptr='sudo apt-get remove'
+alias apts='apt-cache search'
+alias aptv='apt-cache show'
+alias aptf='apt-file search'
+alias aptl='dpkg -L'
+alias aptud='sudo apt-get update'
+alias aptug='sudo apt-get upgrade'
+alias dpkgi='dpkg --get-selections | grep install | grep'
+
+# redhat
+alias yumi='sudo yum install -y'
+alias yumr='sudo yum remove'
+alias yums='sudo yum search'
+alias yuml='sudo repoquery -l'
+alias yumf='sudo yum provides'
+alias yumu='sudo yum update'
+
+# vim:ft=sh

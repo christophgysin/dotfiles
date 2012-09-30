@@ -1,0 +1,3 @@
+setterm -blength 0
+
+# vim:ft=sh

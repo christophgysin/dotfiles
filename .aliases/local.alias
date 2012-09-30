@@ -1,0 +1,3 @@
+[ -f ~/.profile_ericsson ] && . ~/.profile_ericsson
+
+# vim:ft=sh
