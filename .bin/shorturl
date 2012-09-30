@@ -1,0 +1,16 @@
+#!/bin/bash
+
+shorturl_gitio() {
+    URL=$1
+    curl -si http://git.io -F "url=https://github.com/..." | sed -n 's/^Location: \(.*\)/\1/p'
+}
+
+if [ "$@" ]; then
+    for url in "$@"; do
+        shorturl_gitio
+    done
+else
+    while read url; do
+        shorturl_gitio
+    done
+fi
