@@ -34,3 +34,5 @@ plugins=(git archliunx autojump)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+
+source ~/.zshrc.keybinds
