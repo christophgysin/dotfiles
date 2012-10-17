@@ -18,6 +18,7 @@
     k = !gitk
     unstage = reset HEAD --
     last = log -1 HEAD
+    frbp = !git fetch && git rebase origin/master && git push origin HEAD:master
 
 [color]
     branch = auto
