@@ -1,3 +1,5 @@
+shopt -s extglob
+
 for i in ~/.aliases/*.alias; do source $i; done
 
 complete -cf sudo
