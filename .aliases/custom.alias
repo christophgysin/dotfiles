@@ -24,7 +24,7 @@ alias indent="indent -bad --blank-lines-after-procedures -bli0 -i4 -l79 -ncs"\
 indentdir(){ indent $(find . -regextype posix-extended -regex '.*\.(cpp|c|h)$'); }
 alias udevattr='/sbin/udevadm info --attribute-walk --name'
 jarmanifest(){ unzip -p $1 META-INF/MANIFEST.MF; }
-alias vless='/usr/share/vim/*current/macros/less.sh'
+alias vless='/usr/share/vim/vim73/macros/less.sh'
 
 alias sound-stereo='pax11publish -e -S radio'
 alias sound-local='pax11publish -e -r'
