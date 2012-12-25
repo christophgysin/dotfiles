@@ -32,4 +32,6 @@ alias sound-local='pax11publish -e -r'
 urxvtcd(){ urxvtc "$@"; [ $? -eq 2 ] && urxvtd -q -o -f && urxvtc "$@"; }
 urxvt_font(){ printf '\33]50;%s\007' "xft:${2:-Terminus}:pixelsize=${1}"; }
 
+alias chromium-inka="chromium --user-data-dir=$HOME/.config/chromium-inka"
+
 # vim:ft=sh
