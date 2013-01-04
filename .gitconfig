@@ -18,7 +18,11 @@
     k = !gitk
     unstage = reset HEAD --
     last = log -1 HEAD
-    frbp = !git fetch && git rebase origin/master && git push origin HEAD:master
+    lom = !git --no-pager log origin/master..
+    frb = !git fetch origin && git rebase origin/master
+    frbi = !git fetch origin && git rebase -i origin/master
+    frbp = !git fetch origin && git rebase origin/master && git push origin ${1:-HEAD}:master && true
+    backup = push -f --mirror echrgys-bare
 
 [color]
     branch = auto
