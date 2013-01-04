@@ -1,3 +1,6 @@
 for i in ~/.aliases/*.alias; do source $i; done
 
+cnf_hook=/usr/share/doc/pkgfile/command-not-found.zsh
+[ -f $cnf_hook ] && . $cnf_hook
+
 # vim:ft=sh
