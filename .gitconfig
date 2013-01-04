@@ -14,8 +14,9 @@
     sl = shortlog
     lo = log
     lol = log --graph --abbrev
-    lola = log --graph --abbrev -all
+    lola = log --graph --abbrev --all
     k = !gitk
+    ka = !gitk --all
     unstage = reset HEAD --
     last = log -1 HEAD
     frbp = !git fetch && git rebase origin/master && git push origin HEAD:master
@@ -45,3 +46,6 @@
 
 [mergetool "vimdiff3"]
 	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+
+[diff "odf"]
+    textconv=odt2txt

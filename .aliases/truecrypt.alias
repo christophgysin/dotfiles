@@ -1,10 +1,10 @@
 alias truecrypt='truecrypt -t'
-tcmount(){ sudo truecrypt -t -k "" --protect-hidden=no $1/.volume $1; }
+tcmount(){ sudo truecrypt -t -k "" --protect-hidden=no $1/.volume.tc $1; }
 tcumount(){ sudo truecrypt -t -d $1; }
 tclist(){ truecrypt -t -l; }
-alias datamount='tcmount $HOME/data/crypt'
-alias dataumount='tcumount $HOME/data/crypt'
-alias pocketmount='tcmount /media/pocket/crypt'
-alias pocketumount='tcumount /media/pocket/crypt'
+alias datamount='tcmount $HOME/data'
+alias dataumount='tcumount $HOME/data'
+alias pocketmount='tcmount /mnt/pocket/data'
+alias pocketumount='tcumount /mnt/pocket/data'
 
 # vim:ft=sh
