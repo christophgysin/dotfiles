@@ -349,10 +349,10 @@ let Tlist_File_Fold_Auto_Close = 1
 "autocmd FileType c,cpp :Tlist
 
 " Settings for a.vim
-let g:alternateExtensions_h = "c,cc,cpp,cxx"
-let g:alternateExtensions_hh = "cc,cpp,cxx"
-let g:alternateExtensions_cc = "h,hh,hpp,hxx"
-let g:alternateExtensions_cpp = "h,hh,hpp,hxx"
+let g:alternateExtensions_h = "c,cc,cpp"
+let g:alternateExtensions_hh = "cc,cpp"
+let g:alternateExtensions_cc = "h,hh,hpp"
+let g:alternateExtensions_cpp = "h,hh,hpp"
 let g:alternateSearchPath = '../source,../src,../../src,../include,../inc,../../inc'
 let g:alternateNoDefaultAlternate = 1
 
