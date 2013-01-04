@@ -325,38 +325,6 @@ au VimEnter * if exists("loaded_cmdalias") |
             \ endif
 
 "-----------------------------------------------------------------------
-" special less.sh and man modes
-"-----------------------------------------------------------------------
-
-fun! <SID>is_pager_mode()
-    let l:ppidc = ""
-    try
-        if filereadable("/lib/libc.so.6")
-            let l:ppid = libcallnr("/lib/libc.so.6", "getppid", "")
-        elseif filereadable("/lib/libc.so.0")
-            let l:ppid = libcallnr("/lib/libc.so.0", "getppid", "")
-        else
-            let l:ppid = ""
-        endif
-        let l:ppidc = system("ps -p " . l:ppid . " -o comm=")
-        let l:ppidc = substitute(l:ppidc, "\\n", "", "g")
-    catch
-    endtry
-    return l:ppidc ==# "less.sh" ||
-                \ l:ppidc ==# "vimpager" ||
-                \ l:ppidc ==# "manpager.sh" ||
-                \ l:ppidc ==# "vimmanpager"
-endfun
-if <SID>is_pager_mode()
-    " we're in vimpager / less.sh / man mode
-    set laststatus=0
-    set ruler
-    set foldmethod=manual
-    set foldlevel=99
-    set nolist
-endif
-
-"-----------------------------------------------------------------------
 " plugin / script / app settings
 "-----------------------------------------------------------------------
 
