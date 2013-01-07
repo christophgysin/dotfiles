@@ -1,0 +1,18 @@
+#!/bin/bash
+
+int=eDP1
+ext=HDMI1
+
+case ${1} in
+    int|'')
+        xrandr --output $int --auto --output $ext --off;;
+    ext)
+        xrandr --output $int --off --output $ext --auto;;
+    dup)
+        xrandr --output $int --auto --output $ext --auto --same-as $int;;
+    dual)
+        xrandr --output $int --auto --output $ext --auto --right-of $int;;
+    *)
+        echo "usage: $(basename $0) [ [int] | ext | dup | dual ]";
+        exit 1;;
+esac
