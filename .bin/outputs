@@ -2,6 +2,7 @@
 
 int=eDP1
 ext=HDMI1
+pos=left
 
 case ${1} in
     int|'')
@@ -11,7 +12,7 @@ case ${1} in
     dup)
         xrandr --output $int --auto --output $ext --auto --same-as $int;;
     dual)
-        xrandr --output $int --auto --output $ext --auto --right-of $int;;
+        xrandr --output $int --auto --output $ext --auto --$pos-of $int;;
     *)
         echo "usage: $(basename $0) [ [int] | ext | dup | dual ]";
         exit 1;;
