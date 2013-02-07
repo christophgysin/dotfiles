@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+# find clearcase files with a certain label
+
+LABEL=$1
+cleartool find -all -version "lbtype($LABEL)" -print

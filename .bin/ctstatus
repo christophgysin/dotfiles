@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# show all checked out files and their version
+
+cleartool lsco -user $USER -r ${@:-.}

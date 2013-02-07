@@ -2,8 +2,6 @@
 #
 # list checked out clearcase files
 
-[ -z "$1" ] && echo "usage: $0 <path...>" && exit 1
-
-for p in "$@"; do
+for p in "${@:-.}"; do
     cleartool lsco -s -me -r $p
 done
