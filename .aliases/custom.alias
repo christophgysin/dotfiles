@@ -34,4 +34,7 @@ urxvt_font(){ printf '\33]50;%s\007' "xft:${2:-Terminus}:pixelsize=${1}"; }
 
 alias chromium-inka="chromium --user-data-dir=$HOME/.config/chromium-inka"
 
+alias em='emake -Cbin'
+alias emc='emake -Cbin-clang'
+
 # vim:ft=sh
