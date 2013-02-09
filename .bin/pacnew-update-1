@@ -1,9 +1,8 @@
 #!/bin/bash
 
-[ -x /usr/bin/colordiff ] &&
-    DIFF="colordiff -up" ||
-    DIFF="diff -up"
-
+EDITOR=${EDITOR:-vim}
+which colordiff &>/dev/null && DIFF="colordiff -up"
+DIFF=${DIFF:-"diff -up"}
 MERGE="vimdiff"
 
 new=$1
