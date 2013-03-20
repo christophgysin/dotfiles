@@ -35,6 +35,9 @@ set winminheight=1
 set textwidth=128
 syntax on
 
+" fix whitespace
+"command Fixws :retab<CR>:%s/\s\+$//<CR>
+
 " Try to load a nice colourscheme
 fun! LoadColourScheme(schemes)
     let l:schemes = a:schemes . ":"
