@@ -7,7 +7,7 @@ set softtabstop=4
 set smarttab
 set shiftwidth=4
 set expandtab
-set list listchars=tab:\ \ ,trail:·,extends:…,nbsp:‗
+set list listchars=tab:>-,trail:�
 set viminfo='1000,f1,:1000,/1000
 set backspace=indent,eol,start
 "set backup
