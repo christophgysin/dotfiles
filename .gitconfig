@@ -9,9 +9,11 @@
 [alias]
     st = status
     di = diff
+    dc = diff --cached
     ci = commit
     co = checkout
     sl = shortlog
+    pick = cherry-pick
     lo = log
     lol = log --graph --abbrev
     lola = log --graph --abbrev --all
@@ -25,6 +27,7 @@
     frbi = !git fetch origin && git rebase -i origin/master
     frbp = !git fetch origin && git rebase origin/master && git push origin ${1:-HEAD}:master && true
     backup = push -f --mirror echrgys-bare
+    log-grep = !git log --color=always --grep \"${1}\" | sed \"s/${1}/$(tput setaf 1)\\\\0$(tput sgr0)/g\" && true
 
 [color]
     branch = auto
