@@ -41,23 +41,28 @@ urxvt.inheritPixmap:on
 urxvt.visualBell:off
 urxvt.scrollBar:off
 urxvt.tintColor:white
-urxvt.shading:30
+urxvt.shading:0
 urxvt.fading:20
 urxvt.saveLines:10000
 urxvt.geometry:140x29
 urxvt.scrollTtyOutput:false
 urxvt.scrollWithBuffer:true
 urxvt.scrollTtyKeypress:true
+!urxvt.font:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
+!urxvt.boldFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
+!urxvt.italicFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
+!urxvt.boldItalicFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
 
-!urxvt.font:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
-!urxvt.boldFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
-!urxvt.italicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
-!urxvt.boldItalicFont:-*-terminus-*-r-*-*-16-*-*-*-*-*-*-*
-
-urxvt.perl-ext-common: default,matcher
+urxvt.perl-ext-common: default,matcher,clipboard
+urxvt.keysym.C-Up:     perl:font-size:increase
+urxvt.keysym.C-Down:   perl:font-size:decrease
+urxvt.keysym.C-S-Up:   perl:font-size:incglobal
+urxvt.keysym.C-S-Down: perl:font-size:decglobal
+urxvt.keysym.Mod4-c: perl:clipboard:copy
+urxvt.keysym.Mod4-v: perl:clipboard:paste
 urxvt.urlLauncher: chromium-browser
-urxvt.colorUL: #86a2be
 !urxvt.matcher.button:   3
+urxvt.colorUL: #86a2be
 
 xcalc*geometry: 200x275
 xcalc.ti.bevel.background: #111111
