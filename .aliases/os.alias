@@ -42,7 +42,7 @@ alias aptv='apt-cache show'
 alias aptf='apt-file search'
 alias aptl='dpkg -L'
 alias aptud='sudo apt-get update'
-alias aptug='sudo apt-get upgrade'
+alias aptug='sudo apt-get dist-upgrade'
 alias dpkgi='dpkg --get-selections | grep install | grep'
 
 # redhat
