@@ -1,5 +1,37 @@
-xpdf*initialZoom: 					   width
+! urxvt
+urxvt*termName:rxvt-256color
+urxvt.reverseVideo:on
+urxvt.inheritPixmap:on
+urxvt.visualBell:off
+urxvt.scrollBar:off
+urxvt.tintColor:white
+urxvt.shading:0
+urxvt.fading:20
+urxvt.saveLines:10000
+urxvt.geometry:140x29
+urxvt.scrollTtyOutput:false
+urxvt.scrollWithBuffer:true
+urxvt.scrollTtyKeypress:true
+!urxvt.font:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
+!urxvt.boldFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
+!urxvt.italicFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
+!urxvt.boldItalicFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
 
+urxvt.perl-ext-common: default,matcher,clipboard
+urxvt.keysym.C-Up:     perl:font-size:increase
+urxvt.keysym.C-Down:   perl:font-size:decrease
+urxvt.keysym.C-S-Up:   perl:font-size:incglobal
+urxvt.keysym.C-S-Down: perl:font-size:decglobal
+urxvt.keysym.Mod4-c: perl:clipboard:copy
+urxvt.keysym.Mod4-v: perl:clipboard:paste
+urxvt.urlLauncher: chromium-browser
+!urxvt.matcher.button:   3
+urxvt.colorUL: #86a2be
+
+! xpdf
+xpdf*initialZoom: width
+
+! xterm
 XTerm*background:  #000000
 XTerm*foreground:  #cfcfcf
 XTerm*cursorColor: #cdc092
@@ -35,35 +67,7 @@ XTerm*faceName:             Terminus
 XTerm*faceSize:             11
 XTerm*termName:             xterm
 
-urxvt*termName:rxvt-256color
-urxvt.reverseVideo:on
-urxvt.inheritPixmap:on
-urxvt.visualBell:off
-urxvt.scrollBar:off
-urxvt.tintColor:white
-urxvt.shading:0
-urxvt.fading:20
-urxvt.saveLines:10000
-urxvt.geometry:140x29
-urxvt.scrollTtyOutput:false
-urxvt.scrollWithBuffer:true
-urxvt.scrollTtyKeypress:true
-!urxvt.font:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
-!urxvt.boldFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
-!urxvt.italicFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
-!urxvt.boldItalicFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
-
-urxvt.perl-ext-common: default,matcher,clipboard
-urxvt.keysym.C-Up:     perl:font-size:increase
-urxvt.keysym.C-Down:   perl:font-size:decrease
-urxvt.keysym.C-S-Up:   perl:font-size:incglobal
-urxvt.keysym.C-S-Down: perl:font-size:decglobal
-urxvt.keysym.Mod4-c: perl:clipboard:copy
-urxvt.keysym.Mod4-v: perl:clipboard:paste
-urxvt.urlLauncher: chromium-browser
-!urxvt.matcher.button:   3
-urxvt.colorUL: #86a2be
-
+! xcalc
 xcalc*geometry: 200x275
 xcalc.ti.bevel.background: #111111
 xcalc.ti.bevel.screen.background: #000000
@@ -107,6 +111,7 @@ xcalc.ti.button39.background: #555595
 XCalc*Cursor:                 hand2
 XCalc*ShapeStyle:             rectangle
 
+! xmessage
 .xmessage.form.*.shapeStyle: rectangle
 .xmessage.form.okay.background: #777777
 .xmessage.form.okay.foreground: snow
@@ -114,6 +119,7 @@ xmessage*message*background: snow
 xmessage*defaultButton: okay
 Xmessage.form.message.Scroll:  WhenNeeded
 
+! xfontsel
 !XFontSel*sampleText.background: TEXTBG
 XFontSel*menu*showUnselectable: false
 XFontSel*MenuButton.shadowWidth: 0
