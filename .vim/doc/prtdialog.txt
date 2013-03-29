@@ -1,0 +1,566 @@
+*prtdialog.txt*  Plugin for printing files. For Vim version 6.0.
+
+                                                  *prtdialog* *printer-dialog*
+
+                                Printer Dialog
+                            ======================
+                         Version 1.0.0, 12. Dez. 2002
+
+
+                            by Christian Habermann
+                     christian(at)habermann-net(point)de
+
+
+        Contents:
+
+            1.  Introduction.........|prtdialog-intro|
+            2.  Installation.........|prtdialog-installation|
+            2.1   Basics.............|prtdialog-installbasic|
+            2.2   Add-Ons............|prtdialog-installaddon|
+            3.  Usage................|prtdialog-usage|
+            3.1   Invocation.........|prtdialog-usageinvoke|
+            3.2   Dialog.............|prtdialog-usagedialog|
+            4.  Customization........|prtdialog-customization|
+            4.1   Mappings...........|prtdialog-mappings|
+            4.2   Parameters.........|prtdialog-parameters|
+            4.3   Page Header........|prtdialog-pageheader|
+            5.  Technics.............|prtdialog-technics|
+            6.  Limitations & Bugs...|prtdialog-limbugs|
+            7.  Copyright & License..|prtdialog-copyright|
+            8.  History..............|prtdialog-history|
+
+Happy viming...
+
+
+------------------------------------------------------------------------------
+1. INTRODUCTION                                              *prtdialog-intro*
+
+This script's intention is to simplify printing of text. It provides
+a dialog to make many many printer settings before starting to print.
+
+Either a whole file can be printed or only a selected part of it.
+
+
+
+------------------------------------------------------------------------------
+2. INSTALLATION                                       *prtdialog-installation*
+
+2.1 Basics                                            *prtdialog-installbasic*
+----------
+Printer Dialog consists out of two files, the script 'prtdialog.vim' and
+the documentation 'prtdialog.txt'.
+
+To use this script copy it into your local plugin-directory
+  Unix:    ~/.vim/plugin
+  Windows: c:\vimfiles\plugin
+After starting VIM this script is sourced from their automatically.
+
+This script can be customized in your vimrc, for further informations
+see |prtdialog-customization|.
+
+
+If you want to add this documentation to VIM's help system, copy
+'prtdialog.txt' to your local doc-directory
+
+  Unix:    ~/.vim/doc
+  Windows: c:\vimfiles\doc
+
+start VIM and do:
+
+  :helptags ~/.vim/doc   (or :helptags c:\vimfiles\doc)
+
+
+That's all to do.
+
+
+2.2 Add-Ons                                           *prtdialog-installaddon*
+-----------
+
+If you print with syntax-highlighting enabled on a black & white printer,
+you may be interested in the colorscheme 'print_bw'. Instead of colors
+font-styles (normal, bold, italic, underline) are used for highlighting.
+
+'print_bw' is contributed to the VIM community by Mike Williams. To download
+it look at http://vim.sourceforge.net/.
+
+To install it, copy it into your local colors-directory:
+
+  Unix:    ~/.vim/colors
+  Windows: c:\vimfiles\colors
+
+This colorscheme is one of the colorschemes selectable in Printer Dialog
+for syntax-highlighting (parameter Syntax: <print_bw>).
+
+
+
+------------------------------------------------------------------------------
+3. USAGE                                                     *prtdialog-usage*
+
+3.1 Invocation                                         *prtdialog-usageinvoke*
+--------------
+Pressing <Leader>pd opens the Printer Dialog in which you can make your
+settings and start/cancel printing.
+
+You can print either the whole contents of a buffer or a part of it.
+If you want to select a whole buffer for printing, press <Leader>pd.
+If you want to print only a part of a buffer, visually select this part and
+press <Leader>pd too.
+
+Note: by default <Leader> is \, so press \pd to invoke Printer Dialog
+
+Memory aid for <Leader>pd: (p)rinter (d)ialog
+
+
+3.2 Dialog                                             *prtdialog-usagedialog*
+----------
+
+The dialog consists out of four parts. From top to bottom these are:
+
+  1) Help
+     shows key-mappings
+
+  2) File-Info
+     shows name of buffer to be printed and range
+     range is either 'whole file' or 'lines x - y'
+
+  3) Printer
+     printer device to be used
+     default: <standard>
+     NOTE: If you don't use <standard>, see |prd_prtDeviceList| for further
+     informations on how to setup this parameter.
+
+  4) Options
+     options for printing
+      - Font
+          font to be used for printing
+          <courier_h6>  courier, size 6
+          <courier_h8>  courier, size 8
+          <courier_h10> courier, size 10
+          <courier_h12> courier, size 12
+          <courier_h14> courier, size 14
+          default:  <courier_h8>
+
+      - Paper
+          paper to be used <A3>, <A4>, <A5>, <B4>, <B5>, <legal>, <letter>
+          default: <A4>
+
+      - Portrait
+          orientation of paper
+            <yes>   portrait
+            <no>    landscape
+            default: <yes>
+
+      - Header
+          number of lines used for page header
+            <0>        no header
+            <1>...<6>  lines to be used
+            default:   <2>
+
+      - Line-Nr
+          include line numbers in the output
+          <yes>, <no>
+          default: <yes>
+
+      - Syntax
+          syntax-highlighting (SH) and colorscheme
+          <no>       don't use SH for printing
+          <current>  use colorscheme currently active in buffer
+          <default>  use VIM's default colorscheme for SH
+          <print_bw> special colorscheme for black&white printers
+                     see |prtdialog-installaddon|
+          <zellner>  use SH with this colorscheme (delivered with VIM)
+          default:   <default>
+
+      - Wrap
+          <yes>    wrap long lines
+          <no>     truncate long lines
+          default: <yes>
+
+      - Duplex
+          <off>    print on one side
+          <long>   print on both sides, bind on long side
+          <short>  print on both sides, bind on short side
+          default: <long>
+
+      - Collate
+          <yes>    collating     1 2 3, 1 2 3, 1 2 3
+          <no>     no collationg 1 1 1, 2 2 2, 3 3 3
+          default: <yes>
+
+      - JobSplit
+          <yes>    each copy is a separate print job
+          <no>     make copies in one print job
+          default: <no>
+
+      - Left
+        left margin
+        <5mm>, <10mm>, <15mm>, <20mm>, <25mm>
+        default: <15mm>
+
+      - Right
+        right margin
+        <5mm>, <10mm>, <15mm>, <20mm>, <25mm>
+        default: <15mm>
+
+      - Top
+        top margin
+        <5mm>, <10mm>, <15mm>, <20mm>, <25mm>
+        default: <10mm>
+
+      - Bottom
+        bottom margin
+        <5mm>, <10mm>, <15mm>, <20mm>, <25mm>
+        default: <10mm>
+
+      - Dialog
+        show an OS-specific dialog before really start to print
+        <yes>, <no>
+        default: <no>
+        works only for MS-Windows
+
+
+Changeable parameters in Printer Dialog are marked with <...>. All of these
+can be configured. See |prtdialog-parameters|.
+
+To change a value of a parameter, move cursor in the appropriate line
+and press <Tab> or <S-Tab>. <Tab> selects next possible value, <S-Tab>
+selects previous one.
+
+To get help on a parameter move cursor to the line and press '?'.
+
+To start printing press 'p' (print), to cancel Printer Dialog
+press 'q' (quit).
+
+
+All parameters are memorized. Next time you invoke Printer Dialog the values
+of the parameters will be the same as at the moment the dialog has been
+closed.
+
+
+NOTE: Printer Dialog provides many parameters. Of course they take only
+effect if your printer device and it's driver does support them.
+
+
+
+------------------------------------------------------------------------------
+4. CUSTOMIZATION                                     *prtdialog-customization*
+
+
+
+4.1 Mappings                                              *prtdialog-mappings*
+
+You can configure the mappings used to invoke Printer Dialog for both
+visual mode and normal mode. Visual mode is used to select a range of
+a buffer to be printed whereas normal mode is used to print whole buffer.
+
+For example if you would like to use <Leader>p instead of the default
+<Leader>pd add in your vimrc:
+    vmap <silent> <unique> <Leader>p <Plug>PRD_PrinterDialogVisual
+    nmap <silent> <unique> <Leader>p <Plug>PRD_PrinterDialogNormal
+
+
+
+4.2 Parameters                                          *prtdialog-parameters*
+
+In Printer Dialog parameters are marked with <...>. They all can be configured
+in two ways.
+
+  a) the possible values of a parameter can be configured
+  b) the default value can be configured
+
+For each parameter two variables can be set:
+A comma-separated list of all possible values which are viewed sequentially
+when user presses <Tab>, <S-Tab> and a variable indicating which element out
+of this list is the default value.
+
+E.g. default for paper format is:
+  let g:prd_paperList = "A3,A4,A5,B4,B5,legal,letter"
+  let g:prd_paperIdx  = 2
+
+  When invoking Printer Dialog the first time, <A4> would be used as paper
+  format. When user presses <Tab>s  <A5> -> <B4> -> <B5> -> <legal> ->
+  <letter> -> <A3> -> <A4> ... would be viewed (or vice versa for <S-Tab>).
+
+  If you want to use only A3 and A4 papers and the most time A3, then you
+  could do in your vimrc file:
+
+      let g:prd_paperList = "A3,A4"
+      let g:prd_paperIdx  = 1
+
+  Printer Dialog would then start with paper <A3>. Selectable would only
+  be <A3> and <A4>.
+
+
+For each parameter such a pair of variables exists.
+  g:prd_...List
+  g:prd_...Idx      ... = name of parameter
+
+
+But don't panic, for all parameters useful defaults are predefined. Normally
+you can use Printer Dialog "out of the box".
+
+It follows a list of all configurable parameters:
+
+
+4.2.1 Printer Device                    *prd_prtDeviceList* *prd_prtDeviceIdx*
+  You can define the name of the printer to be used.
+  If the printer name is "standard" the system's default printer would be
+  used.
+
+  NOTE: On Win32-systems the name should be the printer name exactly as it
+        appears in the standard printer dialog.
+
+  default:
+    g:prd_prtDeviceList = "standard"
+    g:prd_prtDeviceIdx  = 1
+
+  Further example:
+    let g:prd_prtDeviceList = "standard,HP_LaserJet5P,Okipage10ex"
+    let g:prd_prtDeviceIdx  = 1
+
+  Do :help 'printdevice' for further informations.
+
+
+4.2.2 Font                                        *prd_fontList* *prd_fontIdx*
+  Font to be used for printing.
+
+  default:
+    g:prd_fontList="courier:h6,courier:h8,courier:h10,courier:h12,courier:h14"
+    g:prd_fontIdx = 2
+
+  Do :help 'printfont' for further informations on font-naming.
+
+
+4.2.3 Paper                                     *prd_paperList* *prd_paperIdx*
+  Paper to be used for printing.
+
+  default:
+    g:prd_paperList = "A3,A4,A5,B4,B5,legal,letter"
+    g:prd_paperIdx  = 2
+
+  Do :help 'printoptions' for other paper formats supported.
+
+
+4.2.4 Portrait                            *prd_portraitList* *prd_portraitIdx*
+  Orientation of paper.
+
+  default:
+    g:prd_portraitList = "yes,no"      <-- don't change this!
+    g:prd_portraitIdx  = 1
+
+
+4.2.5 Header                                  *prd_headerList* *prd_headerIdx*
+  Number of lines to reserve for header.
+  All numbers >= 0 are allowed.
+
+  default:
+    g:prd_headerList = "0,1,2,3,4,5,6"
+    g:prd_headerIdx  = 3
+
+
+4.2.6 Line Numbers                            *prd_lineNrList* *prd_lineNrIdx*
+  Output line numbers.
+
+  default
+    let g:prd_lineNrList = "yes,no"    <-- don't change this!
+    let g:prd_lineNrIdx  = 1
+
+
+4.2.7 Syntax                                  *prd_syntaxList* *prd_syntaxIdx*
+  Enable/disable syntax-highlighting and select colorscheme.
+
+  Special meaning: no, current and default  (see |prtdialog-usagedialog|)
+  All names of existing colorschemes are allowed (without postfix .vim).
+  See VIM's colors-directories for colorschemes available on your system.
+
+  default:
+    g:prd_syntaxList = "no,current,default,print_bw,zellner"
+    g:prd_syntaxIdx  = 3
+
+
+4.2.8 Wrap                                        *prd_wrapList* *prd_wrapIdx*
+  Wrap long lines or truncate.
+
+  default:
+    g:prd_wrapList = "yes,no"          <-- don't change this!
+    g:prd_wrapIdx  = 1
+
+
+4.2.9 Duplex                                  *prd_duplexList* *prd_duplexIdx*
+  Print on one side or both sides.
+
+  Allowed values for this parameter are only: off, long, short
+
+  default:
+    g:prd_duplexList = "off,long,short"
+    g:prd_duplexIdx  = 2
+
+
+4.2.10 Collate                              *prd_collateList* *prd_collateIdx*
+  Collating yes or no.
+
+  default:
+    g:prd_collateList = "yes,no"       <-- don't change this!
+    g:prd_collateIdx  = 1
+
+
+4.2.11 JobSplit                           *prd_jobSplitList* *prd_jobSplitIdx*
+  Do copies in one job or do for each copy one job.
+
+  default:
+    g:prd_jobSplitList = "yes,no"      <-- don't change this!
+    g:prd_jobSplitIdx  = 2
+
+
+4.2.12 Left                                       *prd_leftList* *prd_leftIdx*
+  Left margin.
+
+  All numbers are allowed, for other units do :help 'printoptions'
+
+  default:
+    g:prd_leftList = "5mm,10mm,15mm,20mm,25mm"
+    g:prd_leftIdx  = 3
+
+
+4.2.13 Right                                    *prd_rightList* *prd_rightIdx*
+  Right margin.
+
+  All numbers are allowed, for other units do :help 'printoptions'
+
+  default:
+    g:prd_rightList = "5mm,10mm,15mm,20mm,25mm"
+    g:prd_rightIdx  = 3
+
+
+4.2.14 Top                                          *prd_topList* *prd_topIdx*
+  Top margin.
+
+  All numbers are allowed, for other units do :help 'printoptions'
+
+  default:
+    g:prd_topList = "5mm,10mm,15mm,20mm,25mm"
+    g:prd_topIdx  = 2
+
+
+4.2.15 Bottom                                 *prd_bottomList* *prd_bottomIdx*
+  Bottom margin.
+
+  All numbers are allowed, for other units do :help 'printoptions'
+
+  default:
+    g:prd_bottomList = "5mm,10mm,15mm,20mm,25mm"
+    g:prd_bottomIdx  = 2
+
+
+4.2.16 Dialog                                 *prd_dialogList* *prd_dialogIdx*
+  Show additional dialog before really start to print. This works
+  for Win32 only.
+
+  default:
+    g:prd_dialogList = "yes,no"        <-- don't change this!
+    g:prd_dialogIdx  = 2
+
+
+
+4.3 Page Header                                         *prtdialog-pageheader*
+                                                             *prd_printheader*
+
+By default 'printheader' is used to define the format of the page header.
+If you want to define a specific page header when printed via Printer Dialog,
+set  'g:prd_printheader'  in your vimrc.
+
+E.g.
+  let g:prd_printheader = "%<%f%h%m%=Page %N"
+
+Do :help 'printheader' to get further informations on format.
+
+
+
+------------------------------------------------------------------------------
+5. TECHNICS                                               *prtdialog-technics*
+
+Printer Dialog uses the :hardcopy command of VIM for printing.
+To make settings Printer Dialog uses the following VIM variables:
+'printdevice', 'printfont', 'printheader', 'printoptions'
+
+To setup the colorscheme used for printing with syntax-highlighting enabled
+'colorscheme' is used.
+
+Before start to print this VIM variables are backuped. After printing they
+are restored again. So Printer Dialog does not have influence on your settings
+done for printing and syntax-highlighting.
+
+
+
+------------------------------------------------------------------------------
+6. LIMITATIONS & BUGS                                      *prtdialog-limbugs*
+
+Known limitations:
+  - Of course the settings done via Printer Dialog can only take effect if
+    your printer device and it's driver does support them.
+
+    But even if both printer and it's driver support a special setting, it's
+    possible that your printer does not take it into account when printing.
+    Excerpt from VIM's documentation:
+      "The values are not always used, especially when using a dialog to
+       select the printer and options." (with dialog Win32's printer dialog
+       is meant, not this script!). See :help 'printoptions'
+
+    Personal Note:
+    On my Linux system all works fine. On my Windows system paper orientation
+    can't be changed, it's always portrait printed. If I want to use
+    landscape I do the following workaround: I start printing with
+    Dialog <yes> and select landscape in the printer dialog of Windows.
+    That works fine then.
+
+  - Colorscheme
+    If the top leftmost window has no syntax-file loaded (e.g. a new
+    buffer created with :enew) then it's colors are messed up after
+    printing with syntax-highlighting enabled.
+    If the colorscheme for printing is <no> or <current> this problem
+    does not occure.
+    If this problem occures, do a :redraw! after printing to update
+    VIM's screen. After this all will be ok again.
+
+    GVIM 6.1 Linux:   affected
+    VIM 6.1 Linux:    not affected
+    GVIM 6.1 Windows: affected
+    other sytems/versions not tested
+
+
+Known bugs:
+  none - well, up to now ;-)
+
+
+
+------------------------------------------------------------------------------
+7. COPYRIGHT & LICENSE                                   *prtdialog-copyright*
+
+
+Printer Dialog is (c) 2002 by Christian Habermann
+
+Printer Dialog is released under the GNU General Public License 2 (GPL 2) or
+later.
+
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or (at your option)
+any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warrenty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+
+
+------------------------------------------------------------------------------
+8. HISTORY                                                 *prtdialog-history*
+
+  See header of prtdialog.vim for change-log.
+
+
+
+------------------------------------------------------------------------------
+ vim:tw=78:ts=4:ft=help:norl:
