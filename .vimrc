@@ -32,8 +32,10 @@ set wildmode=list:longest
 set wildignore=*.o,*~
 set hidden
 set winminheight=1
-set textwidth=128
+set textwidth=80
 syntax on
+
+set switchbuf=useopen,usetab,newtab
 
 " fix whitespace
 "command Fixws :retab<CR>:%s/\s\+$//<CR>
