@@ -22,6 +22,7 @@
     unstage = reset HEAD --
     last = log -1 HEAD
     lom = !git --no-pager log origin/master..
+    prb = pull --rebase
     rbi = rebase -i origin/master
     frb = !git fetch origin && git rebase origin/master
     frbi = !git fetch origin && git rebase -i origin/master
