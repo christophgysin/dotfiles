@@ -13,6 +13,8 @@
     ci = commit
     co = checkout
     sl = shortlog
+    br = branch
+    bv = branch -v
     pick = cherry-pick
     lo = log
     lol = log --graph --abbrev
