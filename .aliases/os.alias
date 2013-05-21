@@ -1,5 +1,8 @@
 [ $(id -u) = 0 ] || SUDO=sudo
 
+# systemd
+alias sys="sudo systemctl"
+
 # arch
 alias pacu="$SUDO pacman -Syu"
 alias pacs="pacman -Ss"
