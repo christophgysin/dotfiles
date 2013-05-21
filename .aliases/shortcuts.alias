@@ -5,6 +5,7 @@ g(){ i=$1; shift; grep $i -In --color -r $*;}
 alias c='clear'
 alias t='vim ~/todo'
 alias b='vim ~/bugs'
+alias v='cvlc'
 alias m='mplayer'
 alias mfs='mplayer -fs'
 alias tv='mplayer -fs dvb://'
