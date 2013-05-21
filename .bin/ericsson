@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+user=echrgys
+access_host=svi.ericsson.se
+internal_host=esekilxxen985.rnd.ericsson.se
+ssh_port=10022
+socks_port=10023
+xmpp_port=5222
+
+# ssh tunnel
+ssh -fNL ${ssh_port}:${internal_host}:22 ${user}-s@${access_host}
+# socks proxy
+ssh -fND ${socks_port} -p ${ssh_port} ${user}@localhost
+# xmpp forward
+ssh -fNL ${xmpp_port}:sami-laptop.lmf.ericsson.se:5222 -p ${ssh_port} ${user}@localhost

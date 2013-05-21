@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+user=echrgys
+ssh_port=10022
+
+ssh -p ${ssh_port} ${user}@localhost

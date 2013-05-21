@@ -5,7 +5,6 @@ alias xbmc='ssh -X xbmc.fr33z3.org'
 alias raspi='ssh root@raspi.fr33z3.org'
 alias heatpump='ssh heatpump'
 alias heatpump-int='ssh heatpump-int'
-alias ericsson='ssh -X echrgys-s@svi.ericsson.se'
 
 # tunnels
 sshtunnel(){ sudo ssh -fNL $2:$1 fr33z3@luzifer.fr33z3.org; }
