@@ -4,4 +4,4 @@ set -e
 user=echrgys
 ssh_port=10022
 
-ssh -p ${ssh_port} ${user}@localhost
+ssh -X -p ${ssh_port} ${user}@localhost
