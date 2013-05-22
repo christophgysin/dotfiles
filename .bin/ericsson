@@ -1,12 +1,7 @@
 #!/bin/bash
 set -e
 
-user=echrgys
-access_host=svi.ericsson.se
-internal_host=esekilxxen985.rnd.ericsson.se
-ssh_port=10022
-socks_port=10023
-xmpp_port=5222
+source ${0%%-*}.inc.sh
 
 # ssh tunnel
 ssh -fNL ${ssh_port}:${internal_host}:22 ${user}-s@${access_host}

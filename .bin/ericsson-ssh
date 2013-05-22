@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-user=echrgys
-ssh_port=10022
+source ${0%%-*}.inc.sh
 
 ssh -X "${@}" -p ${ssh_port} ${user}@localhost
