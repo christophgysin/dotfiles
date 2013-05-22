@@ -15,7 +15,7 @@ alias bt='screen -S bt bittorrent-curses'
 type ack &>/dev/null || if type ack-grep &>/dev/null; then
     alias ack=ack-grep; else ack(){
         [ $# -lt 2 ] && grep -nr --color "$1" . || grep -nr --color "$@"; }; fi
-alias sx='startx'
+alias sx='exec startx'
 alias r='sudo su -'
 alias svim='sudo vim'
 
