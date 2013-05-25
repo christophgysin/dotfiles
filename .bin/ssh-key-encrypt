@@ -1,0 +1,4 @@
+cp ~/.ssh/id_rsa ~/.ssh/id_rsa.old
+openssl pkcs8 -topk8 -v2 aes-256-cbc -in ~/.ssh/id_rsa.old -out ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
+rm ~/.ssh/id_rsa.old
