@@ -63,8 +63,8 @@ XTerm*scrollBar:            false
 !XTerm*titeInhibit:         true
 !XTerm*faceName:            Vera sans mono
 !XTerm*faceName:             ter-v16b
-XTerm*faceName:             Terminus
-XTerm*faceSize:             11
+!XTerm*faceName:             Terminus
+XTerm*faceSize:             18
 XTerm*termName:             xterm
 
 ! xcalc
