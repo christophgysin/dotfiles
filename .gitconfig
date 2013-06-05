@@ -24,11 +24,13 @@
     unstage = reset HEAD --
     last = log -1 HEAD
     lom = !git --no-pager log origin/master..
-    prb = pull --rebase
+    amend = commit --amend -v
+    pr = pull --rebase
+    prp = !git pull --rebase && git push origin ${1:-HEAD}:${2:-master}
     rbi = rebase -i origin/master
-    frb = !git fetch origin && git rebase origin/master
+    #frb = git fetch origin && git rebase origin/master
     frbi = !git fetch origin && git rebase -i origin/master
-    frbp = !git fetch origin && git rebase origin/master && git push origin ${1:-HEAD}:master && true
+    #frbp = !git fetch origin && git rebase origin/master && git push origin ${1:-HEAD}:master && true
     backup = push -f --mirror echrgys-bare
     log-grep = !git log --color=always --grep \"${1}\" | sed \"s/${1}/$(tput setaf 1)\\\\0$(tput sgr0)/g\" && true
 
@@ -38,8 +40,8 @@
     interactive = auto
     status = auto
 
-[apply]
-    whitespace = fix
+#[apply]
+#    whitespace = fix
 
 [push]
     default = current
