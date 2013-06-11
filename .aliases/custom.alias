@@ -45,4 +45,6 @@ alias emc='emake -Cbin-clang-3.2'
 alias ems='emake -Cbin-clang-svn'
 alias emt='emake -Cbin-target'
 
+xvfb() { export DISPLAY=:${1}; Xvfb :${1} -nolisten tcp &> ~/.xvfb.log & }
+
 # vim:ft=sh
