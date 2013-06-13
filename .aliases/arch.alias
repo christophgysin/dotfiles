@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# arch
+[ $(id -u) = 0 ] || SUDO=sudo
+alias pacu="$SUDO pacman -Syu"
+alias pacs="pacman -Ss"
+alias paci="$SUDO pacman -S"
+alias pacr="$SUDO pacman -R"
+alias pacl="pacman -Ql"
+alias pacm="makepkg -si"
+alias pacp="$SUDO pacman -U"
+alias pacf="pkgfile"
+alias pacyu="yaourt -Syu"
+alias pacys="yaourt -Ss"
+alias pacyi="yaourt -S"
+alias pacyr="yaourt -R"
+alias pacro="pacman -Qtdq | xargs sudo pacman -Rs"

@@ -18,5 +18,6 @@ type ack &>/dev/null || if type ack-grep &>/dev/null; then
 alias sx='exec startx'
 alias r='sudo su -'
 alias svim='sudo vim'
+alias sys="sudo systemctl"
 
 # vim:ft=sh

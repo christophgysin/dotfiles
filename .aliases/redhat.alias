@@ -1,0 +1,10 @@
+#!/bin/bash
+[ $(id -u) = 0 ] || SUDO=sudo
+
+# redhat
+alias yumi="$SUDO yum install -y"
+alias yumr="$SUDO yum remove"
+alias yums="$SUDO yum search"
+alias yuml="$SUDO repoquery -l"
+alias yumf="$SUDO yum provides"
+alias yumu="$SUDO yum update"

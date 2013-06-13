@@ -1,0 +1,13 @@
+#!/bin/bash
+[ $(id -u) = 0 ] || SUDO=sudo
+
+# debian
+alias apti="$SUDO apt-get install"
+alias aptr="$SUDO apt-get remove"
+alias apts="apt-cache search"
+alias aptv="apt-cache show"
+alias aptf="apt-file search"
+alias aptl="dpkg -L"
+alias aptud="$SUDO apt-get update"
+alias aptug="$SUDO apt-get dist-upgrade"
+alias dpkgi="dpkg --get-selections | grep install | grep"
