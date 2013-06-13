@@ -1,19 +1,20 @@
 #!/bin/bash
 
 DIRS=( ~/m ~/mmgw-sw )
-IGNORE="not implemented yet"
+IGNORE="bin.*"
 
 TIMEFORMAT="took: %1lR"
 
 SUBDIRS=
 for dir in ${DIRS[@]}; do
     for subdir in $dir/*; do
+        [[ "$subdir" =~ ^$dir/${IGNORE} ]] && continue
         SUBDIRS+=("$subdir")
     done
 done
 
 COUNT=${#SUBDIRS[@]}
-for ((i=1; i<=${COUNT}; i++)); do
+for ((i=1; i<${COUNT}; i++)); do
     subdir=${SUBDIRS[$i]}
     s=${subdir##*/}
     dir=${subdir%/*}
