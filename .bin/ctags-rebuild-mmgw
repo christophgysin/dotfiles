@@ -21,7 +21,7 @@ for ((i=1; i<=${COUNT}; i++)); do
     tag=$d-$s.tags
     tagf=~/.vim/tags/$tag
 
-    echo "($[$i+1]/${COUNT}) building $tag"
+    echo "($[$i]/${COUNT}) building $tag"
     ctags \
         -R \
         --exclude="*.strip.pl" \
