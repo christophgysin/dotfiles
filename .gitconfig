@@ -15,6 +15,7 @@
     sl = shortlog
     br = branch
     bv = branch -v
+    rv = remote -v
     pick = cherry-pick
     lo = log
     lol = log --graph --abbrev
@@ -23,16 +24,15 @@
     ka = !gitk --all
     unstage = reset HEAD --
     last = log -1 HEAD
-    lom = !git --no-pager log origin/master..
+    lom = !git --no-pager log $(git rev-parse --abbrev-ref --symbolic-full-name @{u})..
     amend = commit --amend -v
     pr = pull --rebase
     prp = !git pull --rebase && git push origin ${1:-HEAD}:${2:-master}
-    rbi = rebase -i origin/master
-    #frb = git fetch origin && git rebase origin/master
-    frbi = !git fetch origin && git rebase -i origin/master
-    #frbp = !git fetch origin && git rebase origin/master && git push origin ${1:-HEAD}:master && true
+    rbi = rebase -i $(git rev-parse --abbrev-ref --symbolic-full-name @{u})
+    frbi = !git fetch origin && git rebase -i $(git rev-parse --abbrev-ref --symbolic-full-name @{u})
     backup = push -f --mirror echrgys-bare
     log-grep = !git log --color=always --grep \"${1}\" | sed \"s/${1}/$(tput setaf 1)\\\\0$(tput sgr0)/g\" && true
+    rewind = reset --soft HEAD^
 
 [color]
     branch = auto
