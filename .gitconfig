@@ -72,8 +72,15 @@
     smtpuser = "christoph.gysin@fr33z3.org"
     smtpserverport = 587
 
+[include]
+    path = /proj/cpp_dte/rsa_mergetools/gitconfig
+    path = /proj/mgwrepos/user/echrgys/mmgw/env/gitconfig
+
 [mergetool "vimdiff3"]
     cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+
+[merge]
+    tool = "vimdiff3"
 
 [diff "odf"]
     textconv = odt2txt
@@ -82,13 +89,3 @@
     #algorithm = patience
     algorithm = histogram
 
-[include]
-    path = /proj/cpp_dte/rsa_mergetools/gitconfig
-
-[diff]
-    tool = rsarteModelDiff
-
-[difftool "rsarteModelDiff"]
-    cmd = /proj/cpp_dte/rsa_mergetools/diffWrapperTool.sh $REMOTE $LOCAL
-    trustExitCode = true
-    keepBackup = false
