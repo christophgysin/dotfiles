@@ -24,14 +24,15 @@
     ka = !gitk --all
     unstage = reset HEAD --
     last = log -1 HEAD
-    lom = !git --no-pager log $(git rev-parse --abbrev-ref --symbolic-full-name @{u})..
+    upstream = git rev-parse --abbrev-ref --symbolic-full-name @{u}
+    lom = !git --no-pager log $(git upstream)..
     amend = commit --amend -v
     pr = pull --rebase
     prp = !git pull --rebase && git push origin ${1:-HEAD}:${2:-master}
-    rbi = rebase -i $(git rev-parse --abbrev-ref --symbolic-full-name @{u})
-    frbi = !git fetch origin && git rebase -i $(git rev-parse --abbrev-ref --symbolic-full-name @{u})
+    rbi = rebase -i $(git upstream)
+    frbi = !git fetch origin && git rebase -i $(git upstream)
     backup = push -f --mirror echrgys-bare
-    log-grep = !git log --color=always --grep \"${1}\" | sed \"s/${1}/$(tput setaf 1)\\\\0$(tput sgr0)/g\" && true
+    log-grep = !git log --color=always --grep \"${1}\" | sed \"s/${1}/$(tput setaf 1)\\\\0$(tput sgr0)/g\" && :
     rewind = reset --soft HEAD^
 
 [color]
