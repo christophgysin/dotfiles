@@ -15,7 +15,7 @@
     sl = shortlog
     br = branch
     bv = branch -v
-    rv = remote -v
+    rv = remote -vv
     pick = cherry-pick
     lo = log
     lol = log --graph --abbrev
