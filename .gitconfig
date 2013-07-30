@@ -24,7 +24,7 @@
     ka = !gitk --all
     unstage = reset HEAD --
     last = log -1 HEAD
-    upstream = git rev-parse --abbrev-ref --symbolic-full-name @{u}
+    upstream = rev-parse --abbrev-ref --symbolic-full-name @{u}
     lom = !git --no-pager log $(git upstream)..
     amend = commit --amend -v
     pr = pull --rebase
