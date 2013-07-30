@@ -1,5 +1,7 @@
 scriptencoding utf-8
 
+execute pathogen#infect()
+
 set nocompatible
 set mouse=a
 set tabstop=4
