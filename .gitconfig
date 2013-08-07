@@ -16,6 +16,7 @@
     br = branch
     bv = branch -vv
     rv = remote -v
+    tb = checkout -tb
     pick = cherry-pick
     lo = log
     lol = log --graph --abbrev
