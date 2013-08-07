@@ -21,12 +21,13 @@
     lo = log
     lol = log --graph --abbrev
     lola = log --graph --abbrev --all
+    lom = !git --no-pager log $(git upstream)..
+    los = !git --no-pager log --oneline $(git upstream)..
     k = !gitk
     ka = !gitk --all
     unstage = reset HEAD --
     last = log -1 HEAD
     upstream = rev-parse --abbrev-ref --symbolic-full-name @{u}
-    lom = !git --no-pager log $(git upstream)..
     amend = commit --amend -v
     pr = pull --rebase
     prp = !git pull --rebase && git push origin ${1:-HEAD}:${2:-master}
