@@ -4,7 +4,7 @@ set -e
 source ${0%%-*}.inc.sh
 
 # ssh tunnel
-ssh -fNL ${ssh_port}:${internal_host}:22 ${user}-s@${access_host}
+ssh -fNL ${ssh_port}:${internal_host}:22 ${user}@${access_host}
 # socks proxy
 ssh -fND ${socks_port} -p ${ssh_port} ${user}@localhost
 # xmpp forward
