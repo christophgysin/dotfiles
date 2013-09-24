@@ -16,16 +16,17 @@ while true; do
     if diff -q "$old" "$new" >/dev/null; then
         rm "$new" && break
     else
-        echo "Files $old and $new differ. Do you want to:"
-        echo " k) keep old $old, delete new $new?"
-        echo " u) use new $new, delete old $old?"
-        echo " o) edit old $old?"
-        echo " n) edit new $new?"
-        echo " m) merge both?"
-        echo " s) skip this file, do nothing?"
-        echo " q) quit processing (kill parent)?"
         echo
-        echo -n "Choice (k/u/o/n/m/s/q)? "; read CHOICE
+        echo "Files $old and $new differ. Do you want to:"
+        echo " k) keep old $old, delete new $new"
+        echo " u) use new $new, delete old $old"
+        echo " o) edit old $old"
+        echo " n) edit new $new"
+        echo " m) merge both"
+        echo " s) skip this file, do nothing"
+        echo " q) quit processing (kill parent)"
+        echo
+        echo -n "Choice (k/u/o/n/m/s/q) ? "; read CHOICE
 
         case "$CHOICE" in
             k) rm "$new" && break;;
