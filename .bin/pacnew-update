@@ -2,4 +2,4 @@
 
 [ $(id -u) = 0 ] || SUDO=sudo
 
-$SUDO find /etc -name *.pacnew -exec pacnew-update-1 '{}' ';'
+$SUDO find /etc /boot /usr /var -name *.pacnew -exec pacnew-update-1 '{}' ';'
