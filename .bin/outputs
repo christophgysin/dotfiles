@@ -2,18 +2,47 @@
 
 int=eDP1
 ext=HDMI1
+vga=VGA1
 pos=left
 
 case ${1} in
     int|'')
-        xrandr --output $int --auto --output $ext --off;;
+        xrandr \
+            --output $int --auto \
+            --output $ext --off \
+            --output $vga --off \
+            ;;
     ext)
-        xrandr --output $int --off --output $ext --auto;;
+        xrandr \
+            --output $int --off \
+            --output $ext --auto \
+            --output $vga --off \
+            ;;
     dup)
-        xrandr --output $int --auto --output $ext --auto --same-as $int;;
+        xrandr \
+            --output $int --auto \
+            --output $ext --auto --same-as $int \
+            --output $vga --off \
+            ;;
     dual)
-        xrandr --output $int --auto --output $ext --auto --$pos-of $int;;
+        xrandr \
+            --output $int --auto \
+            --output $ext --auto --$pos-of $int \
+            --output $vga --off \
+            ;;
+    vga)
+        xrandr \
+            --output $int --auto \
+            --output $ext --ext \
+            --output $vga --auto --above $int \
+            ;;
+    all)
+        xrandr \
+            --output $int --auto \
+            --output $ext --left-of $int \
+            --output $vga --above $ext \
+            ;;
     *)
-        echo "usage: $(basename $0) [ [int] | ext | dup | dual ]";
+        echo "usage: $(basename $0) [ [int] | ext | dup | dual | vga | all ]";
         exit 1;;
 esac
