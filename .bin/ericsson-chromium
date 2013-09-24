@@ -3,4 +3,4 @@ set -e
 
 source ${0%%-*}.inc.sh
 
-chromium --user-data-dir=${HOME}/.config/chromium-ericsson --proxy-server=socks://localhost:${socks_port} &
+chromium --user-data-dir=${HOME}/.config/chromium-ericsson --proxy-server=socks://localhost:${socks_port} "$@" &
