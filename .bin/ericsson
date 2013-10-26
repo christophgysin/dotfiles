@@ -4,10 +4,13 @@ set -e
 source ${0%%-*}.inc.sh
 
 # ssh tunnel
-ssh -fNL ${ssh_port}:${internal_host}:22 ${user}@${access_host}
-# socks proxy
-ssh -fND ${socks_port} -p ${ssh_port} ${user}@localhost
-# xmpp forward
-ssh -fNL ${xmpp_port}:${xmpp_host}:5222 -p ${ssh_port} ${user}@localhost
-# mail forward
-ssh -fNL ${mail_port}:${mail_host}:443 -p ${ssh_port} ${user}@localhost
+ssh -fN \
+    -L ${ssh_port}:${internal_host}:22 \
+    ${user}@${access_host}
+
+# socks proxy & xmpp/mail forward
+ssh -fN -p ${ssh_port} \
+    -D ${socks_port} \
+    -L ${xmpp_port}:${xmpp_host}:5222 \
+    -L ${mail_port}:${mail_host}:443 \
+    ${user}@localhost
