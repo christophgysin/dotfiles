@@ -33,7 +33,7 @@ case ${1} in
     vga)
         xrandr \
             --output $int --auto \
-            --output $ext --ext \
+            --output $ext --off \
             --output $vga --auto --above $int \
             ;;
     all)
