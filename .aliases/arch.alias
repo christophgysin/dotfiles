@@ -14,4 +14,4 @@ alias pacyu="yaourt -Syu"
 alias pacys="yaourt -Ss"
 alias pacyi="yaourt -S"
 alias pacyr="yaourt -R"
-alias pacro="sudo pacman -Rs $(pacman -Qtdq)"
+function pacro() { sudo pacman -Rs $(pacman -Qtdq); }
