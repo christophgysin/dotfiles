@@ -1,54 +1,40 @@
 #!/bin/bash
 
-int=eDP1
-ext=HDMI1
-vga=VGA1
+int=LVDS1
+ext=DP1
+ext2=DP3
 pos=left
 
 case ${1} in
-    int)
+    int|'')
         xrandr \
             --output $int --auto \
             --output $ext --off \
-            --output $vga --off \
+            --output $ext2 --off
             ;;
     ext)
         xrandr \
             --output $int --off \
             --output $ext --auto \
-            --output $vga --off \
+            --output $ext2 --auto --right-of $ext
             ;;
     dup)
         xrandr \
             --output $int --auto \
-            --output $ext --auto --same-as $int \
-            --output $vga --off \
+            --output $ext --auto --same-as $int
             ;;
     dual)
         xrandr \
             --output $int --auto \
-            --output $ext --auto --$pos-of $int \
-            --output $vga --off \
+            --output $ext --auto --$pos-of $int
             ;;
-    vga)
+    triple)
         xrandr \
-            --output $int --auto \
-            --output $ext --off \
-            --output $vga --auto --above $int \
-            ;;
-    projector)
-        xrandr \
-            --output $int --off \
-            --output $ext --off \
-            --output $vga --auto \
-            ;;
-    all)
-        xrandr \
-            --output $int --auto \
-            --output $ext --left-of $int \
-            --output $vga --above $ext \
+            --output $ext --auto \
+            --output $ext2 --auto --right-of $ext \
+            --output $int --auto --pos 3840x640
             ;;
     *)
-        echo "usage: $(basename $0) [ int | ext | dup | dual | vga | projector | all ]";
+        echo "usage: $(basename $0) [ [int] | ext | dup | dual ]";
         exit 1;;
 esac
