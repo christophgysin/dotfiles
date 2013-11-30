@@ -31,7 +31,7 @@
     amend = commit --amend -v
     pr = pull --rebase
     prp = !git pull --rebase && git push origin ${1:-HEAD}:${2:-master}
-    rbi = rebase -i $(git upstream)
+    rbi = !git rebase -i $(git upstream)
     frbi = !git fetch origin && git rebase -i $(git upstream)
     backup = push -f --mirror echrgys-bare
     log-grep = !git log --color=always --grep \"${1}\" | sed \"s/${1}/$(tput setaf 1)\\\\0$(tput sgr0)/g\" && :
