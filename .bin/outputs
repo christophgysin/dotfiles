@@ -21,7 +21,8 @@ case ${1} in
     dup)
         xrandr \
             --output $int --auto \
-            --output $ext --auto --same-as $int
+            --output $ext --auto --same-as $int \
+            --output $ext2 --auto --same-as $int
             ;;
     dual)
         xrandr \
@@ -35,6 +36,6 @@ case ${1} in
             --output $int --auto --pos 3840x640
             ;;
     *)
-        echo "usage: $(basename $0) [ [int] | ext | dup | dual ]";
+        echo "usage: $(basename $0) [ [int] | ext | dup | dual | triple ]";
         exit 1;;
 esac
