@@ -1,9 +1,23 @@
 #!/bin/bash
 
-alias em='emake -Cbin'
-alias emg47='emake -Cbin-gcc-4.7.2'
-alias emg64='emake -Cbin-gcc-4.7.2-x86_64'
-alias emg='emake -Cbin-gcc-4.8.1'
-alias emc2='emake -Cbin-clang-3.2'
-alias emc='emake -Cbin-clang-3.3'
-alias emt='emake -Cbin-target'
+function emake-wrap() {
+    profile=${1}
+    shift
+
+    builddir=${MGW_GIT_REPO}/bin
+    [ ${profile} != 'gcc-cade' ] && builddir+="-${profile}"
+
+    [ -d ${builddir} ] || ( cd ${MGW_GIT_REPO} && cmake/setup ${profile} )
+    emake -C${builddir} "$@"
+}
+
+alias em='emake-wrap gcc-cade'
+alias emg='emake-wrap gcc-4.8.1'
+alias emg64='emake-wrap gcc-4.8.1-x86_64'
+alias emg47='emake-wrap gcc-4.7.2'
+alias emg47_64='emake-wrap gcc-4.7.2-x86_64'
+alias emc='emake-wrap clang-3.3'
+alias emc2='emake-wrap clang-3.2'
+alias emt='emake-wrap target'
+alias emm='emake-wrap moduletest'
+alias ems='emake-wrap simcello'
