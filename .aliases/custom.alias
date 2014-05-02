@@ -32,4 +32,6 @@ alias chromium-inka="chromium --user-data-dir=$HOME/.config/chromium-inka"
 
 xvfb() { export DISPLAY=:${1}; Xvfb :${1} -nolisten tcp &> ~/.xvfb.log & }
 
+urldecode() { sed 's % \\\\x g' | xargs printf; }
+
 # vim:ft=sh
