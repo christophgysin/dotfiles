@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# gdfstool -u
+# gdfstool -a ~/.gdfs/credcache <auth-token>
+
+gdfstool mount ~/.gdfs/credcache ~/mnt/drive
