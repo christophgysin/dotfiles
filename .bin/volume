@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# increase pulseaudio volume beyond 153%
+
+read cmd sink volume < <(pacmd dump | grep -m1 sink-volume)
+
+case ${1} in
+    up)
+        change=1;;
+    down)
+        change=-1;;
+    [-+][0-9]*|[0-9]*)
+        change=${1};;
+    *)
+        echo "usage: $0 < up | down | [+]n | -n >"
+        exit 1;;
+esac
+
+volume=$[ ${volume} + ${change} * 0x10000 / 100 ]
+
+pacmd ${cmd} ${sink} ${volume}
