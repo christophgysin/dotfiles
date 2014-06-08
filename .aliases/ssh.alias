@@ -19,6 +19,7 @@ alias xbmc='ssh -X xbmc'
 alias raspi='ssh root@raspi.fr33z3.org'
 alias heatpump='ssh heatpump'
 alias heatpump-int='ssh heatpump-int'
+alias cctv='ssh cctv'
 
 # tunnels
 sshtunnel(){ sudo ssh -fNL $2:$1 fr33z3@luzifer.fr33z3.org; }
