@@ -2,7 +2,7 @@
 
 # arch
 [ $(id -u) = 0 ] || SUDO=sudo
-alias pacu="$SUDO pacman -Syu"
+function pacu() { $SUDO pacman -Syu "${@}" && pacnew-update; }
 alias pacs="pacman -Ss"
 alias paci="$SUDO pacman -S"
 alias pacr="$SUDO pacman -R"
@@ -10,7 +10,7 @@ alias pacl="pacman -Ql"
 alias pacm="makepkg -si"
 alias pacp="$SUDO pacman -U"
 alias pacf="pkgfile"
-alias pacyu="yaourt -Syua"
+function pacyu() { $SUDO yaourt -Syua "${@}" && pacnew-update; }
 alias pacys="yaourt -Ss"
 alias pacyi="yaourt -S"
 alias pacyr="yaourt -R"
