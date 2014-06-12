@@ -1,39 +1,45 @@
 #!/bin/bash
 
-int=LVDS1
-ext=DP1
-ext2=DP3
-pos=left
-
 case ${1} in
     int|'')
         xrandr \
-            --output $int --auto \
-            --output $ext --off \
-            --output $ext2 --off
+            --output DP1 --off \
+            --output DP2 --off \
+            --output DP3 --off
+        xrandr \
+            --output LVDS1 --auto
             ;;
     ext)
         xrandr \
-            --output $int --off \
-            --output $ext --auto \
-            --output $ext2 --auto --right-of $ext
+            --output LVDS1 --off \
+            --output DP2 --off
+        xrandr \
+            --output DP1 --auto \
+            --output DP3 --auto --right-of DP1
             ;;
     dup)
         xrandr \
-            --output $int --auto \
-            --output $ext --auto --same-as $int \
-            --output $ext2 --auto --same-as $int
+            --output DP2 --off
+        xrandr \
+            --output LVDS1 --auto \
+            --output DP1 --auto --same-as LVDS1 \
+            --output DP3 --auto --same-as LVDS1
             ;;
     dual)
         xrandr \
-            --output $int --auto \
-            --output $ext --auto --$pos-of $int
+            --output DP2 --off \
+            --output DP3 --off
+        xrandr \
+            --output LVDS1 --auto \
+            --output DP1 --auto --right-of LVDS1
             ;;
     triple)
         xrandr \
-            --output $ext --auto \
-            --output $ext2 --auto --right-of $ext \
-            --output $int --auto --pos 3840x640
+            --output DP2 --off
+        xrandr \
+            --output DP1 --auto \
+            --output DP3 --auto --right-of DP1 \
+            --output LVDS1 --auto --pos 3840x460
             ;;
     *)
         echo "usage: $(basename $0) [ [int] | ext | dup | dual | triple ]";
