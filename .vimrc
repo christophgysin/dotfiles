@@ -250,17 +250,23 @@ noremap  <S-Down> gj
 " character
 "noremap <space> <C-f>
 
+" Map key to toggle opt
+function MapToggle(key, opt)
+  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
+  exec 'nnoremap '.a:key.' '.cmd
+  exec 'inoremap '.a:key." \<C-O>".cmd
+endfunction
+command -nargs=+ MapToggle call MapToggle(<f-args>)
+
+
 " Useful things from inside imode
 "inoremap <C-z>w <C-o>:w<CR>
 "inoremap <C-z>q <C-o>gq}<C-o>k<C-o>$
 
 " Commonly used commands
-map <F1> <Nop>
-imap <F1> <Nop>
-
+MapToggle <F1> paste
 nmap <F2> :AT<CR>
-nmap <silent> <F3> :silent nohlsearch<CR>
-imap <silent> <F3> <C-o>:silent nohlsearch<CR>
+MapToggle <F3> hlsearch
 map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . && cscope -Rb<CR>
 map <F5> :NERDTreeToggle<CR>
 imap <F5> <C-o>:NERDTreeToggle<CR>
