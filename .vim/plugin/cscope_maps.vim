@@ -26,7 +26,15 @@
 
 " This tests to see if vim was configured with the '--enable-cscope' option
 " when it was compiled.  If it wasn't, time to recompile vim... 
-if has("cscope")
+
+let cscope_found = 'false'
+
+execute ! 'which cscope'
+if v:shell_error != 0
+    cscope_found = 'true'¤
+endif
+
+if has("cscope") && cscope_found == 'true'
 
     """"""""""""" Standard cscope/vim boilerplate
 
@@ -39,7 +47,7 @@ if has("cscope")
 
     " add any cscope database in current directory
     if filereadable("cscope.out")
-        cs add cscope.out  
+        cs add cscope.out
     " else add the database pointed to by environment variable 
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
@@ -161,5 +169,3 @@ if has("cscope")
     "set ttimeoutlen=100
 
 endif
-
-
