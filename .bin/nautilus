@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# filemanager hack for dropbox
+
+# strip options
+while [[ x"$1" =~ ^x- ]]; do
+    shift
+done
+
+enlightenment_filemanager "$@"
