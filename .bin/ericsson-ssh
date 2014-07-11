@@ -3,4 +3,4 @@ set -e
 
 source ${0%%-*}.inc.sh
 
-ssh -X "${@}" -p ${ssh_port} ${user}@localhost
+ssh -Y "${@}" -p ${ssh_port} ${user}@localhost
