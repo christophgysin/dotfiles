@@ -10,7 +10,7 @@ alias pacl="pacman -Ql"
 alias pacm="makepkg -si"
 alias pacp="$SUDO pacman -U"
 alias pacf="pkgfile"
-function pacyu() { $SUDO yaourt -Syua "${@}" && pacnew-update; }
+function pacyu() { yaourt -Syua "${@}" && pacnew-update; }
 alias pacys="yaourt -Ss"
 alias pacyi="yaourt -S"
 alias pacyr="yaourt -R"
