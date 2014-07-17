@@ -122,7 +122,8 @@ endif
 " Nice statusbar
 set laststatus=2
 set statusline=
-set statusline+=%-3.3n\                      " buffer number
+set statusline+=%n/                         " buffer number
+set statusline+=%{len(filter(range(1,bufnr('$')),'buflisted(v:val)'))}\  "number of ubbfers
 set statusline+=%f\                          " file name
 set statusline+=%h%m%r%w                     " flags
 set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
@@ -270,13 +271,13 @@ MapToggle <F3> hlsearch
 map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . && cscope -Rb<CR>
 map <F5> :NERDTreeToggle<CR>
 imap <F5> <C-o>:NERDTreeToggle<CR>
-"nmap <F6>
-"nmap <F7> :so %<CR>
+map <F6> :prev<CR>
+map <F7> :next<CR>
 nmap <F8> :make<CR>
 nnoremap <silent> <F9> :Tlist<CR>
 map <silent> <F10> :QFix<CR>
 map <silent> <F11> :redo<CR>
-nmap <F12> :tabclose<CR>
+nmap <F12> :bd<CR>
 
 " Insert a single char
 noremap <Leader>i i<Space><Esc>r
