@@ -4,7 +4,7 @@
 
 [core]
     editor = vim
-    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    #whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [alias]
     st = status
