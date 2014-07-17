@@ -20,7 +20,7 @@
     rst = reset
     rh = reset --hard
     pick = cherry-pick
-    l = !git --no-pager log --oneline
+    lo = log
     lol = log --graph --abbrev
     lola = log --graph --abbrev --all
     lom = !git --no-pager log $(git upstream)..
@@ -45,7 +45,6 @@
     sed = !args=(\"$@\") && git ls-files -z \"${args[@]:1}\" | xargs -0 sed --follow-symlinks -i \"$1\" && :
     g = !git --no-pager grep
     gl = !git --no-pager grep -l
-    sg = !git-submodule-grep
     find = !git ls-files | grep
     conflict = !vim $(git diff --name-only --diff-filter=U)
 
@@ -83,7 +82,7 @@
     tool = "vimdiff3"
 
 [diff "odf"]
-    textconv = odt2txt
+    textconv=odt2txt
 
 [diff]
     #algorithm = patience
