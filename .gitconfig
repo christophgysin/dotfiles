@@ -75,7 +75,7 @@
     cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 
 [diff "odf"]
-    textconv=odt2txt
+    textconv = odt2txt
 
 [diff]
     #algorithm = patience
