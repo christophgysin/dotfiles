@@ -17,12 +17,15 @@
     bv = branch -vv
     rv = remote -v
     tb = checkout -tb
+    rst = reset
+    rh = reset --hard
     pick = cherry-pick
     lo = log
     lol = log --graph --abbrev
     lola = log --graph --abbrev --all
     lom = !git --no-pager log $(git upstream)..
     los = !git --no-pager log --oneline $(git upstream)..
+    ls = !git --no-pager show --pretty="format:" --name-only
     k = !gitk
     ka = !gitk --all
     unstage = reset HEAD --
@@ -31,11 +34,19 @@
     amend = commit --amend -v
     pr = pull --rebase
     prp = !git pull --rebase && git push origin ${1:-HEAD}:${2:-master}
+    rb = !git rebase $(git upstream)
     rbi = !git rebase -i $(git upstream)
     frbi = !git fetch origin && git rebase -i $(git upstream)
+    brl = !git branch | cut -c3-
+    reball = !"for b in $(git brl); do git co $b && git rb || git rb --abort; done"
     backup = push -f --mirror echrgys-bare
     log-grep = !git log --color=always --grep \"${1}\" | sed \"s/${1}/$(tput setaf 1)\\\\0$(tput sgr0)/g\" && :
     rewind = reset --soft HEAD^
+    sed = !args=(\"$@\") && git ls-files -z \"${args[@]:1}\" | xargs -0 sed --follow-symlinks -i \"$1\" && :
+    g = !git --no-pager grep
+    gl = !git --no-pager grep -l
+    find = !git ls-files | grep
+    conflict = !vim $(git diff --name-only --diff-filter=U)
 
 [color]
     branch = auto
