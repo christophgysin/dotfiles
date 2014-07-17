@@ -74,8 +74,8 @@
     smtpserverport = 587
 
 [include]
-    path = /proj/cpp_dte/rsa_mergetools/gitconfig
-    path = /proj/mgwrepos/user/echrgys/mmgw/env/gitconfig
+	path = /proj/cpp_dte/rsa_mergetools/gitconfig
+	path = /repo/echrgys/mmgw/env/gitconfig
 
 [mergetool "vimdiff3"]
     cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
@@ -84,7 +84,7 @@
     tool = "vimdiff3"
 
 [diff "odf"]
-    textconv=odt2txt
+    textconv = odt2txt
 
 [diff]
     #algorithm = patience
