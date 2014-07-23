@@ -24,7 +24,7 @@ urxvt.keysym.C-S-Up:   perl:font-size:incglobal
 urxvt.keysym.C-S-Down: perl:font-size:decglobal
 urxvt.keysym.Mod4-c: perl:clipboard:copy
 urxvt.keysym.Mod4-v: perl:clipboard:paste
-urxvt.urlLauncher: chromium-browser
+urxvt.urlLauncher: firefox
 !urxvt.matcher.button:   3
 urxvt.colorUL: #86a2be
 
