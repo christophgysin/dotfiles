@@ -45,6 +45,7 @@
     sed = !args=(\"$@\") && git ls-files -z \"${args[@]:1}\" | xargs -0 sed --follow-symlinks -i \"$1\" && :
     g = !git --no-pager grep
     gl = !git --no-pager grep -l
+    sg = !git-submodule-grep
     find = !git ls-files | grep
     gerrit = !ssh -p 29418 ${USER}@gerrit.ericsson.se gerrit
     reviewers = !git gerrit set-reviewers -a
