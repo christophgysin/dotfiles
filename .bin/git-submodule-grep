@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git --no-pager \
+    grep "$1"
+git --no-pager \
+    submodule --quiet \
+        foreach --recursive \
+            'git grep "'$1'" | sed "s,^,${path}/," || :'
