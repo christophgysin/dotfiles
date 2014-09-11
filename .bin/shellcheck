@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[ -x /usr/bin/shellcheck ] && exec /usr/bin/shellcheck "$@"
+
 LD_LIBRARY_PATH=/app/vbuild/SLED11-x86_64/gmp/5.1.3/lib \
     /proj/mgw/mgwenv/3pp/shellcheck/bin/shellcheck \
         -f gcc \
