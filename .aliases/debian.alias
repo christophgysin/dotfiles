@@ -11,3 +11,7 @@ alias aptl="dpkg -L"
 alias aptud="$SUDO apt-get update"
 alias aptug="$SUDO apt-get dist-upgrade"
 alias dpkgi="dpkg --get-selections | grep install | grep"
+
+# dquilt
+alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
+complete -F _quilt_completion $_quilt_complete_opt dquilt
