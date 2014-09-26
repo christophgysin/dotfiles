@@ -38,7 +38,8 @@ case ${1} in
             --output DP2 --off
         xrandr \
             --output DP1 --auto \
-            --output DP3 --auto --right-of DP1 \
+            --output DP3 --auto --right-of DP1
+        xrandr \
             --output LVDS1 --auto --pos 3840x460
             ;;
     *)
