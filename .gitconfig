@@ -20,7 +20,7 @@
     rst = reset
     rh = reset --hard
     pick = cherry-pick
-    lo = log
+    l = !git --no-pager log --oneline
     lol = log --graph --abbrev
     lola = log --graph --abbrev --all
     lom = !git --no-pager log $(git upstream)..
