@@ -8,6 +8,7 @@ alias paci="$SUDO pacman -S"
 alias pacr="$SUDO pacman -R"
 alias pacl="pacman -Ql"
 alias pacm="makepkg -si"
+alias pacb="mkaurball"
 alias pacp="$SUDO pacman -U"
 alias pacf="pkgfile"
 function pacyu() { yaourt -Syua "${@}" && pacnew-update; }
@@ -15,3 +16,4 @@ alias pacys="yaourt -Ss"
 alias pacyi="yaourt -S"
 alias pacyr="yaourt -R"
 function pacro() { sudo pacman -Rs $(pacman -Qtdq); }
+alias pacyg="yaourt -G"
