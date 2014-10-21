@@ -1,0 +1,12 @@
+#!/bin/bash -eu
+
+if [[ $(readlink -f $0) == ${HOME}/.bin/dotfiles ]]; then
+    echo 'git clone https://github.com/christophgysin/dotfiles&&dotfiles/dotfiles'
+    exit
+fi
+
+d=$(dirname $0)
+tar c -C${d} . | tar x -C${HOME}
+rm -rf ${d}
+echo source ~/.aliases/bash > ~/.bash_profile
+source ~/.aliases/bash
