@@ -5,7 +5,7 @@ if [[ $(readlink -f $0) == ${HOME}/.bin/dotfiles ]]; then
     exit
 fi
 
-d=$(dirname $0)
+d=$(readlink -f $(dirname $0)/..)
 tar c -C${d} . | tar x -C${HOME}
 rm -rf ${d}
 echo source ~/.aliases/bash > ~/.bash_profile
