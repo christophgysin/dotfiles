@@ -1,7 +1,7 @@
 #!/bin/bash -eu
 
 if [[ $(readlink -f $0) == ${HOME}/.bin/dotfiles ]]; then
-    echo 'git clone -bwork https://github.com/christophgysin/dotfiles&&dotfiles/dotfiles'
+    echo 'git clone -bwork https://github.com/christophgysin/dotfiles&&dotfiles/.bin/dotfiles'
     exit
 fi
 
