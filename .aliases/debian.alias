@@ -14,7 +14,7 @@ alias dpkgi="dpkg --get-selections | grep install | grep"
 
 # dquilt
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
-complete -F _quilt_completion $_quilt_complete_opt dquilt
+complete -F _quilt_completion ${_quilt_complete_opt:-} dquilt
 
 # devscripts
 export DEBEMAIL="christoph.gysin@ericsson.com"
