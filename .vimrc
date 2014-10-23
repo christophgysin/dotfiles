@@ -1,5 +1,6 @@
 scriptencoding utf-8
 
+let no_flake8_maps=1
 execute pathogen#infect()
 
 set nocompatible
