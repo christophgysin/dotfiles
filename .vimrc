@@ -270,8 +270,6 @@ MapToggle <F1> paste
 nmap <F2> :AT<CR>
 MapToggle <F3> hlsearch
 map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . && cscope -Rb<CR>
-map <F5> :NERDTreeToggle<CR>
-imap <F5> <C-o>:NERDTreeToggle<CR>
 map <F6> :bprev<CR>
 map <F7> :bnext<CR>
 map <S-Left> :bprev<CR>
