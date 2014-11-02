@@ -13,8 +13,6 @@ set expandtab
 set list listchars=tab:>-,trail:·
 set viminfo='1000,f1,:1000,/1000
 set backspace=indent,eol,start
-"set backup
-"set backupdir=~/.vim/backup
 set showcmd
 set showmatch
 set incsearch
@@ -74,24 +72,6 @@ else
     endif
 endif
 
-" No icky toolbar, menu or scrollbars in the GUI
-if has('gui')
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=l
-    set guioptions-=L
-    set guioptions-=r
-    set guioptions-=R
-
-    if has("gui_running")
-      if has("gui_gtk2")
-        set guifont=Courier\ New\ 7
-      elseif has("gui_win32")
-        set guifont=Consolas:h11:cANSI
-      endif
-    endif
-end
-
 " Do clever indent things. Don't make a # force column zero.
 set autoindent
 set smartindent
@@ -113,12 +93,7 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Enable modelines only on secure vim versions
-if (v:version == 603 && has("patch045")) || (v:version > 603)
-    set modeline
-else
-    set nomodeline
-endif
+set modeline
 
 " Nice statusbar
 set laststatus=2
@@ -130,9 +105,6 @@ set statusline+=%h%m%r%w                     " flags
 set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
 set statusline+=%{&encoding},                " encoding
 set statusline+=%{&fileformat}]              " file format
-if filereadable(expand("$VIM/vimfiles/plugin/vimbuddy.vim"))
-    set statusline+=\ %{VimBuddy()}          " vim buddy
-endif
 set statusline+=%=                           " right align
 set statusline+=0x%-8B\                      " current char
 set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
@@ -143,19 +115,9 @@ try
 catch
 endtry
 
-" Include $HOME in cdpath
-"let &cdpath=','.expand("$HOME")
-
 set fillchars=fold:-
 
-"-----------------------------------------------------------------------
-" completion
-"-----------------------------------------------------------------------
 set dictionary=/usr/share/dict/words
-
-"-----------------------------------------------------------------------
-" autocmds
-"-----------------------------------------------------------------------
 
 " draw numbers in wide windows
 autocmd BufEnter * :call <SID>WindowWidth()
@@ -210,47 +172,11 @@ function! QFixToggle(forced)
   endif
 endfunction
 
-"-----------------------------------------------------------------------
-" mappings
-"-----------------------------------------------------------------------
-" rvxt escape sequences
-"nmap <ESC>[5^ <C-PageUp>
-"nmap <ESC>[6^ <C-PageDown>
-
-" tab navigation
-map  <M-Right> :tabnext<CR>
-map  <M-Left> :tabprev<CR>
-map  <C-Right> :tabnext<CR>
-map  <C-Left> :tabprev<CR>
-
-"map  <C-Right> :tabnext<CR>
-"vmap <C-Right> :tabnext<CR>
-"imap <C-Right> :tabnext<CR>
-"map  <C-Left> :tabprev<CR>
-"vmap <C-Left> :tabprev<CR>
-"imap <C-Left> :tabprev<CR>
-"map  <C-t> :tabnew<CR>
-"vmap <C-t> :tabnew<CR>
-"imap <C-t> :tabnew<CR>
-"map  <C-w> :tabclose<CR>
-"vmap <C-w> :tabclose<CR>
-"imap <C-w> :tabclose<CR>
-
 nmap   <silent> <S-Right>  :bnext<CR>
-
-" Delete a buffer but keep layout
-command! Kwbd enew|bw #
-nmap     <C-w>!   :Kwbd<CR>
-
-" Annoying default mappings
-inoremap <S-Up>   <C-o>gk
-inoremap <S-Down> <C-o>gj
-noremap  <S-Up>   gk
-noremap  <S-Down> gj
 
 " Make <space> in normal mode go down a page rather than left a
 " character
-"noremap <space> <C-f>
+noremap <space> <C-f>
 
 " Map key to toggle opt
 function MapToggle(key, opt)
@@ -259,11 +185,6 @@ function MapToggle(key, opt)
   exec 'inoremap '.a:key." \<C-O>".cmd
 endfunction
 command -nargs=+ MapToggle call MapToggle(<f-args>)
-
-
-" Useful things from inside imode
-"inoremap <C-z>w <C-o>:w<CR>
-"inoremap <C-z>q <C-o>gq}<C-o>k<C-o>$
 
 " Commonly used commands
 MapToggle <F1> paste
@@ -309,12 +230,6 @@ noremap <Leader>dbl :g/^$/d<CR>:nohls<CR>
 noremap <Leader>enc :<C-w>execute
             \ substitute(":'<,'>s/^.*/#&#/ \| :nohls", "#", input(">"), "g")<CR>
 
-" Enable fancy % matching
-runtime! macros/matchit.vim
-
-" q: sucks
-nmap q: :q
-
 " save as root
 cmap w!! w !sudo tee % > /dev/null
 
@@ -335,23 +250,7 @@ fun! MakeChangeLogEntry()
 endfun
 noremap ,cl :call MakeChangeLogEntry()<CR>
 
-" command aliases, can't call these until after cmdalias.vim is loaded
-au VimEnter * if exists("loaded_cmdalias") |
-            \       call CmdAlias("mkdir",   "!mkdir") |
-            \       call CmdAlias("cvs",     "!cvs") |
-            \       call CmdAlias("svn",     "!svn") |
-            \       call CmdAlias("commit",  "!svn commit -m \"") |
-            \       call CmdAlias("upload",  "make upload") |
-            \ endif
-
-"-----------------------------------------------------------------------
 " plugin / script / app settings
-"-----------------------------------------------------------------------
-
-" Perl specific options
-let perl_include_pod=1
-let perl_fold=1
-let perl_fold_blocks=1
 
 " Vim specific options
 let g:vimsyntax_noerror=1
@@ -364,8 +263,6 @@ let Tlist_Compact_Format=1
 let Tlist_WinWidth=28
 let Tlist_Exit_OnlyWindow=1
 let Tlist_File_Fold_Auto_Close = 1
-
-" Autostart taglist for code
 "autocmd FileType c,cpp :Tlist
 
 " Settings for a.vim
@@ -392,15 +289,6 @@ else
     let loaded_showmarks=1
 endif
 
-autocmd VimEnter *
-            \ if has('gui') |
-            \        highlight ShowMarksHLl gui=bold guifg=#a0a0e0 guibg=#2e2e2e |
-            \        highlight ShowMarksHLu gui=none guifg=#a0a0e0 guibg=#2e2e2e |
-            \        highlight ShowMarksHLo gui=none guifg=#a0a0e0 guibg=#2e2e2e |
-            \        highlight ShowMarksHLm gui=none guifg=#a0a0e0 guibg=#2e2e2e |
-            \        highlight SignColumn   gui=none guifg=#f0f0f8 guibg=#2e2e2e |
-            \    endif
-
 " Settings for explorer.vim
 let g:explHideFiles='^\.'
 
@@ -412,31 +300,7 @@ let html_number_lines=1
 let html_use_css=1
 let use_xhtml=1
 
-" cscope settings
-"if has('cscope') && filereadable("/usr/bin/cscope")
-"    set csto=0
-"    set cscopetag
-"    set nocsverb
-"    if filereadable("cscope.out")
-"        cs add cscope.out
-"    endif
-"    set csverb
-"
-"    let x = "sgctefd"
-"    while x != ""
-"        let y = strpart(x, 0, 1) | let x = strpart(x, 1)
-"        exec "nmap <C-j>" . y . " :cscope find " . y .
-"                    \ " <C-R>=expand(\"\<cword\>\")<CR><CR>"
-"        exec "nmap <C-j><C-j>" . y . " :scscope find " . y .
-"                    \ " <C-R>=expand(\"\<cword\>\")<CR><CR>"
-"    endwhile
-"    nmap <C-j>i      :cscope find i ^<C-R>=expand("<cword>")<CR><CR>
-"    nmap <C-j><C-j>i :scscope find i ^<C-R>=expand("<cword>")<CR><CR>
-"endif
-
-"-----------------------------------------------------------------------
 " final commands
-"-----------------------------------------------------------------------
 
 " turn off any existing search
 autocmd VimEnter * nohls
@@ -445,5 +309,4 @@ if filereadable(glob('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
 
-"-----------------------------------------------------------------------
-" vim: set shiftwidth=4 softtabstop=4 expandtab tw=72                  :
+" vim: set shiftwidth=4 softtabstop=4 expandtab tw=72
