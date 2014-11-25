@@ -1,3 +1,14 @@
 #!/bin/bash
 
-(cd /etc; exec sudo git "$@")
+(
+    d=$PWD
+    cd /etc
+
+    if [ $1 == "backup" ]; then
+        sudo git archive --prefix etc/ HEAD \
+            | bzip2 \
+            > $d/$(hostname)-$(date +%Y-%m-%d)-etc.tar.bz2
+    else
+        exec sudo git "$@"
+    fi
+)
