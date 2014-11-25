@@ -1,14 +1,19 @@
 #!/bin/bash
 
-(
-    d=$PWD
-    cd /etc
+d=$PWD
+cd /etc
 
-    if [ $1 == "backup" ]; then
-        sudo git archive --prefix etc/ HEAD \
-            | bzip2 \
-            > $d/$(hostname)-$(date +%Y-%m-%d)-etc.tar.bz2
-    else
-        exec sudo git "$@"
-    fi
-)
+case $1 in
+    st) set status "${@:2}";;
+    ci) set commit "${@:2}";;
+    di) set diff "${@:2}";;
+    co) set checkout "${@:2}";;
+    backup)
+        cmd="umask 277;"
+        cmd+=" git archive --prefix etc/ HEAD"
+        cmd+=" | bzip2"
+        cmd+=" > $d/$(hostname)-$(date +%Y-%m-%d)-etc.tar.bz2"
+        exec sudo su -c "$cmd"
+esac
+
+exec sudo git "$@"
