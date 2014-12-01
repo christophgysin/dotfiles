@@ -2,4 +2,7 @@
 
 alias vm='USER=echrgys ~/m/tools/vm/libvirt/ssh.sh'
 alias vm-on-esekilx5320='vm -H esekilx5320.seki.rnd.ericsson.se'
+
 alias vm-ansible='vm-on-esekilx5320 ansible'
+alias vm-jenkins-master='vm-on-esekilx5320 jenkins-master'
+alias vm-jenkins-slave='vm-on-esekilx5320 jenkins-slave'
