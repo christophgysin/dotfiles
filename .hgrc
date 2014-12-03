@@ -1,3 +1,5 @@
 [ui]
 username = Christoph Gysin <christoph.gysin@gmail.com>
 verbose = True
+[extensions]
+strip =
