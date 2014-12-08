@@ -12,10 +12,10 @@ urxvt.geometry:140x29
 urxvt.scrollTtyOutput:false
 urxvt.scrollWithBuffer:true
 urxvt.scrollTtyKeypress:true
-!urxvt.font:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
-!urxvt.boldFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
-!urxvt.italicFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
-!urxvt.boldItalicFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
+urxvt.font:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+urxvt.boldFont:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+urxvt.italicFont:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+urxvt.boldItalicFont:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
 
 urxvt.perl-ext-common: default,matcher,clipboard
 urxvt.keysym.C-Up:     perl:font-size:increase
