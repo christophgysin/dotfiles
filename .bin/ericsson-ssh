@@ -1,5 +1,0 @@
-#!/bin/bash -eu
-
-source ${0%%-*}.inc.sh
-
-ssh "${@}" -p ${ssh_port} ${user}@localhost
