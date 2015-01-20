@@ -1,0 +1,3 @@
+#!/bin/bash
+
+alias ericsson='ssh -fN ericsson && ssh -fN ericsson-sandbox-forwards'
