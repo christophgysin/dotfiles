@@ -1,7 +1,10 @@
 #!/bin/bash
 
 alias vm='USER=echrgys ~/m/tools/vm/libvirt/vm.sh'
+alias inspect='~/m/tools/vm/libvirt/inspect.py'
+
 alias vm-5320='vm -H esekilx5320.seki.rnd.ericsson.se'
+alias inspect-5320='inspect -H esekilx5320.seki.rnd.ericsson.se'
 
 alias vm-ssh='~/m/tools/vm/libvirt/ssh.sh -q'
 alias vm-ssh-echrgys='USER=echrgys vm-ssh'
