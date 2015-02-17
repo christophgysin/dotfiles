@@ -1,8 +1,12 @@
 #!/bin/bash
 
-alias ubuntu-disable-pam-motd='\
-    sudo sed -i "/pam_motd.so/s/^[^#]/#\0/" \
-        /etc/pam.d/{sshd,login}'
-alias ubuntu-disable-ssh-lastlog='\
-    sudo sed -i "/PrintLastLog/s/^[^#]/#\0/" \
-        /etc/ssh/sshd_config'
+ubuntu-disable-pam-motd()
+{
+    sudo sed -i "/pam_motd.so/s/^[^#]/#\0/" /etc/pam.d/{sshd,login}
+}
+
+ubuntu-disable-ssh-lastlog()
+{
+    sudo sed -i "s/^\(PrintLastLog\).*/\1 no/" /etc/ssh/sshd_config
+    sudo service ssh restart
+}
