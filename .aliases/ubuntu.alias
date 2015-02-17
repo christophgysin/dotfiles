@@ -1,0 +1,5 @@
+#!/bin/bash
+
+alias ubuntu-disable-pam-motd='\
+    sudo sed -i "/pam_motd.so/s/^[^#]/#\0/" \
+        /etc/pam.d/{sshd,login}'
