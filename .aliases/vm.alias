@@ -1,17 +1,22 @@
 #!/bin/bash
 
-alias vm-ssh='~/m/tools/vm/libvirt/ssh.sh -q'
-alias vm='USER=echrgys vm-ssh'
-alias vm-emmgwci='USER=emmgwci vm-ssh'
-alias vm-on-esekilx5320='vm -H esekilx5320.seki.rnd.ericsson.se'
-alias vm-emmgwci-on-esekilx5320='vm-emmgwci -H esekilx5320.seki.rnd.ericsson.se'
-alias vm-emmgwci-on-esekilx5321='vm-emmgwci -H esekilx5321.seki.rnd.ericsson.se'
-alias vm-emmgwci-on-esekilx5322='vm-emmgwci -H esekilx5322.seki.rnd.ericsson.se'
+alias vm='USER=echrgys ~/m/tools/vm/libvirt/vm.sh'
+alias vm-5320='vm -H esekilx5320.seki.rnd.ericsson.se'
 
-alias vm-ansible='vm-on-esekilx5320 ansible'
-alias vm-build='vm-on-esekilx5320 build'
-alias vm-jenkins='vm-emmgwci-on-esekilx5320 jenkins-master'
-alias vm-bgf='vm-emmgwci-on-esekilx5320 bgf_component_test'
-alias vm-mmgw-build-20='vm-emmgwci-on-esekilx5320 mmgw-build'
-alias vm-mmgw-build-21='vm-emmgwci-on-esekilx5321 mmgw-build'
-alias vm-mmgw-build-22='vm-emmgwci-on-esekilx5322 mmgw-build'
+alias vm-ssh='~/m/tools/vm/libvirt/ssh.sh -q'
+alias vm-ssh-echrgys='USER=echrgys vm-ssh'
+alias vm-ssh-echrgys-5320='vm-ssh-echrgys -H esekilx5320.seki.rnd.ericsson.se'
+alias vm-ssh-emmgwci='USER=emmgwci vm-ssh'
+alias vm-ssh-emmgwci-5320='vm-ssh-emmgwci -H esekilx5320.seki.rnd.ericsson.se'
+alias vm-ssh-emmgwci-5321='vm-ssh-emmgwci -H esekilx5321.seki.rnd.ericsson.se'
+alias vm-ssh-emmgwci-5322='vm-ssh-emmgwci -H esekilx5322.seki.rnd.ericsson.se'
+
+alias vm-jenkins='vm-ssh-emmgwci-5320 jenkins-master'
+alias vm-build-0='vm-ssh-emmgwci-5320 mmgw-build'
+alias vm-build-1='vm-ssh-emmgwci-5321 mmgw-build'
+alias vm-build-2='vm-ssh-emmgwci-5322 mmgw-build'
+
+alias vm-bgf='vm-ssh-emmgwci-5320 bgf_component_test'
+alias vm-ansible='vm-ssh-echrgys-5320 ansible'
+alias vm-test='vm-ssh-echrgys-5320 test'
+
