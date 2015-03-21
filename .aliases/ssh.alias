@@ -12,22 +12,8 @@ agent() {
     fi
 }
 
-# hosts
-alias luzifer='ssh -X luzifer.fr33z3.org'
-alias radio='ssh -X radio.fr33z3.org'
-alias xbmc='ssh -X xbmc'
+# host aliases
+alias xbmc='ssh xbmc'
 alias raspi='ssh root@raspi.fr33z3.org'
-alias heatpump='ssh heatpump'
-alias heatpump-int='ssh heatpump-int'
-alias cctv='ssh cctv'
-
-# tunnels
-sshtunnel(){ sudo ssh -fNL $2:$1 fr33z3@luzifer.fr33z3.org; }
-sshRtunnel(){ sudo ssh -fNR $2:$1 fr33z3@luzifer.fr33z3.org; }
-alias imapstunnel='sshtunnel luzifer.fr33z3.org:993 9993'
-alias smtptunnel='sshtunnel luzifer.fr33z3.org:25 2525'
-alias nntptunnel='sshtunnel luzifer.fr33z3.org:119 1119'
-alias httpstunnel='sshtunnel luzifer.fr33z3.org:443 4443'
-alias passivesshd='sshRtunnel localhost:22 2222'
 
 # vim:ft=sh
