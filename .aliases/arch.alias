@@ -16,4 +16,5 @@ alias pacys="yaourt -Ss"
 alias pacyi="yaourt -S"
 alias pacyr="yaourt -R"
 function pacro() { sudo pacman -Rs $(pacman -Qtdq); }
+alias pacclean="sudo find /var/cache/pacman/pkg -type f -mtime +0 -exec rm {} +"
 alias pacyg="yaourt -G"
