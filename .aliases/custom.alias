@@ -6,7 +6,7 @@ alias histgrep='history | grep'
 
 addpubkey(){ test -r ~/.ssh/id_rsa.pub || ssh-keygen -q -t rsa -N "";
    ssh "$@" "mkdir -p .ssh; cat>>.ssh/authorized_keys"<~/.ssh/id_rsa.pub; }
-ssh-delkey(){ sed -ie "${1:-0} d" ~/.ssh/known_hosts; }
+ssh_delkey(){ sed -ie "${1:-0} d" ~/.ssh/known_hosts; }
 
 alias gti='git'
 alias grab='sudo chown -R $(id -u):$(id -g)'

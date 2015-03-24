@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function emake-wrap() {
+function emake_wrap() {
     profile=${1}
     shift
 
@@ -11,15 +11,15 @@ function emake-wrap() {
     emake -C${builddir} "$@"
 }
 
-alias em='emake-wrap gcc-cade'
-alias emg='emake-wrap gcc-4.9.0'
-alias emg64='emake-wrap gcc-4.8.1-x86_64'
-alias emg8='emake-wrap gcc-4.8.2'
-alias emc='emake-wrap clang-3.5.0'
-alias emt='emake-wrap target'
-alias emm='emake-wrap moduletest'
-alias ems='emake-wrap simcello'
-alias eml='emake-wrap native-linux'
-alias emlm='emake-wrap native-linux-multithread'
-alias emv='emake-wrap x86-virtual-payload-target'
-alias ema='emake-wrap x86-amc-test-target'
+alias em='emake_wrap gcc-cade'
+alias emg='emake_wrap gcc-4.9.0'
+alias emg64='emake_wrap gcc-4.8.1-x86_64'
+alias emg8='emake_wrap gcc-4.8.2'
+alias emc='emake_wrap clang-3.5.0'
+alias emt='emake_wrap target'
+alias emm='emake_wrap moduletest'
+alias ems='emake_wrap simcello'
+alias eml='emake_wrap native-linux'
+alias emlm='emake_wrap native-linux-multithread'
+alias emv='emake_wrap x86-virtual-payload-target'
+alias ema='emake_wrap x86-amc-test-target'
