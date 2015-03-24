@@ -48,6 +48,7 @@
     sg = !git-submodule-grep
     find = !git ls-files | grep
     conflict = !vim $(git diff --name-only --diff-filter=U)
+    edit = !vim $(git ls ${1})
 
 [color]
     branch = auto
