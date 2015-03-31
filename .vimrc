@@ -279,6 +279,8 @@ nnoremap <silent> <F9> :Tlist<CR>
 map <silent> <F10> :QFix<CR>
 map <silent> <F11> :redo<CR>
 nmap <F12> :bd<CR>
+map <S-PageUp> :cprev<CR>
+map <S-PageDown> :cnext<CR>
 
 " Insert a single char
 noremap <Leader>i i<Space><Esc>r
