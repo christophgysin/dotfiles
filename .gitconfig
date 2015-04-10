@@ -36,6 +36,9 @@
     prp = !git pull --rebase && git push origin ${1:-HEAD}:${2:-master}
     rb = !git rebase $(git upstream)
     rbi = !git rebase -i $(git upstream)
+    rbc = rebase --continue
+    rba = rebase --abort
+    rsb = rebase --skip
     frbi = !git fetch origin && git rebase -i $(git upstream)
     brl = !git branch | cut -c3-
     reball = !"for b in $(git brl); do git co $b && git rb || git rb --abort; done"
