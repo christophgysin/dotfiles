@@ -3,19 +3,37 @@
 # increase pulseaudio volume beyond 153%
 
 read cmd sink volume < <(pacmd dump | grep -m1 sink-volume)
+read _ _ mute < <(pacmd dump | grep -m1 sink-mute)
+
+step=3
 
 case ${1} in
     up)
-        change=1;;
+        arg=$(( volume + step * 0x10000 / 100 ))
+        ;;
     down)
-        change=-1;;
+        arg=$(( volume - step * 0x10000 / 100 ))
+        ;;
     [-+][0-9]*|[0-9]*)
-        change=${1};;
+        arg=$(( volume + $1 * 0x10000 / 100 ))
+        ;;
+    mute)
+        cmd='set-sink-mute'
+        arg='yes'
+        ;;
+    unmute)
+        cmd='set-sink-mute'
+        arg='no'
+        ;;
+    toggle-mute)
+        cmd='set-sink-mute'
+        arg='yes'
+        [ $mute == yes ] && arg=no
+        ;;
     *)
-        echo "usage: $0 < up | down | [+]n | -n >"
+        echo "usage: $0 < up | down | [+]n | -n | mute | unmute | toggle-mute >"
         exit 1;;
 esac
 
-volume=$[ ${volume} + ${change} * 0x10000 / 100 ]
 
-pacmd ${cmd} ${sink} ${volume}
+pacmd ${cmd} ${sink} ${arg}
