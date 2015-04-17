@@ -39,6 +39,7 @@
     rbc = rebase --continue
     rba = rebase --abort
     rbs = rebase --skip
+    resolve = !vim $(git ls-files --modified | uniq)
     frbi = !git fetch origin && git rebase -i $(git upstream)
     brl = !git branch | cut -c3-
     reball = !"for b in $(git brl); do git co $b && git rb || git rb --abort; done"
