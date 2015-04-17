@@ -75,7 +75,9 @@ bindsym $win+Shift+0 move container to workspace 10; workspace 10
 bindsym $win+Escape reload
 bindsym $win+BackSpace restart
 bindsym $win+Delete exec i3-msg exit
-bindsym $win+period exec i3lock --dpms --color 000000
+
+exec xautolock -time 12 -locker 'screenlock' &
+bindsym $win+period exec screenlock
 
 # resize
 bindsym $win+w mode "resize"
