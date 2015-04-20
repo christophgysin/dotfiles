@@ -1,5 +1,7 @@
 # vim: set ft=conf
 
+font pango:Terminus 14
+
 set $alt Mod1
 set $win Mod4
 
@@ -91,6 +93,5 @@ mode "resize" {
 }
 
 bar {
-    font pango:Terminus 14
     status_command i3status
 }
