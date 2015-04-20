@@ -3,5 +3,5 @@
 f=~/.i3lock_screen_locked.png
 
 scrot $f
-convert -scale 10% -scale 1000%  -blur 0x2 $f $f
-i3lock --image $f
+convert -scale 10% -scale 1000% -blur 0x2 $f $f
+i3lock --image $f --ignore-empty-password
