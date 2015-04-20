@@ -4,15 +4,7 @@ font pango:Terminus 14
 
 set $alt Mod1
 set $win Mod4
-
 set $term terminology
-
-for_window [class=".*"] border pixel 2
-# class                  border  backgr. text    indicator
-client.focused           #004400 #007700 #00dddd #000099
-client.focused_inactive  #002200 #004400 #009999 #000066
-#client.unfocused        #333333 #222222 #888888 #292d2e
-#client.urgent           #2f343a #900000 #ffffff #90
 
 # Use Mouse+$win to drag floating windows to their wanted position
 floating_modifier $win
@@ -95,3 +87,11 @@ mode "resize" {
 bar {
     status_command i3status
 }
+
+for_window [class=".*"] border pixel 2
+
+# class                  border  backgr. text    indicator
+client.focused           #004400 #007700 #00dddd #000099
+client.focused_inactive  #002200 #004400 #009999 #000066
+#client.unfocused        #333333 #222222 #888888 #292d2e
+#client.urgent           #2f343a #900000 #ffffff #90
