@@ -1,0 +1,28 @@
+#!/bin/bash
+
+d=/sys/class/backlight/intel_backlight
+
+function get_brightness()
+{
+    cat ${d}/brightness
+}
+
+function set_brightness()
+{
+    local value=$1
+    sudo tee ${d}/brightness >/dev/null <<<$value
+}
+
+value=$1
+
+case "${value}" in
+    '')
+        get_brightness
+        ;;
+    [+-]*)
+        set_brightness $(($(get_brightness) + value))
+        ;;
+    *)
+        set_brightness ${value}
+        ;;
+esac
