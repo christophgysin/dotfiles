@@ -45,6 +45,8 @@ bindsym $win+q floating toggle
 bindsym $win+space focus mode_toggle
 
 # switch to workspace
+bindsym $alt+h workspace prev
+bindsym $alt+l workspace next
 bindsym $win+1 workspace number 1
 bindsym $win+2 workspace number 2
 bindsym $win+3 workspace number 3
