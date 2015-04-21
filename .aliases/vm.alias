@@ -11,7 +11,7 @@ alias vm-ssh-echrgys='USER=echrgys vm-ssh'
 alias vm-ssh-echrgys-5320='vm-ssh-echrgys -H esekilx5320.seki.rnd.ericsson.se'
 
 alias vm-ansible='vm-ssh-echrgys-5320 ansible'
-alias vm-dev='vm-ssh-echrgys-5320 mmgw-dev'
+alias vm-dev='vm-ssh-echrgys-5320 dev'
 alias vm-jenkins='ssh vm-jenkins'
 alias vm-build-0='ssh vm-build-0'
 alias vm-build-1='ssh vm-build-1'
