@@ -1,7 +1,11 @@
 #!/bin/bash -eu
 
+user=christophgysin
+repo=dotfiles
+url=https://$user@github.com/$user/$repo
+
 if [[ $(readlink -f $0) == ${HOME}/.bin/dotfiles ]]; then
-    echo 'git clone -bwork https://github.com/christophgysin/dotfiles&&dotfiles/.bin/dotfiles'
+    echo "git clone -bwork ${url}&&${repo}/.bin/dotfiles"
     exit
 fi
 
