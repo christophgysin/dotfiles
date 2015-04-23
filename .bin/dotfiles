@@ -13,4 +13,4 @@ d=$(readlink -f $(dirname $0)/..)
 tar c -C${d} . | tar x -C${HOME}
 rm -rf ${d}
 echo source ~/.aliases/bash > ~/.bash_profile
-source ~/.aliases/bash
+source ~/.bash_profile
