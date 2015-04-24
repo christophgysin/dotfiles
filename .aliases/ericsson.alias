@@ -6,4 +6,4 @@ export ftp_proxy=http://www-proxy.ericsson.se:8080
 export no_proxy=localhost,127.0.0.1,.ericsson.se,.ericsson.com
 
 [ -r ~/m/setup.sh ] && source ~/m/setup.sh
-[ -r ~/m/cmake/complete.sh ] && source ~/m/cmake/complete.sh
+[ -r ~/m/cmake/complete.bash ] && source ~/m/cmake/complete.bash
