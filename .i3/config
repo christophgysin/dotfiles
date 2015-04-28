@@ -2,6 +2,9 @@
 
 font pango:Terminus 14
 
+focus_follows_mouse no
+mouse_warping none
+
 set $alt Mod1
 set $win Mod4
 set $term terminology
