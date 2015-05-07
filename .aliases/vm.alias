@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ci_cred='~/m/tools/vm/ansible/ci-credentials'
+
 alias vm='USER=echrgys ~/m/tools/vm/libvirt/vm.sh'
 alias inspect='~/m/tools/vm/libvirt/inspect.py'
 
@@ -8,7 +10,7 @@ alias inspect-5320='inspect -H esekilx5320.seki.rnd.ericsson.se'
 
 alias vm-ssh='~/m/tools/vm/libvirt/ssh.sh -q'
 alias vm-ssh-echrgys='USER=echrgys vm-ssh'
-alias vm-ssh-ansible='USER=emmgwci vm-ssh -k ~/m/tools/vm/ansible/ci-credentials/ansible@vm-id_rsa'
+alias vm-ssh-ansible="USER=emmgwci vm-ssh -k ${ci_cred}/ansible@vm-id_rsa"
 alias vm-ssh-echrgys-5320='vm-ssh-echrgys -H esekilx5320.seki.rnd.ericsson.se'
 alias vm-ssh-ansible-5320='vm-ssh-ansible -H esekilx5320.seki.rnd.ericsson.se'
 alias vm-ssh-ansible-5321='vm-ssh-ansible -H esekilx5321.seki.rnd.ericsson.se'
@@ -21,3 +23,6 @@ alias vm-jenkins='vm-ssh-ansible-5320 jenkins-master'
 alias vm-build-0='vm-ssh-ansible-5320 mmgw-build'
 alias vm-build-1='vm-ssh-ansible-5321 mmgw-build'
 alias vm-build-2='vm-ssh-ansible-5322 mmgw-build'
+
+alias vm-fv="ssh -i ${ci_cred}/emmgwci@virtual-fv emmgwci@131.160.89.149"
+alias vm-fv-sc="ssh root@131.160.89.150"
