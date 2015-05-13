@@ -24,5 +24,5 @@ alias vm-build-0='vm-ssh-ansible-5320 mmgw-build'
 alias vm-build-1='vm-ssh-ansible-5321 mmgw-build'
 alias vm-build-2='vm-ssh-ansible-5322 mmgw-build'
 
-alias vm-fv="ssh -i ${ci_cred}/emmgwci@virtual-fv emmgwci@131.160.89.149"
-alias vm-fv-sc="ssh root@131.160.89.150"
+alias vm-fv="ssh openstack-fv"
+alias vm-fv-sc="ssh openstack-fv-sc"
