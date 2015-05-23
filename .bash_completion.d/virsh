@@ -1,0 +1,100 @@
+# bash completion for virsh
+#
+# Copyright 2009-2011 Todd Zullinger <tmz@pobox.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# NOTE: This is a very basic completion script I created for my personal use.
+# It is far from complete nor suitably tested to submit upstream to either the
+# bash-completion or libvirt projects. -- tmz, 2011/01/26
+
+# virshの存在チェック
+which virsh >/dev/null 2>&1 || return 0
+
+#__virsh_connect="-c qemu:///system --readonly"
+__virsh_options="$( virsh -h | awk '/^ +-/ { print $3 }' )"
+__virsh_commands="$( virsh $__virsh_connect help 2>/dev/null | awk '/^  +/ { print $1 }' )"
+
+_virsh()
+{
+    local cur prev
+
+    COMPREPLY=()
+
+    # _get_comp_words_by_ref is in bash-completion >= 1.2, which EL-5 lacks.
+    if type _get_comp_words_by_ref &>/dev/null; then
+        _get_comp_words_by_ref cur prev
+    else
+        cur="${COMP_WORDS[COMP_CWORD]}"
+        prev="${COMP_WORDS[COMP_CWORD-1]}"
+    fi
+
+    if [[ $COMP_CWORD -eq 1 ]]; then
+        if [[ "$cur" == -* ]]; then
+            COMPREPLY=( $( compgen -W "$__virsh_options" -- $cur ) )
+        else
+            COMPREPLY=( $( compgen -W "$__virsh_commands" -- $cur ) )
+        fi
+        return 0
+    fi
+
+    command=${COMP_WORDS[1]}
+
+    case $command in
+        autostart|setmaxmem|setmem)
+            COMPREPLY=( $( compgen -W "$( virsh $__virsh_connect list --all 2>/dev/null | \
+                            awk '/^( *[0-9]+| +-)[ \t]+/ { print $2 }' )" -- $cur ) )
+            return 0
+            ;;
+        connect)
+            COMPREPLY=( $( compgen -W '--readonly xen:/// qemu:///') )
+            return 0
+            ;;
+        console|reboot|shutdown|suspend|vcpuinfo|vncdisplay)
+            COMPREPLY=( $( compgen -W "$( virsh $__virsh_connect list | \
+                            awk '/^ *[0-9]+[ \t]+/ { print $2 }' )" -- $cur ) )
+            return 0
+            ;;
+        help)
+            COMPREPLY=( $( compgen -W '$__virsh_commands' -- $cur ) )
+            return 0
+            ;;
+        list)
+            COMPREPLY=( $( compgen -W '--all --inactive' -- $cur ) )
+            return 0
+            ;;
+        resume)
+            COMPREPLY=( $( compgen -W "$( virsh $__virsh_connect list 2>/dev/null | \
+                            awk '/^ +[0-9]+[ \t]+.*[ \t]+paused$/ { print $2 }' )" -- $cur ) )
+            return 0
+            ;;
+        setvcpus|start|undefine)
+            COMPREPLY=( $( compgen -W "$( virsh $__virsh_connect list --inactive 2>/dev/null | \
+                            awk '/^ +-/ { print $2 }' )" -- $cur ) )
+            return 0
+            ;;
+    esac
+
+    _filedir
+    return 0
+} &&
+complete -F _virsh $filenames virsh
+
+# Local variables:
+# mode: shell-script
+# sh-basic-offset: 4
+# sh-indent-comment: t
+# indent-tabs-mode: nil
+# End:
+# ex: ts=4 sw=4 et filetype=sh
