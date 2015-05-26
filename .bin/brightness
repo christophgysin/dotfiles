@@ -4,7 +4,12 @@ d=/sys/class/backlight/intel_backlight
 
 function get_brightness()
 {
-    cat ${d}/brightness
+    echo $(<${d}/brightness)
+}
+
+function get_max_brightness()
+{
+    echo $(<${d}/max_brightness)
 }
 
 function set_brightness()
@@ -21,6 +26,12 @@ case "${value}" in
         ;;
     [+-]*)
         set_brightness $(($(get_brightness) + value))
+        ;;
+    min)
+        set_brightness 0
+        ;;
+    max)
+        set_brightness $(get_max_brightness)
         ;;
     *)
         set_brightness ${value}
