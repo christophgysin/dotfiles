@@ -52,6 +52,7 @@
     gl = !git --no-pager grep -l
     sg = !git-submodule-grep
     find = !git ls-files | grep
+    f = !git find
     conflict = !vim $(git diff --name-only --diff-filter=U)
     edit = !vim $(git ls ${1})
 
