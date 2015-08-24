@@ -24,7 +24,7 @@
     lol = log --graph --abbrev
     lola = log --graph --abbrev --all
     lom = !git --no-pager log $(git upstream)..
-    los = !git --no-pager log --oneline ${1:-$(git upstream)..}
+    los = !git --no-pager log --oneline $(git upstream)..${1}
     lof = !git --no-pager show --oneline --name-only
     ls = !git --no-pager show --pretty="format:" --name-only
     k = !gitk
