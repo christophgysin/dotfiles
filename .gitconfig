@@ -35,7 +35,7 @@
     amend = commit --amend -v
     pr = pull --rebase
     prp = !git pull --rebase && git push origin ${1:-HEAD}:${2:-master}
-    prfm = !git push origin ${1:-HEAD}:refs/for/master
+    prfm = !git push origin ${1:-HEAD}:refs/for/master || :
     rb = !git rebase $(git upstream)
     rbi = !git rebase -i $(git upstream)
     rbc = rebase --continue
