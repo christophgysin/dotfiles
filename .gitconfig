@@ -27,6 +27,7 @@
     los = !git --no-pager log --oneline $(git upstream)..${1}
     lof = !git --no-pager show --oneline --name-only
     ls = !git --no-pager show --pretty="format:" --name-only
+    e = !vim $(git ls ${1:-})
     k = !gitk
     ka = !gitk --all
     unstage = reset HEAD --
