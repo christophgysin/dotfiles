@@ -10,3 +10,21 @@ ubuntu_disable_ssh_lastlog()
     sudo sed -i "s/^\(PrintLastLog\).*/\1 no/" /etc/ssh/sshd_config
     sudo service ssh restart
 }
+
+ubuntu_install_shellcheck()
+{
+    sudo apt-get install -y cabal-install libghc-json-dev libghc-mtl-dev \
+        libghc-parsec3-dev libghc-primitive-dev libghc-random-dev \
+        libghc-regex-tdfa-dev libghc-syb-dev
+
+    local d=$(mktemp -d /tmp/shellcheck-install.XXXXXXX)
+    (
+        cd $d
+        wget https://github.com/koalaman/shellcheck/archive/v0.3.8.tar.gz
+        tar xf v0.3.8.tar.gz
+        cd shellcheck-0.3.8
+        cabal update
+        sudo cabal install --global
+    )
+    sudo rm -rf $d
+}
