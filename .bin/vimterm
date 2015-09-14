@@ -1,2 +1,2 @@
 #!/bin/bash
-urxvt -g 130x70+180+80 -e vim "$@"
+terminology -g 130x70+180+80 -e vim "$@"
