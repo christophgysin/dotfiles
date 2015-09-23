@@ -42,6 +42,7 @@
     rbc = rebase --continue
     rba = rebase --abort
     rbs = rebase --skip
+    rbe = !GIT_SEQUENCE_EDITOR=: git rebase -i --exec \"${1}\" $(git upstream) || :
     resolve = !vim $(git ls-files --modified | uniq)
     frbi = !git fetch origin && git rebase -i $(git upstream)
     brl = !git branch | cut -c3-
