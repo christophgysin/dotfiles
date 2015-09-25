@@ -28,3 +28,11 @@ ubuntu_install_shellcheck()
     )
     sudo rm -rf $d
 }
+
+ubuntu_install_extras()
+{
+    sudo apt-get install -y \
+        tig \
+        python-flake8 \
+        python3-flake8
+}
