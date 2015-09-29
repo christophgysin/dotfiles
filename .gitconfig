@@ -81,7 +81,7 @@
     from = "Christoph Gysin <christoph.gysin@gmail.com>"
     smtpencryption = tls
     smtpserver = smtp.gmail.com
-    smtpuser = "christoph.gysin@gmail.com"
+    smtpuser = christoph.gysin@gmail.com
     smtpserverport = 587
 
 [include]
@@ -101,3 +101,5 @@
     #algorithm = patience
     algorithm = histogram
 
+[include]
+    path = .gitconfig.local
