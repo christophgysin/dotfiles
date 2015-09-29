@@ -78,7 +78,7 @@
     from = "Christoph Gysin <christoph.gysin@gmail.com>"
     smtpencryption = tls
     smtpserver = smtp.gmail.com
-    smtpuser = "christoph.gysin@fr33z3.org"
+    smtpuser = "christoph.gysin@gmail.com"
     smtpserverport = 587
 
 [mergetool "vimdiff3"]
