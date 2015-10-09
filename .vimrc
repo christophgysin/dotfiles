@@ -302,6 +302,10 @@ let html_number_lines=1
 let html_use_css=1
 let use_xhtml=1
 
+" syntastic
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
 " final commands
 
 " turn off any existing search
