@@ -36,6 +36,8 @@ set winminheight=1
 set textwidth=80
 syntax on
 set switchbuf=useopen,usetab,newtab
+set undodir=~/.vim/undo
+set undofile
 
 " splits
 set splitbelow
