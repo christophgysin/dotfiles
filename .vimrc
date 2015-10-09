@@ -416,29 +416,10 @@ let html_number_lines=1
 let html_use_css=1
 let use_xhtml=1
 
-" cscope settings
-"if has('cscope') && filereadable("/usr/bin/cscope")
-"    set csto=0
-"    set cscopetag
-"    set nocsverb
-"    if filereadable("cscope.out")
-"        cs add cscope.out
-"    endif
-"    set csverb
-"
-"    let x = "sgctefd"
-"    while x != ""
-"        let y = strpart(x, 0, 1) | let x = strpart(x, 1)
-"        exec "nmap <C-j>" . y . " :cscope find " . y .
-"                    \ " <C-R>=expand(\"\<cword\>\")<CR><CR>"
-"        exec "nmap <C-j><C-j>" . y . " :scscope find " . y .
-"                    \ " <C-R>=expand(\"\<cword\>\")<CR><CR>"
-"    endwhile
-"    nmap <C-j>i      :cscope find i ^<C-R>=expand("<cword>")<CR><CR>
-"    nmap <C-j><C-j>i :scscope find i ^<C-R>=expand("<cword>")<CR><CR>
-"endif
+" syntastic
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
-"-----------------------------------------------------------------------
 " final commands
 "-----------------------------------------------------------------------
 
