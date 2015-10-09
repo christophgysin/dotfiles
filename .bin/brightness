@@ -2,6 +2,11 @@
 
 d=/sys/class/backlight/intel_backlight
 
+function usage()
+{
+    echo "usage: ${0##*/} [ min | max | [+|-]<value> ]"
+}
+
 function get_brightness()
 {
     echo $(<${d}/brightness)
@@ -15,12 +20,15 @@ function get_max_brightness()
 function set_brightness()
 {
     local value=$1
-    sudo tee ${d}/brightness >/dev/null <<<$value
+    sudo tee ${d}/brightness >/dev/null <<<"$value"
 }
 
 value=$1
 
 case "${value}" in
+    -h|--help)
+        usage
+        ;;
     '')
         get_brightness
         ;;
