@@ -11,6 +11,7 @@ set $term terminology
 
 # Use Mouse+$win to drag floating windows to their wanted position
 floating_modifier $win
+bindsym --whole-window $win+button2 floating toggle
 
 bindsym $win+Return exec $term
 bindsym $win+Shift+q kill
