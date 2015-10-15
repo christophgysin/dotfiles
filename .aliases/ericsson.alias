@@ -4,7 +4,12 @@ export http_proxy=http://www-proxy.ericsson.se:8080
 export https_proxy=http://www-proxy.ericsson.se:8080
 export ftp_proxy=http://www-proxy.ericsson.se:8080
 export no_proxy=localhost,127.0.0.1,.ericsson.se,.ericsson.com
+no_proxy+=,131.160.89.80
+no_proxy+=,131.160.89.112
+no_proxy+=,131.160.89.128
 no_proxy+=,131.160.89.144
+no_proxy+=,131.160.89.160
+no_proxy+=,131.160.89.248
 
 # auto source only for interactive shells
 case "$-" in
