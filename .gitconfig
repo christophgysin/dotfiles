@@ -27,7 +27,7 @@
     los = !git --no-pager log --oneline $(git upstream)..${1}
     lof = !git --no-pager show --oneline --name-only
     ls = !git --no-pager show --pretty="format:" --name-only
-    e = !vim $(git ls ${1:-})
+    e = !vim $(git ls ${1}) || :
     k = !gitk
     ka = !gitk --all
     unstage = reset HEAD --
@@ -59,7 +59,6 @@
     gerrit = !ssh -p 29418 echrgys@gerrit.ericsson.se gerrit
     reviewers = !git gerrit set-reviewers -a
     conflict = !vim $(git diff --name-only --diff-filter=U)
-    edit = !vim $(git ls ${1})
 
 [color]
     branch = auto
