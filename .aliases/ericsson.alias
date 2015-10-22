@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export AF_PROJ_MMGW_EXTERNAL_LOCAL=~/.artifactory-cache/external
+
 export http_proxy=http://www-proxy.ericsson.se:8080
 export https_proxy=http://www-proxy.ericsson.se:8080
 export ftp_proxy=http://www-proxy.ericsson.se:8080
