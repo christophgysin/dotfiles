@@ -34,14 +34,19 @@ ubuntu_install_extras()
 {
     sudo apt-get install -y \
         ccache \
+        clang-3.5 \
         libpython-dev \
+        libsctp-dev \
         ninja-build \
         tig \
         pkg-config \
         python-bs4 \
+        python-djangorestframework \
         python-flake8 \
         python3-flake8 \
+        python-libvirt \
         python-mechanize \
         python-xlrd \
-        re2c
+        re2c \
+        valgrind
 }
