@@ -6,7 +6,7 @@ agent() {
     if [ -z "${SSH_AGENT_PID}" ] || ! ps -ef | grep -q ${SSH_AGENT_PID}.*ssh-agent$; then
         echo -n > "${SSH_ENV}"
         chmod 600 "${SSH_ENV}"
-        ssh-agent | grep -v ^echo >> "${SSH_ENV}"
+        ssh-agent -s | grep -v ^echo >> "${SSH_ENV}"
         . "${SSH_ENV}"
         ssh-add
     fi
