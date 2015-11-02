@@ -1,7 +1,0 @@
-#!/bin/bash
-set -e
-
-# set proxy to manual, localhost, 10023, SOCKS5
-# about:config network.proxy.socks_remote_dns true
-
-firefox -no-remote -P ericsson $@

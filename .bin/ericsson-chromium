@@ -1,7 +1,0 @@
-#!/bin/bash
-set -e
-
-chromium \
-    --user-data-dir=${HOME}/.config/chromium-ericsson \
-    --proxy-server=socks://localhost:10023 \
-    "$@"
