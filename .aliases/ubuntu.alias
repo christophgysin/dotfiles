@@ -36,6 +36,7 @@ ubuntu_install_extras()
         ansible \
         ccache \
         clang-3.5 \
+        default-jre \
         libpython-dev \
         libsctp-dev \
         ninja-build \
