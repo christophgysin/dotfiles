@@ -37,6 +37,10 @@ ubuntu_install_extras()
         ccache \
         clang-3.5 \
         default-jre \
+        libc6-dev-i386 \
+        lib32z1 \
+        libboost-dev \
+        liblttng-ust-dev \
         libpython-dev \
         libsctp-dev \
         ninja-build \
