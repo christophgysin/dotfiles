@@ -41,6 +41,9 @@ set switchbuf=useopen,usetab,newtab
 set undodir=~/.vim/undo
 set undofile
 
+set secure
+set exrc
+
 " splits
 set splitbelow
 set splitright
