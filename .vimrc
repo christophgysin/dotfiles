@@ -38,8 +38,11 @@ set winminheight=1
 set textwidth=80
 syntax on
 set switchbuf=useopen,usetab,newtab
+
+if (v:version >= 730)
 set undodir=~/.vim/undo
 set undofile
+endif
 
 set secure
 set exrc
