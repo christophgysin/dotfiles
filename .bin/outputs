@@ -5,21 +5,24 @@ case ${1} in
         xrandr \
             --output DP1 --off \
             --output DP2 --off \
-            --output DP3 --off
+            --output DP3 --off \
+            --output VGA1 --off
         xrandr \
             --output LVDS1 --auto
             ;;
     ext)
         xrandr \
             --output LVDS1 --off \
-            --output DP2 --off
+            --output DP2 --off \
+            --output VGA1 --off
         xrandr \
             --output DP1 --auto \
             --output DP3 --auto --right-of DP1
             ;;
     dup)
         xrandr \
-            --output DP2 --off
+            --output DP2 --off \
+            --output VGA1 --off
         xrandr \
             --output LVDS1 --auto \
             --output DP1 --auto --same-as LVDS1 \
@@ -28,14 +31,25 @@ case ${1} in
     dual)
         xrandr \
             --output DP2 --off \
-            --output DP3 --off
+            --output DP3 --off \
+            --output VGA1 --off
         xrandr \
             --output LVDS1 --auto \
             --output DP1 --auto --right-of LVDS1
             ;;
+    vga)
+        xrandr \
+            --output DP1 --off \
+            --output DP2 --off \
+            --output DP3 --off
+        xrandr \
+            --output LVDS1 --auto \
+            --output VGA1 --auto --same-as LVDS1
+            ;;
     triple)
         xrandr \
-            --output DP2 --off
+            --output DP2 --off \
+            --output VGA1 --off
         xrandr \
             --output DP1 --auto \
             --output DP3 --auto --right-of DP1
@@ -43,6 +57,6 @@ case ${1} in
             --output LVDS1 --auto --pos 3840x460
             ;;
     *)
-        echo "usage: $(basename $0) [ [int] | ext | dup | dual | triple ]";
+        echo "usage: $(basename $0) [ [int] | ext | dup | dual | vga | triple ]";
         exit 1;;
 esac
