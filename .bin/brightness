@@ -1,6 +1,21 @@
 #!/bin/bash
 
-d=/sys/class/backlight/intel_backlight
+backlights=(
+    acpi_video0
+    intel_backlight
+)
+
+function find_backlight() {
+    for backlight in ${backlights[@]}; do
+        if [ -d /sys/class/backlight/$backlight ]; then
+            d=/sys/class/backlight/$backlight
+            return
+        fi
+    done
+
+    echo >&2 "No backlight detected!"
+    exit 1
+}
 
 function usage()
 {
@@ -24,6 +39,8 @@ function set_brightness()
 }
 
 value=$1
+
+find_backlight
 
 case "${value}" in
     -h|--help)
