@@ -1,11 +1,13 @@
 shopt -s extglob
 
-for i in ~/.aliases/*.alias; do source $i; done
+for i in ~/.aliases/*.alias; do . $i; done
 
 complete -cf sudo
-for i in ~/.bash_completion.d/*; do source "$i"; done
+
+bash_completion=/usr/share/bash-completion/bash_completion
+[ -r $bash_completion ] && $bash_completion
 
 cnf_hook=/usr/share/doc/pkgfile/command-not-found.bash
-[ -f $cnf_hook ] && . $cnf_hook
+[ -r $cnf_hook ] && . $cnf_hook
 
 # vim:ft=sh
