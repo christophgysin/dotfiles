@@ -16,18 +16,18 @@
     br = branch
     bv = branch -vv
     rv = remote -v
-    tb = !git checkout -tb ${1} ${2:-$(git upstream)} || :
+    tb = !git checkout -tb ${1} ${2:-origin/master} || :
     rst = reset
     rh = reset --hard
     pick = cherry-pick
-    l = !git --no-pager log --oneline
+    l = !git --no-pager log --oneline ${1:-HEAD}
     lol = log --graph --abbrev
     lola = log --graph --abbrev --all
     lom = !git --no-pager log $(git upstream)..
     los = !git --no-pager log --oneline $(git upstream)..${1}
     lof = !git --no-pager show --oneline --name-only
     ls = !git --no-pager show --pretty="format:" --name-only
-    e = !vim $(git ls ${1:-})
+    e = !vim $(git ls ${1}) || :
     k = !gitk
     ka = !gitk --all
     unstage = reset HEAD --
@@ -56,8 +56,9 @@
     sg = !git-submodule-grep
     find = !git ls-files | grep
     f = !git find
+    gerrit = !ssh -p 29418 echrgys@gerrit.ericsson.se gerrit
+    reviewers = !git gerrit set-reviewers -a
     conflict = !vim $(git diff --name-only --diff-filter=U)
-    edit = !vim $(git ls ${1})
 
 [color]
     branch = auto
@@ -84,6 +85,9 @@
 
 [mergetool "vimdiff3"]
     cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+
+[merge]
+    tool = "vimdiff3"
 
 [diff "odf"]
     textconv = odt2txt
