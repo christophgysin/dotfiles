@@ -1,7 +1,19 @@
 alias truecrypt='truecrypt -t'
-tcmount(){ sudo truecrypt -t -k "" --protect-hidden=no $1/.volume.tc $1; }
-tcumount(){ sudo truecrypt -t -d $1; }
-tclist(){ truecrypt -t -l; }
+tcmount() {
+    local dir=$1
+    local name=${dir##*/}
+    sudo cryptsetup open --type tcrypt $dir/.volume.tc $name
+    sudo mount -o uid=$(id -u),gid=$(id -g) /dev/mapper/$name $dir
+}
+tcumount(){
+    local dir=$1
+    local name=${dir##*/}
+    sudo umount $dir
+    sudo cryptsetup close $name
+}
+tclist(){
+    truecrypt -t -l
+}
 alias datamount='tcmount $HOME/data'
 alias dataumount='tcumount $HOME/data'
 alias pocketmount='tcmount /mnt/pocket/data'
