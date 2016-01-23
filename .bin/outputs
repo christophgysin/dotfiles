@@ -26,7 +26,7 @@ case ${1} in
             ;;
     dual)
         xrandr \
-            --output $int --auto --scale 0.7x0.7 \
+            --output $int --auto \
             --output $ext --auto --$pos-of $int \
             --output $vga --off \
             ;;
