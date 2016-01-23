@@ -80,6 +80,7 @@ bindsym $win+Delete exec i3-msg exit
 
 exec xautolock -time 12 -locker 'screenlock' &
 exec redshift &
+exec dunst &
 bindsym $win+period exec screenlock
 
 # resize
