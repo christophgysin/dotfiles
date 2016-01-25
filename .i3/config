@@ -101,6 +101,7 @@ bar {
 for_window [class=".*"] border pixel 2
 for_window [class="Crags.py"] floating enable
 for_window [class="Onboard"] floating enable
+for_window [class="wlc-x11"] floating enable
 
 # class                  border  backgr. text    indicator
 client.focused           #004400 #007700 #00dddd #000099
