@@ -13,9 +13,10 @@ esac
 function clone_repo() {
     repo=${1:-mgw/mgw}
     dir=~/${2:-${repo##*/}}
-    git clone gerritmirror:/"$repo" "$dir"
+    git clone gerritmirror:/"$repo" "$dir" &&
     (cd "$dir"
         git remote set-url origin --push gerrit:/"$repo"
         git config remote.origin.push HEAD:refs/for/master
+        scp -p gerrit:hooks/commit-msg .git/hooks/
     )
 }
