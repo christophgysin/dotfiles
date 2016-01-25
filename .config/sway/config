@@ -9,7 +9,8 @@ output WLC-1 position 0,0
 output WLC-2 position 500,0
 output WLC-2 resolution 500x500
 
-output * background ~/.config/sway/green.png tile
+#output * background ~/.config/sway/green.png tile
+output * background /usr/share/sway/wallpaper.jpg fill
 
 gaps 2
 
