@@ -94,7 +94,7 @@ bindsym $alt+Delete exec i3-msg exit
 
 #exec xautolock -time 12 -locker 'screenlock' &
 exec setxkbmap ch
-bindsym $alt+period exec swaylock
+bindsym $alt+period exec ~/projects/sway/sway/build/bin/swaylock --image /usr/share/sway/wallpaper.jpg --scaling fill
 
 # resize
 bindsym $win+w mode "resize"
