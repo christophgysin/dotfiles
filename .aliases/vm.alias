@@ -1,6 +1,17 @@
 #!/bin/bash
 
 alias vm-jenkins='ssh -F ~/m/tools/vm/ansible/ssh_config esekilx5320_jenkins-master'
+
 alias vm-build-0='ssh -F ~/m/tools/vm/ansible/ssh_config esekilx5320_mmgw-build'
-alias vm-build-0='ssh -F ~/m/tools/vm/ansible/ssh_config esekilx5321_mmgw-build'
-alias vm-build-0='ssh -F ~/m/tools/vm/ansible/ssh_config esekilx5322_mmgw-build'
+alias vm-build-1='ssh -F ~/m/tools/vm/ansible/ssh_config esekilx5321_mmgw-build'
+alias vm-build-2='ssh -F ~/m/tools/vm/ansible/ssh_config esekilx5322_mmgw-build'
+
+alias vm-bitbake-5='ssh -F ~/m/tools/vm/ansible/ssh_config ssekilx5345_bitbake-dev'
+alias vm-bitbake-6='ssh -F ~/m/tools/vm/ansible/ssh_config ssekilx5346_bitbake-dev'
+alias vm-bitbake-7='ssh -F ~/m/tools/vm/ansible/ssh_config ssekilx5347_bitbake-dev'
+alias vm-bitbake-8='ssh -F ~/m/tools/vm/ansible/ssh_config ssekilx5348_bitbake-dev'
+
+alias vm-bb-5='ssh -p12000 echrgys@ssekilx5345'
+alias vm-bb-6='ssh -p12000 echrgys@ssekilx5346'
+alias vm-bb-7='ssh -p12000 echrgys@ssekilx5347'
+alias vm-bb-8='ssh -p12000 echrgys@ssekilx5348'
