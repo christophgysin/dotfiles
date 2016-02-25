@@ -22,4 +22,4 @@ function clone_repo() {
     )
 }
 
-alias clone_repo_mgw='clone_repo mgw/mgw ~/m'
+alias clone_repo_mgw="clone_repo mgw/mgw $HOME/m"
