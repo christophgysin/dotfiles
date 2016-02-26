@@ -13,21 +13,11 @@ ubuntu_disable_ssh_lastlog()
 
 ubuntu_install_shellcheck()
 {
-    sudo apt-get install -y cabal-install libghc-json-dev libghc-mtl-dev \
-        libghc-parsec3-dev libghc-primitive-dev libghc-random-dev \
-        libghc-regex-tdfa-dev libghc-syb-dev
-
-    local version=0.4.3
-    local d=$(mktemp -d /tmp/shellcheck-install.XXXXXXX)
-    (
-        cd $d
-        wget https://github.com/koalaman/shellcheck/archive/v${version}.tar.gz
-        tar xf v${version}.tar.gz
-        cd shellcheck-${version}
-        cabal update
-        sudo cabal install --global --force-reinstalls
-    )
-    sudo rm -rf $d
+    cabal update
+    sudo cabal install \
+        shellcheck-0.4.3
+        #--global \
+        #--force-reinstalls \
 }
 
 ubuntu_install_extras()
