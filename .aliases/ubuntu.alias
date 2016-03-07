@@ -34,6 +34,7 @@ ubuntu_install_extras()
         libpython-dev \
         libsctp-dev \
         ninja-build \
+        nmap \
         tig \
         pkg-config \
         python-bs4 \
