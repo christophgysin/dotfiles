@@ -11,19 +11,11 @@ ubuntu_disable_ssh_lastlog()
     sudo service ssh restart
 }
 
-ubuntu_install_shellcheck()
-{
-    cabal update
-    sudo cabal install \
-        shellcheck-0.4.3
-        #--global \
-        #--force-reinstalls \
-}
-
 ubuntu_install_extras()
 {
     sudo apt-get install -y \
         ansible \
+        cabal-install \
         ccache \
         clang-3.5 \
         default-jre \
@@ -46,4 +38,8 @@ ubuntu_install_extras()
         python-xlrd \
         re2c \
         valgrind
+
+    cabal update
+    sudo cabal install \
+        shellcheck-0.4.3
 }
