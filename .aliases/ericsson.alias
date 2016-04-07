@@ -12,7 +12,7 @@ esac
 
 function clone_repo() {
     repo=${1:-mgw/mgw}
-    dir=~/${2:-${repo##*/}}
+    dir=${2:-${repo##*/}}
     git clone gerritmirror-ha:/"$repo" "$dir" &&
     (cd "$dir" && (
             git remote set-url origin --push gerrit:/"$repo"
