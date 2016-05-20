@@ -11,7 +11,5 @@ if &compatible || v:version < 603
     finish
 endif
 
-
-" ebuilds, eclasses
 au BufNewFile,BufRead {*/,}syslog-ng{{,.d}/*,.conf}
     \     set filetype=syslog-ng
