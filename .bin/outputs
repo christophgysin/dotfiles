@@ -27,12 +27,12 @@ case ${1} in
     dual)
         xrandr \
             --output $int --auto \
-            --output $ext --auto --$pos-of $int \
+            --output $ext --auto --$pos-of $int --primary \
             --output $vga --off \
             ;;
     vga)
         xrandr \
-            --output $int --auto \
+            --output $int --auto --primary \
             --output $ext --off \
             --output $vga --auto --above $int \
             ;;
@@ -45,7 +45,7 @@ case ${1} in
     all)
         xrandr \
             --output $int --auto \
-            --output $ext --left-of $int \
+            --output $ext --left-of $int --primary \
             --output $vga --above $ext \
             ;;
     *)
