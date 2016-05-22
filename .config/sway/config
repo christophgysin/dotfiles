@@ -9,12 +9,10 @@ output WLC-1 position 0,0
 output WLC-2 position 500,0
 output WLC-2 resolution 500x500
 
-#output * background ~/.config/sway/green.png tile
-output * background /usr/share/sway/wallpaper.jpg fill
-
+output * background Sway_Wallpaper_Blue_1920x1080.png fill
 gaps 2
 
-#font pango:Terminus 14
+font pango:Terminus 14
 
 focus_follows_mouse no
 mouse_warping none
@@ -44,12 +42,12 @@ bindsym $win+Shift+j move down
 bindsym $win+Shift+k move up
 bindsym $win+Shift+l move right
 
-#bindsym XF86AudioLowerVolume exec volume down
-#bindsym XF86AudioRaiseVolume exec volume up
-#bindsym XF86AudioMute exec volume toggle-mute
-#bindsym XF86TouchpadToggle exec touchpad-toggle
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86AudioLowerVolume exec volume down
+bindsym XF86AudioRaiseVolume exec volume up
+bindsym XF86AudioMute exec volume toggle-mute
+bindsym XF86TouchpadToggle exec touchpad-toggle
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # split
 bindsym $win+i split h
@@ -112,7 +110,7 @@ bar {
     font pango:Terminus 14
 }
 
-#for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 2
 for_window [class="Crags.py"] floating enable
 
 # class                  border  backgr. text    indicator
