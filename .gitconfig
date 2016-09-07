@@ -53,6 +53,7 @@
     sed = !args=(\"$@\") && git ls-files -z \"${args[@]:1}\" | xargs -0 sed --follow-symlinks -i \"$1\" && :
     g = !git --no-pager grep
     gl = !git --no-pager grep -l
+    ge = !args=(\"$@\") && vim $(git --no-pager grep -l \"${args[@]}\")
     sg = !git-submodule-grep
     find = !git ls-files | grep
     f = !git find
