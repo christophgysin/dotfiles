@@ -9,7 +9,7 @@ output WLC-1 position 0,0
 output WLC-2 position 500,0
 output WLC-2 resolution 500x500
 
-output * background Sway_Wallpaper_Blue_1920x1080.png fill
+output * background /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 gaps 2
 
 font pango:Terminus 14
