@@ -22,4 +22,7 @@ function clone_repo() {
     )
 }
 
-alias clone_repo_mgw="clone_repo mgw/mgw $HOME/m"
+export GIT_HOOKS_REPO=/repo/$USER/git-hooks
+
+alias clone_repo_mgw="clone_repo mgw/mgw /repo/$USER/mgw"
+alias clone_repo_git_hooks="clone_repo mgw/git-hooks ${GIT_HOOKS_REPO}"
