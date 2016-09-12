@@ -10,3 +10,5 @@ alias vm-bitbake-5='ssh -F ~/m/tools/vm/ansible/ssh_config ssekilx5345_bitbake-d
 alias vm-bitbake-6='ssh -F ~/m/tools/vm/ansible/ssh_config ssekilx5346_bitbake-dev'
 alias vm-bitbake-7='ssh -F ~/m/tools/vm/ansible/ssh_config ssekilx5347_bitbake-dev'
 alias vm-bitbake-8='ssh -F ~/m/tools/vm/ansible/ssh_config ssekilx5348_bitbake-dev'
+alias vm-bitbake-9='ssh -F ~/m/tools/vm/ansible/ssh_config ssekilx5349_bitbake-dev'
+alias vm-bitbake-10='ssh -F ~/m/tools/vm/ansible/ssh_config ssekilx5350_bitbake-dev'
