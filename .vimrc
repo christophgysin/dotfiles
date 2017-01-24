@@ -238,7 +238,7 @@ noremap <Leader>enc :<C-w>execute
             \ substitute(":'<,'>s/^.*/#&#/ \| :nohls", "#", input(">"), "g")<CR>
 
 " save as root
-cmap w!! w !sudo tee % > /dev/null
+cmap w!! w !sudo tee '%' >/dev/null
 
 " set up some more useful digraphs
 digraph ., 8230    " ellipsis (…)
