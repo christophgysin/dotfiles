@@ -3,7 +3,7 @@
 # arch
 [ $(id -u) = 0 ] || SUDO=sudo
 function pacu() { $SUDO pacman -Syu "${@}" && pacnew-update; }
-alias pacs="pacman -Ss"
+alias pacs="pacsearch"
 alias pacI="pacman -Qi"
 alias paci="$SUDO pacman -S"
 alias pacr="$SUDO pacman -R"
