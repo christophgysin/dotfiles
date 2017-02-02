@@ -4,6 +4,6 @@ xset dpms 600 1200 1800
 setxkbmap ch
 xset b off
 
-xrandr | grep -q "DP-1 connected" && outputs dual
+xrandr | grep -q "DP-2 connected" && outputs dual
 
 exec i3
