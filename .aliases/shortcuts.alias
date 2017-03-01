@@ -1,6 +1,6 @@
 # shortcuts
-alias l='ls -lh --color=auto'
-alias ll='ls -la --color=auto'
+alias l='ls -lh -G'
+alias ll='ls -la -G'
 g(){ i=$1; shift; grep $i -In --color -r $*;}
 alias c='clear'
 alias t='vim ~/todo'
