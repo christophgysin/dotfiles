@@ -1,7 +1,0 @@
-#!/bin/bash
-
-SHELLCHECK_VERSION=0.3.5
-
-LD_LIBRARY_PATH=/app/vbuild/SLED11-x86_64/gmp/5.1.3/lib \
-    /proj/mgw/mgwenv/3pp/shellcheck/${SHELLCHECK_VERSION}/bin/shellcheck \
-        "$@"
