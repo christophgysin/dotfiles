@@ -4,10 +4,16 @@ for i in ~/.aliases/*.alias; do . $i; done
 
 complete -cf sudo
 
-bash_completion=/usr/share/bash-completion/bash_completion
-[ -r $bash_completion ] && . $bash_completion
+bash_completions=(
+    /usr/share/bash-completion/bash_completion
+    /usr/local/etc/bash_completion
+)
+
+for bash_completion in "${bash_completions[@]}"; do
+    [ -r $bash_completion ] && . $bash_completion
+done
 
 cnf_hook=/usr/share/doc/pkgfile/command-not-found.bash
 [ -r $cnf_hook ] && . $cnf_hook
 
-# vim:ft=sh
+# vim: ft=sh
