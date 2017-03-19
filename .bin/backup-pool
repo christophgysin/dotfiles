@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+rsync \
+    --recursive \
+    --links \
+    --devices \
+    --specials \
+    --verbose \
+    --fuzzy \
+    --progress \
+    --stats \
+    --exclude lost+found \
+    --perms \
+    --times \
+    --group \
+    --owner \
+    --delete \
+    /mnt/pool/ /mnt/ext/ \
+    "$@"
