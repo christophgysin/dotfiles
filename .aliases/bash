@@ -16,4 +16,8 @@ done
 cnf_hook=/usr/share/doc/pkgfile/command-not-found.bash
 [ -r $cnf_hook ] && . $cnf_hook
 
+if brew command command-not-found-init &>/dev/null; then
+    eval "$(brew command-not-found-init)"
+fi
+
 # vim: ft=sh
