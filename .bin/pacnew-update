@@ -2,4 +2,14 @@
 
 [ $(id -u) = 0 ] || SUDO=sudo
 
-$SUDO find /etc /boot /usr /var -name *.pacnew -exec pacnew-update-1 '{}' ';'
+config_dirs=(
+    /etc
+    /boot
+    /usr
+    /var
+)
+
+$SUDO \
+    find "${config_dirs[@]}" \
+        -name "*.pacnew" \
+        -exec pacnew-update-1 '{}' ';'
