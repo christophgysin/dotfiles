@@ -2,7 +2,7 @@
 kwmc config padding 40 20 20 20
 
 # Set default values for container gaps
-kwmc config gap 15 15
+kwmc config gap 0 0
 
 # Default tiling mode for Kwm (bsp | monocle | float)
 kwmc config tiling bsp
