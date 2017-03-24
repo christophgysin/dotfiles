@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+defaults write com.apple.screencapture disable-shadow -bool true
