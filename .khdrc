@@ -80,6 +80,11 @@ switcher - k            :   kwmc window -f north
 switcher - n            :   kwmc window -fm prev
 switcher - m            :   kwmc window -fm next
 
+switcher + shift - h    :   kwmc window -m west
+switcher + shift - l    :   kwmc window -m east
+switcher + shift - j    :   kwmc window -m south
+switcher + shift - k    :   kwmc window -m north
+
 switcher - 1            :   kwmc space -fExperimental 1
 switcher - 2            :   kwmc space -fExperimental 2
 switcher - 3            :   kwmc space -fExperimental 3
