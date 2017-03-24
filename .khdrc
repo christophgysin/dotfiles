@@ -1,7 +1,8 @@
+# /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/Headers/Events.h
+
 # bind mouse-buttons
-- button3 : khd -p "cmd - 0x21"
-- button4 : khd -p "cmd - 0x1e"; \
-            echo "button4" | alerter -title Test passthrough -timeout 2
+- button3 : khd -p "cmd - 0x21" # [
+- button4 : khd -p "cmd - 0x1e" # ]
 
 # vi-mode for non-terminal applications
 
