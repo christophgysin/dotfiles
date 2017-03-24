@@ -70,7 +70,7 @@ switcher - q            :   khd -e "mode activate info"
 # switcher mode
 switcher - r            :   khd -e "reload" # reload config
 
-switcher - return       :   open -na /Applications/HyperTerm.app;\
+switcher - return       :   open -na /Applications/iTerm.app;\
                             khd -e "mode activate default"
 
 switcher - h            :   kwmc window -f west
