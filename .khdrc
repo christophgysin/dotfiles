@@ -1,91 +1,7 @@
-# sample config for khd
-
-# NOTE(koekeishiya): A bind is written in the form:
-#                   <keysym> [!] [<app list>] [->] : <command>
-#                   where
-#                       <keysym>   = mode + mod + ... + mod - literal
-#
-#                       <keysym>   = mode + mod + ... + mod - keycode
-#                                    keycode must have 0x prefix
-#
-#                       <keysym>   = mode + mod + ... + mod - button#
-#                                    replace '#' with mouse-button id; id >= 3
-#
-#                       modifier only binding
-#                       <keysym>   = mode + mod + ... + mod
-#
-#                       literal only binding
-#                       <keysym>   = - literal
-#
-#                       keycode only binding
-#                       <keysym>   = - keycode
-#
-#                       [<app,
-#                         app,     = optional list '[app1, ..., appN]' of applications
-#                         app>]      that this bind will be activated for. if the
-#                                    focused application is not contained in this list,
-#                                    the associated command will not be triggered, and
-#                                    the keypress will be passed through as normal.
-#
-#                       [!]        = optional operator '!' negates the behaviour when a
-#                                    list of applications is given. this marks the bind
-#                                    as 'Hotkey_Exclude', causing the bind to not work
-#                                    when the focused application is in the given list.
-#
-#                       [->]       = optional operator '->' that marks this bind as
-#                                    'passthrough'. this causes the key to be passed
-#                                    through to the system, instead of being consumed.
-#
-#                       <command>  = command is executed through '$SHELL -c' and
-#                                    follows valid shell syntax. if the $SHELL environment
-#                                    variable is not set, it will default to '/bin/bash'.
-#                                    when bash is used, the ';' delimeter can be specified
-#                                    to chain commands.
-#
-#                                    to allow a command to extend into multiple lines,
-#                                    prepend '\' at the end of the previous line.
-#
-#                                    an EOL character signifies the end of the bind.
-
-# NOTE(koekeishiya) Example of passthrough
-# cmd - m -> : echo "alert and minimize window" | alerter -title Test passthrough -timeout 2
-
-# NOTE(koekeishiya) Example of app list
-# alt - e [
-#           iTerm2,
-#           Terminal,
-#           HyperTerm
-#         ]
-#         : echo "so this is how deep the rabbit hole goes.." |\
-#           alerter -title Test passthrough -timeout 2
-
-# NOTE(koekeishiya) Example of negated app list
-# alt - e [
-#           iTerm2,
-#           Terminal,
-#           HyperTerm
-#         ] !
-#         : echo "blue pill, i choose you!" |\
-#           alerter -title Test passthrough -timeout 2
-
-# NOTE(koekeishiya) Modifier only binding
-# left shift    -> (    right shift   -> )
-# left cmd      -> {    right cmd     -> }
-
-# khd mod_trigger_timeout 0.1
-# lshift : khd -p "shift - 8"
-# rshift : khd -p "shift - 9"
-# lcmd   : khd -p "shift + alt - 8"
-# rcmd   : khd -p "shift + alt - 9"
-
-# NOTE(koekeishiya) Bind mouse-buttons
-# - button3 : khd -w "mouse-button 3 pressed"
-# - button4 : khd -w "mouse-button 4 pressed"
-
-# TODO(koekeishiya): possibly allow combined syntax such as
-# [switcher,ytd] + ctrl - f : khd -e "mode activate default"
-
-
+# bind mouse-buttons
+- button3 : khd -p "cmd - 0x21"
+- button4 : khd -p "cmd - 0x1e"; \
+            echo "button4" | alerter -title Test passthrough -timeout 2
 
 # vi-mode for non-terminal applications
 
@@ -121,20 +37,12 @@ shift + lctrl - e ![HyperTerm,Terminal,iTerm2]      :   khd -p "shift + alt - ri
 # remap left-control x       -> forward delete
 lctrl - x         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- delete"
 
-
-
 # enable kwm compatibility mode
 khd kwm on
-
-
-
 
 # suppress unregistered keybinds outside default mode
 # enabled by default! must be explicitly set to 'off'
 # khd void_unlisted_bind off
-
-
-
 
 # set border color for different modes
 khd mode default color 0xddd5c4a1
@@ -144,8 +52,6 @@ khd mode swap color 0xdd458588
 khd mode tree color 0xddfabd2f
 khd mode space color 0xddb16286
 khd mode info color 0xddcd950c
-
-
 
 # toggle between modes
 ctrl - f                :   khd -e "mode activate switcher"
@@ -160,8 +66,6 @@ switcher - a            :   khd -e "mode activate swap"
 switcher - s            :   khd -e "mode activate space"
 switcher - d            :   khd -e "mode activate tree"
 switcher - q            :   khd -e "mode activate info"
-
-
 
 # switcher mode
 switcher - r            :   khd -e "reload" # reload config
@@ -197,8 +101,6 @@ switcher + shift - 1    :   kwmc display -f 0
 switcher + shift - 2    :   kwmc display -f 1
 switcher + shift - 3    :   kwmc display -f 2
 
-
-
 # ytd mode
 ytd - x                 :   ytc play;\
                             khd -e "mode activate default"
@@ -215,8 +117,6 @@ ytd - a                 :   ytc volup
 ytd - d                 :   ytc voldown
 ytd - right             :   ytc seekfw
 ytd - left              :   ytc seekbk
-
-
 
 # swap mode
 swap - h                :   kwmc window -s west
@@ -269,8 +169,6 @@ space + shift - up      :   kwmc space -p decrease top
 space + shift - down    :   kwmc space -p decrease bottom
 space + shift - p       :   kwmc space -p decrease all
 
-
-
 # tree mode
 tree - f                :   kwmc window -z fullscreen
 tree - d                :   kwmc window -z parent
@@ -298,8 +196,6 @@ tree + shift - p        :   kwmc tree -pseudo destroy
 tree - o                :   kwmc window -s prev
 tree + shift - o        :   kwmc window -s next
 
-
-
 # default
 cmd + alt + ctrl - m    :   kwmc window -mk focused
 cmd + alt + ctrl - h    :   kwmc window -mk west wrap
@@ -307,7 +203,6 @@ cmd + alt + ctrl - l    :   kwmc window -mk east wrap
 cmd + alt + ctrl - j    :   kwmc window -mk south wrap
 cmd + alt + ctrl - k    :   kwmc window -mk north wrap
 
-cmd - 0x2A              :   khd -w "aasvi93@hotmail.com"
 cmd - 7                 :   khd -w "\\"
 cmd - 8                 :   khd -w "{"
 cmd - 9                 :   khd -w "}"
