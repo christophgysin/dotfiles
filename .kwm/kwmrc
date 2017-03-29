@@ -60,7 +60,9 @@ kwmc rule owner="System Preferences" properties={float="true"}
 
 # The following command creates a rule that captures an application to the given
 # screen, if the screen exists.
-#kwmc rule owner="iTunes" properties={display="1"}
+kwmc rule owner="Slack" properties={display="0"; space="1"}
+kwmc rule owner="Spotify" properties={display="0"; space="2"}
+kwmc rule owner="Firefox" properties={display="1"}
 
 # Enable border for focused window
 kwmc config border focused on
