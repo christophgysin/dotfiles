@@ -23,7 +23,6 @@ syntax keyword kwmFunction config rule
 highlight link kwmFunction Identifier
 
 syntax keyword kwmOperator padding gap tiling float-non-resizable lock-to-container focus-follows-mouse standby-on-float center-on-float mouse-follows-focus mouse-drag cycle-focus space display split-ratio spawn border owner properties
-
 highlight link kwmOperator Include
 
 let b:current_syntax = "kwm"

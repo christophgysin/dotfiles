@@ -1,1 +1,1 @@
-au BufNewFile,BufRead {*/,}{.,}kvmrc set filetype=kvm
+au BufNewFile,BufRead {*/}kwmrc set filetype=kwm
