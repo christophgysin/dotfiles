@@ -64,8 +64,10 @@ ctrl - f                :   khd -e "mode activate switcher"
 switcher + ctrl - f     :   khd -e "mode activate default"
 switcher - return       :   khd -e "mode activate default"
 
-switcher - r            :   khd -e "reload"
-switcher + shift - r    :   brew services restart kwm
+switcher - r            :   khd -e "reload"; \
+                            khd -e "mode activate default"
+switcher + shift - r    :   brew services restart kwm; \
+                            khd -e "mode activate default"
 
 switcher - h            :   kwmc window -f west
 switcher - l            :   kwmc window -f east
@@ -90,10 +92,10 @@ switcher - z            :   kwmc space -fExperimental left
 switcher - c            :   kwmc space -fExperimental right
 switcher - f            :   kwmc space -fExperimental previous
 
-switcher + shift - z    :   kwmc window -m space left;\
+switcher + shift - z    :   kwmc window -m space left; \
                             kwmc space -fExperimental left
 
-switcher + shift - c    :   kwmc window -m space right;\
+switcher + shift - c    :   kwmc window -m space right; \
                             kwmc space -fExperimental right
 
 switcher + shift - 1    :   kwmc display -f 0
@@ -149,8 +151,6 @@ swap + shift - 1        :   kwmc window -m display 0
 swap + shift - 2        :   kwmc window -m display 1
 swap + shift - 3        :   kwmc window -m display 2
 
-
-
 # space mode
 switcher - s            :   khd -e "mode activate space"
 space + ctrl - f        :   khd -e "mode activate default"
@@ -186,7 +186,7 @@ tree - d                :   kwmc window -z parent
 tree - w                :   kwmc window -t focused
 tree - r                :   kwmc tree rotate 90
 
-tree - s                :   kwmc window -c split - mode toggle;\
+tree - s                :   kwmc window -c split - mode toggle; \
                             khd -e "mode activate default"
 
 tree - c                :   kwmc window -c type toggle;\
