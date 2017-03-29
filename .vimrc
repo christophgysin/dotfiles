@@ -311,6 +311,16 @@ let use_xhtml=1
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+if executable('node_modules/.bin/eslint')
+  let b:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
+endif
+
 " final commands
 
 " turn off any existing search
