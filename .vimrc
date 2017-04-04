@@ -320,6 +320,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 if executable('node_modules/.bin/eslint')
   let b:syntastic_javascript_eslint_exec = 'node_modules/.bin/eslint'
 endif
+let g:syntastic_sh_shellcheck_args = '-x'
 
 " final commands
 
