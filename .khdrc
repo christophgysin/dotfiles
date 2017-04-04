@@ -44,6 +44,24 @@ shift + lctrl - e ![HyperTerm,Terminal,iTerm2]      :   khd -p "shift + alt - ri
 # remap left-control x       -> forward delete
 lctrl - x         ![HyperTerm,Terminal,iTerm2]      :   khd -p "- delete"
 
+cmd - 1         : kwmc space -fExperimental 1
+cmd - 2         : kwmc space -fExperimental 2
+cmd - 3         : kwmc space -fExperimental 3
+cmd - 4         : kwmc space -fExperimental 4
+cmd - 5         : kwmc space -fExperimental 5
+cmd - 6         : kwmc space -fExperimental 6
+cmd + shift - 1 : kwmc window -m space 1
+cmd + shift - 2 : kwmc window -m space 2
+cmd + shift - 3 : kwmc window -m space 3
+cmd + shift - 4 : kwmc window -m space 4
+cmd + shift - 5 : kwmc window -m space 5
+cmd + shift - 6 : kwmc window -m space 6
+
+cmd + shift - q : kwmc window -c split - mode toggle; \
+                  khd -e "mode activate default"
+cmd - 0x0a      : kwmc window -c split - mode toggle; \
+                  khd -e "mode activate default"
+
 # enable kwm compatibility mode
 khd kwm on
 
@@ -185,9 +203,6 @@ tree - f                :   kwmc window -z fullscreen
 tree - d                :   kwmc window -z parent
 tree - w                :   kwmc window -t focused
 tree - r                :   kwmc tree rotate 90
-
-tree - s                :   kwmc window -c split - mode toggle; \
-                            khd -e "mode activate default"
 
 tree - c                :   kwmc window -c type toggle;\
                             khd -e "mode activate default"
