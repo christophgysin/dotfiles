@@ -1,7 +1,7 @@
 xset +fp /usr/share/fonts/local
 xset fp rehash
 xset dpms 600 1200 1800
-setxkbmap ch
+setxkbmap fi
 xset b off
 
 autocutsel -fork

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-int=LVDS-1
+int=eDP-1
 ext=DP-2
-vga=VGA-1
-pos=left
+vga=HDMI-1
+pos=right
 
 case ${1} in
     int)
@@ -26,6 +26,7 @@ case ${1} in
             ;;
     dual)
         xrandr \
+            --dpi 192 \
             --output $int --auto \
             --output $ext --auto --$pos-of $int --primary \
             --output $vga --off \
@@ -49,6 +50,6 @@ case ${1} in
             --output $vga --above $ext \
             ;;
     *)
-        echo "usage: $(basename $0) [ int | ext | dup | dual | vga | projector | all ]";
+        echo "usage: $(basename "$0") [ int | ext | dup | dual | vga | projector | all ]";
         exit 1;;
 esac

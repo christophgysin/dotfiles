@@ -1,6 +1,6 @@
 # vim: set ft=conf
 
-font pango:Terminus 14
+font pango:Terminus 8
 
 focus_follows_mouse no
 mouse_warping none

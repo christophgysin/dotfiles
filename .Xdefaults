@@ -1,3 +1,5 @@
+Xft.dpi: 192
+
 ! urxvt
 urxvt*termName:rxvt-256color
 urxvt.reverseVideo:on
