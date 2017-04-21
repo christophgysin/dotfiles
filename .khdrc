@@ -1,8 +1,8 @@
 # /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/Headers/Events.h
 
 # bind mouse-buttons
-- button3 : khd -p "cmd - 0x21" # [
-- button4 : khd -p "cmd - 0x1e" # ]
+- button3 : khd -p "cmd + alt - 8" # [
+- button4 : khd -p "cmd + alt - 9" # ]
 
 # new terminal
 cmd - return : open -na /Applications/iTerm.app; \
