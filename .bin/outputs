@@ -26,7 +26,6 @@ case ${1} in
             ;;
     dual)
         xrandr \
-            --dpi 192 \
             --output $int --auto \
             --output $ext --auto --$pos-of $int --primary \
             --output $vga --off \
