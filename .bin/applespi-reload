@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+sudo sh -c 'rmmod spi_pxa2xx_platform; modprobe spi_pxa2xx_platform'
+
+setxkbmap -layout fi -variant mac
