@@ -3,7 +3,7 @@
 int=eDP-1
 ext=DP-2
 vga=HDMI-1
-pos=right
+pos=right-of
 
 case ${1} in
     int)
@@ -27,7 +27,7 @@ case ${1} in
     dual)
         xrandr \
             --output $int --auto \
-            --output $ext --auto --$pos-of $int --primary \
+            --output $ext --auto --$pos $int --primary \
             --output $vga --off \
             ;;
     vga)
@@ -45,7 +45,7 @@ case ${1} in
     all)
         xrandr \
             --output $int --auto \
-            --output $ext --left-of $int --primary \
+            --output $ext --$pos $int --primary \
             --output $vga --above $ext \
             ;;
     *)
