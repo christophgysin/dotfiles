@@ -1,6 +1,7 @@
 xset +fp /usr/share/fonts/local
 xset fp rehash
-xset dpms 600 1200 1800
+#xset dpms 60 120 180
+xset -dpms
 setxkbmap -layout fi -variant mac
 xset b off
 
