@@ -16,7 +16,7 @@
     br = branch
     bv = branch -vv
     rv = remote -v
-    tb = !git checkout -tb ${1} ${2:-origin/master} || :
+    tb = !git checkout -tb ${1} ${2:-$(git upstream)} || :
     rst = reset
     rh = reset --hard
     pick = cherry-pick
