@@ -79,7 +79,7 @@ exec redshift &
 exec dunst &
 
 exec xautolock -time 12 -locker 'screenlock' &
-exec xss-lock screenlock &
+#exec xss-lock screenlock &
 bindsym $win+period exec screenlock
 
 # resize
