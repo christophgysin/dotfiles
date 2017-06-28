@@ -30,6 +30,12 @@ case ${1} in
             --output $ext --auto --$pos $int --primary \
             --output $vga --off \
             ;;
+    above)
+        xrandr \
+            --output $int --auto \
+            --output $ext --auto --above $int --primary \
+            --output $vga --off \
+            ;;
     vga)
         xrandr \
             --output $int --auto --primary \
