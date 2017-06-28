@@ -92,8 +92,6 @@ bindsym $win+0 workspace number 10
 bindsym $win+Shift+BackSpace reload
 bindsym $win+Delete exit
 
-#exec xautolock -time 12 -locker 'screenlock' &
-exec setxkbmap fi
 bindsym $win+period exec swaylock --image /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png --scaling fill
 
 # resize
