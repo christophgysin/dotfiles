@@ -71,19 +71,24 @@ bindsym $win+2 workspace number 2
 bindsym $win+3 workspace number 3
 bindsym $win+4 workspace number 4
 bindsym $win+5 workspace number 5
-bindsym $win+6 workspace number 6
-bindsym $win+7 workspace number 7
-bindsym $win+8 workspace number 8
-bindsym $win+9 workspace number 9
-bindsym $win+0 workspace number 10
+#bindsym $win+6 workspace number 6
+#bindsym $win+7 workspace number 7
+#bindsym $win+8 workspace number 8
+#bindsym $win+9 workspace number 9
+#bindsym $win+0 workspace number 10
+
+# mac
+#bindsym --release $win+7 exec --no-startup-id xdotool key backslash
+#bindsym --release $win+8 exec --no-startup-id xdotool key braceleft
+#bindsym --release $win+9 exec --no-startup-id xdotool key braceright
 
 # move focused container to workspace
-#bindsym $win+Shift+1 move container to workspace number 1; workspace number 1
-#bindsym $win+Shift+2 move container to workspace number 2; workspace number 2
-#bindsym $win+Shift+3 move container to workspace number 3; workspace number 3
-#bindsym $win+Shift+4 move container to workspace number 4; workspace number 4
-#bindsym $win+Shift+5 move container to workspace number 5; workspace number 5
-#bindsym $win+Shift+6 move container to workspace number 6; workspace number 6
+bindsym $win+Shift+1 move container to workspace number 1; workspace number 1
+bindsym $win+Shift+2 move container to workspace number 2; workspace number 2
+bindsym $win+Shift+3 move container to workspace number 3; workspace number 3
+bindsym $win+Shift+4 move container to workspace number 4; workspace number 4
+bindsym $win+Shift+5 move container to workspace number 5; workspace number 5
+bindsym $win+Shift+6 move container to workspace number 6; workspace number 6
 #bindsym $win+Shift+7 move container to workspace number 7; workspace number 7
 #bindsym $win+Shift+8 move container to workspace number 8; workspace number 8
 #bindsym $win+Shift+9 move container to workspace number 9; workspace number 9
