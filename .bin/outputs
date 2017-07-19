@@ -27,13 +27,13 @@ case ${1} in
     dual)
         xrandr \
             --output $int --auto \
-            --output $ext --auto --$pos $int --primary \
+            --output $ext --auto --$pos $int \
             --output $vga --off \
             ;;
     above)
         xrandr \
             --output $int --auto \
-            --output $ext --auto --above $int --primary \
+            --output $ext --auto --above $int \
             --output $vga --off \
             ;;
     vga)
