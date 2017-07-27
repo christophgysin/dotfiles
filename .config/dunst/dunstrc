@@ -6,9 +6,7 @@
     padding = 10
     horizontal_padding = 10
     dmenu = "/usr/bin/dmenu -p dunst: -nb #FFFFFF -nf #000000 -sb #94DBFF -sf #000000"
-
-[frame]
-    color = "#000000"
+    frame_color = "#000000"
 
 [urgency_low]
     background = "#ffffff"
