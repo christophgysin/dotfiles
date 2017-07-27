@@ -34,8 +34,11 @@ bindsym XF86AudioLowerVolume exec volume down
 bindsym XF86AudioRaiseVolume exec volume up
 bindsym XF86AudioMute exec volume toggle-mute
 bindsym XF86TouchpadToggle exec touchpad-toggle
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+bindsym XF86MonBrightnessUp exec brightnessctl -d acpi_video0 set +10
+bindsym XF86MonBrightnessDown exec brightnessctl -d acpi_video0 set 10-
+bindsym XF86KbdBrightnessUp exec brightnessctl -d spi::kbd_backlight set +32
+bindsym XF86KbdBrightnessDown exec brightnessctl -d spi::kbd_backlight set 32-
 
 # split
 bindsym $win+i split h
