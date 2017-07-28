@@ -9,7 +9,7 @@ output WLC-1 position 0,0
 output WLC-2 position 500,0
 output WLC-2 resolution 500x500
 
-output * background /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 gaps 2
 
 font pango:Terminus 14
@@ -86,13 +86,12 @@ bindsym $alt+0 workspace number 10
 #bindsym $alt+Shift+9 move container to workspace number 9; workspace number 9
 #bindsym $alt+Shift+0 move container to workspace number 10; workspace number 10
 
-bindsym $alt+Escape reload
-bindsym $alt+BackSpace restart
-bindsym $alt+Delete exec i3-msg exit
+bindsym $alt+BackSpace reload
+bindsym $alt+Shift+Delete exit
 
 #exec xautolock -time 12 -locker 'screenlock' &
 exec setxkbmap ch
-bindsym $alt+period exec ~/projects/sway/sway/build/bin/swaylock --image /usr/share/sway/wallpaper.jpg --scaling fill
+bindsym $alt+period exec swaylock --image /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill --scaling fill
 
 # resize
 bindsym $win+w mode "resize"
@@ -106,6 +105,7 @@ mode "resize" {
 }
 
 bar {
+    swaybar_command swaybar -d
     status_command i3status
     font pango:Terminus 14
 }
