@@ -59,7 +59,7 @@
     find = !git ls-files | grep
     f = !git find
     fe = !args=(\"$@\") && vim $(git f \"${args[@]}\")
-    gerrit = !ssh -p 29418 echrgys@gerrit.ericsson.se gerrit
+    gerrit = !ssh -p 29418 echrgys@gerrit gerrit
     reviewers = !git gerrit set-reviewers -a
     conflict = !vim $(git diff --name-only --diff-filter=U)
 
