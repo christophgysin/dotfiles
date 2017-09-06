@@ -33,6 +33,6 @@ alias chromium-inka="chromium --user-data-dir=$HOME/.config/chromium-inka"
 
 urldecode() { sed 's % \\\\x g' | xargs printf; }
 
-etc-tig() { (cd /etc; tig); }
+etc-tig() { (cd /etc && sudo tig) }
 
 # vim:ft=sh
