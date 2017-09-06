@@ -32,8 +32,8 @@ case ${1} in
             ;;
     above)
         xrandr \
-            --output $int --auto \
-            --output $ext --auto --above $int \
+            --output $int --auto --pos 640x1600 \
+            --output $ext --auto --pos 0x0 \
             --output $vga --off \
             ;;
     vga)
@@ -55,6 +55,6 @@ case ${1} in
             --output $vga --above $ext \
             ;;
     *)
-        echo "usage: $(basename "$0") [ int | ext | dup | dual | vga | projector | all ]";
+        echo "usage: $(basename "$0") [ int | ext | dup | dual | above | vga | projector | all ]";
         exit 1;;
 esac

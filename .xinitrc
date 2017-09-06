@@ -9,6 +9,6 @@ autocutsel -fork
 autocutsel -selection PRIMARY -fork
 
 xrandr --dpi 192
-xrandr | grep -q "DP-2 connected" && outputs dual
+xrandr | grep -q "DP-2 connected" && outputs above
 
 exec i3
