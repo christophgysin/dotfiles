@@ -1,4 +1,4 @@
-Xft.dpi: 192
+!Xft.dpi: 192
 
 ! urxvt
 urxvt*termName:rxvt-256color

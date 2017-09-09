@@ -1,14 +1,24 @@
-xset +fp /usr/share/fonts/local
+#!/bin/sh
+
+#xset +fp /usr/share/fonts/local
 xset fp rehash
 #xset dpms 60 120 180
 xset -dpms
-#setxkbmap -layout fi -variant mac
 xset b off
+
+#setxkbmap -layout fi -variant mac
 
 autocutsel -fork
 autocutsel -selection PRIMARY -fork
 
-xrandr --dpi 192
-xrandr | grep -q "DP-2 connected" && outputs above
+if xrandr | grep -q "DP-2 connected"; then
+    outputs dual
+else
+    export ELM_SCALE=1.5
+    export GDK_SCALE=2
+    export GDK_DPI_SCALE=0.3
+    export QT_AUTO_SCREEN_SCALE_FACTOR=1
+    xrandr --dpi 192
+fi
 
 exec i3
