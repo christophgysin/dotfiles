@@ -2,7 +2,7 @@ xset +fp /usr/share/fonts/local
 xset fp rehash
 #xset dpms 60 120 180
 xset -dpms
-setxkbmap -layout fi -variant mac
+#setxkbmap -layout fi -variant mac
 xset b off
 
 autocutsel -fork
