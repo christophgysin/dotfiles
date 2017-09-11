@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sudo iwlist wlp2s0 scan | grep -E 'ESSID|Quality|WPA'
