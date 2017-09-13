@@ -16,7 +16,7 @@ if xrandr | grep -q "DP-2 connected"; then
 else
     export ELM_SCALE=1.5
     export GDK_SCALE=2
-    export GDK_DPI_SCALE=0.3
+    export GDK_DPI_SCALE=0.5
     export QT_AUTO_SCREEN_SCALE_FACTOR=1
     xrandr --dpi 192
 fi
