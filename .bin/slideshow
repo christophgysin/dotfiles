@@ -1,2 +1,2 @@
 #!/bin/bash
-qiv -liatsfd5 "$@"
+qiv -luiatsfd5 "$@"
