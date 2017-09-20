@@ -29,11 +29,6 @@ case $1 in
             --output $int --auto \
             --output $ext --auto --right-of $int \
             ;;
-    left)
-        xrandr \
-            --output $int --auto \
-            --output $ext --auto --left-of $int \
-            ;;
     above)
         xrandr \
             --output $int --auto --pos 640x1600 \
