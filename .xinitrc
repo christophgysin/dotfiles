@@ -4,6 +4,7 @@
 xset fp rehash
 #xset dpms 60 120 180
 xset -dpms
+xset s off
 xset b off
 
 #setxkbmap -layout fi -variant mac
