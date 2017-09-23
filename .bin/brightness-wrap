@@ -6,7 +6,7 @@ args=("$@")
 
 brightnessctl -d "$device" "${args[@]}"
 
-cur=$(~/projects/brightnessctl/brightnessctl -d "$device" get)
+cur=$(brightnessctl -d "$device" get)
 max=$(brightnessctl -d "$device" max)
 
 notify-send -t 500 "$device" "brightness: $[100 * $cur / $max ]%"
