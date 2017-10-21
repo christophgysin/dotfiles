@@ -12,8 +12,9 @@ xset b off
 autocutsel -fork
 autocutsel -selection PRIMARY -fork
 
-if xrandr | grep -q "DP-2 connected"; then
-    outputs ext
+if [ "$(</sys/class/drm/card0-DP-2/status)" == connected ]; then
+    #outputs ext
+    :
 else
     export ELM_SCALE=1.5
     export GDK_SCALE=2
