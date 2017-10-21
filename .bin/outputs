@@ -34,7 +34,13 @@ case $1 in
             --output $int --auto --pos 640x1600 \
             --output $ext --auto --pos 0x0 \
             ;;
+    standby)
+        xset dpms force standby
+        ;;
     *)
-        echo "usage: $(basename "$0") [ int(ernal) | ext(ernal) | dup(licate) | dual | right | left | above ]";
+        echo "usage: $(basename "$0") [" \
+            "int(ernal) | ext(ernal) | dup(licate) |" \
+            "dual | right | left | above | standby" \
+            "]";
         exit 1;;
 esac
