@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+QC35_ADDRESS=04:52:C7:C6:77:0F
+
+action=${1:-status}
+shift || :
+
+based() {
+    based-connect $QC35_ADDRESS "$@"
+}
+
+case $action in
+    status)
+        based -d
+        sleep 0.01
+        bat=$(based -b)
+        echo "Battery: $bat%"
+        ;;
+    fw)
+        based -f
+        ;;
+    serial)
+        based -s
+        ;;
+    bat)
+        based -b
+        ;;
+    paired)
+        based -a
+        ;;
+    nc)
+        if [ $# -ne 1 ]; then
+            echo >&2 "usage: $0 nc [ high | low | off ]"
+            exit 1
+        fi
+        based -c "$1"
+        ;;
+    raw)
+        based "$@"
+        ;;
+    *)
+        echo "usage: $0 [status | bat | nc]"
+        ;;
+esac
