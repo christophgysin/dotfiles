@@ -96,7 +96,7 @@ mode "resize" {
 }
 
 bar {
-    status_command i3status
+    status_command i3status | ~/.i3status.py
 }
 
 for_window [window_type="splash"] floating enable
