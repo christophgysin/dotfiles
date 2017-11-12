@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+function init_env() {
+    export DISPLAY=${DISPLAY:-":0"}
+    export XAUTHORITY=${XAUTHORITY:-$(
+        find /home/*/.Xauthority -print -quit
+    )}
+}
+
+function parse_xinput_devices() {
+    local REGEX="↳ (.*[^ ]) *	id=([0-9]*)"
+
+    while read -r line; do
+        if [[ "$line" =~ $REGEX ]]; then
+            local name=${BASH_REMATCH[1]}
+            local id=${BASH_REMATCH[2]}
+
+            echo "$id" "$name"
+        fi
+    done <<<"$(xinput list)"
+}
+
+function apply_keymap() {
+    local id=$1
+    local name=$2
+    local args=()
+
+    case "$name" in
+        'HID 046a:0011' | \
+        'Cypress  PS2toUSB KBM Bridge V2.02a' | \
+        'Logitech USB Keyboard')
+            args=(
+                '-layout' 'ch'
+            )
+            ;;
+        'Apple SPI Keyboard')
+            args=(
+                '-layout' 'fi'
+                '-variant' 'mac'
+            )
+            ;;
+    esac
+
+    [ "${args:-}" ] || return 0
+
+    echo "[$name]"
+    echo setxkbmap -device "$id" "${args[@]}"
+    setxkbmap -device "$id" "${args[@]}"
+}
+
+init_env
+
+while read -r id name; do
+    apply_keymap "$id" "$name"
+done <<< "$(parse_xinput_devices)"
