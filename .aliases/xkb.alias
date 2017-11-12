@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export XKB_DEFAULT_LAYOUT=fi
-export XKB_DEFAULT_VARIANT=mac
