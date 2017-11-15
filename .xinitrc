@@ -2,8 +2,8 @@
 
 #xset +fp /usr/share/fonts/local
 xset fp rehash
-#xset dpms 60 120 180
-xset -dpms
+xset dpms 120 300 600
+#xset -dpms
 xset s off
 xset b off
 
