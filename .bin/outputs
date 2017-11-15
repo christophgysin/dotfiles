@@ -35,7 +35,7 @@ case $1 in
             --output $ext --auto --pos 0x0 \
             ;;
     standby)
-        xset dpms force standby
+        sleep 0.5 && xset dpms force standby
         ;;
     *)
         echo "usage: $(basename "$0") [" \
