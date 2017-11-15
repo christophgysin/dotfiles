@@ -79,6 +79,7 @@ bindsym $win+BackSpace restart
 bindsym $win+Delete exec i3-msg exit
 bindsym $win+$alt+Delete exec poweroff
 bindsym $win+$alt+BackSpace exec reboot
+bindsym $win+$alt+F12 exec xset dpms force standby
 
 exec xautolock -time 12 -locker 'screenlock' &
 #exec xss-lock screenlock &
