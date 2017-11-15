@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/editorconfig"]
 	path = .vim/bundle/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule ".vim/bundle/tickscript"]
+	path = .vim/bundle/tickscript
+	url = https://github.com/nathanielc/vim-tickscript.git
