@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/tickscript"]
 	path = .vim/bundle/tickscript
 	url = https://github.com/nathanielc/vim-tickscript.git
+[submodule ".vim/bundle/docker"]
+	path = .vim/bundle/docker
+	url = https://github.com/ekalinin/Dockerfile.vim.git
