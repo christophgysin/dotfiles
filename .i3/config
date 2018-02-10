@@ -70,9 +70,9 @@ bindsym $win+Shift+5 move container to workspace number 5; workspace number 5
 bindsym $win+Shift+6 move container to workspace number 6; workspace number 6
 
 # mac
-bindsym --release $win+7 exec --no-startup-id xdotool key backslash
-bindsym --release $win+8 exec --no-startup-id xdotool key braceleft
-bindsym --release $win+9 exec --no-startup-id xdotool key braceright
+#bindsym --release $win+7 exec --no-startup-id xdotool key backslash
+#bindsym --release $win+8 exec --no-startup-id xdotool key braceleft
+#bindsym --release $win+9 exec --no-startup-id xdotool key braceright
 
 bindsym $win+Escape reload
 bindsym $win+BackSpace restart
