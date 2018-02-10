@@ -1,12 +1,3 @@
-# default opts
 alias man='man -a'
-alias df='df -h'
-alias du='du -h'
-alias nload='nload -i 102400 -o 102400 -t 500'
-#alias ctags='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q'
-#alias ctags='ctags-exuberant'
-alias erl='rlwrap -H ~/.erl_history erl -setcookie erlang'
-alias xpdesktop='rdesktop -u gysin -d LN_DOMAIN -z -k de-ch -a 16 -N gysin.swissphone.ch'
-alias unison='unison-gtk2 -log=false'
 
 # vim:ft=sh
