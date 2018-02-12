@@ -27,6 +27,7 @@
 import sys
 import json
 from subprocess import check_output, CalledProcessError
+import platform
 
 
 def get_governor():
@@ -78,7 +79,8 @@ if __name__ == '__main__':
         j = json.loads(line)
         # insert information into the start of the json, but could be anywhere
         # CHANGE THIS LINE TO INSERT SOMETHING ELSE
-        j.insert(0, {'full_text': '%s' % get_governor(), 'name': 'gov'})
+        j.insert(0, {'full_text': '%s' % platform.release(), 'name': 'rel'})
+        j.insert(1, {'full_text': '%s' % get_governor(), 'name': 'gov'})
         # j.insert(0, {'full_text': 'QC35 bat:%s' % get_qc35_bat(), 'name': 'qc35'})
         # and echo back new encoded json
         print_line(prefix+json.dumps(j))
