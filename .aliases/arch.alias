@@ -16,7 +16,7 @@ function pacyu() { yaourt -Syua "$@" && pacnew-update; }
 alias pacys="yaourt -Ss"
 alias pacyi="yaourt -S"
 alias pacyr="yaourt -R"
-function pacro() { $SUDO pacman -Rs $(pacman -Qtdq); }
+function pacro() { pacman -Qtdq | $SUDO xargs -r pacman -Rs; }
 alias pacclean="$SUDO find /var/cache/pacman/pkg -type f -mtime +0 -exec rm {} +"
 alias pacyg="yaourt -uG"
 function pacyR() { pacyi $(pacman -Qsq -- '-git$'); }
