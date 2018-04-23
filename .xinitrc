@@ -1,13 +1,9 @@
 #!/bin/sh
 
-#xset +fp /usr/share/fonts/local
 xset fp rehash
 xset dpms 120 300 600
-#xset -dpms
 xset s off
 xset b off
-
-#setxkbmap -layout fi -variant mac
 
 autocutsel -fork
 autocutsel -selection PRIMARY -fork
