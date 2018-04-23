@@ -1,22 +1,13 @@
 # shortcuts
 alias l='ls -lh --color=auto'
 alias ll='ls -la --color=auto'
-g(){ i=$1; shift; grep $i -In --color -r $*;}
 alias c='clear'
 alias t='vim ~/todo'
-alias b='vim ~/bugs'
-alias p='ncmpcpp'
 alias v='cvlc'
 alias m='mpv'
 alias mfs='mpv -fs'
 alias tv='mpv -fs dvb://'
-alias ms='m -ao null'
-alias bt='screen -S bt bittorrent-curses'
-type ack &>/dev/null || if type ack-grep &>/dev/null; then
-    alias ack=ack-grep; else ack(){
-        [ $# -lt 2 ] && grep -nr --color "$1" . || grep -nr --color "$@"; }; fi
 alias sx='exec startx'
-alias r='sudo su -'
 alias sys="sudo systemctl"
 type vim &>/dev/null || if type vim.tiny &>/dev/null; then alias vim=vim.tiny; fi
 
