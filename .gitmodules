@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/docker"]
 	path = .vim/bundle/docker
 	url = https://github.com/ekalinin/Dockerfile.vim.git
+[submodule ".vim/bundle/logstash"]
+	path = .vim/bundle/logstash
+	url = https://github.com/robbles/logstash.vim.git
