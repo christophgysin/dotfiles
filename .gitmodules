@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/logstash"]
 	path = .vim/bundle/logstash
 	url = https://github.com/robbles/logstash.vim.git
+[submodule "/home/chris/.vim/bundle/pkgbuild"]
+	path = /home/chris/.vim/bundle/pkgbuild
+	url = https://github.com/Firef0x/PKGBUILD.vim.git
