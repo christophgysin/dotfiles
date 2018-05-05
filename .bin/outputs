@@ -31,7 +31,7 @@ case $1 in
             ;;
     above)
         xrandr \
-            --output $int --auto --pos 640x1600 \
+            --output $int --auto --pos 640x2560 \
             --output $ext --auto --pos 0x0 \
             ;;
     standby)
