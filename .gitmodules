@@ -22,3 +22,6 @@
 [submodule "/home/chris/.vim/bundle/pkgbuild"]
 	path = /home/chris/.vim/bundle/pkgbuild
 	url = https://github.com/Firef0x/PKGBUILD.vim.git
+[submodule "/home/chris/.vim/bundle/typescript"]
+	path = /home/chris/.vim/bundle/typescript
+	url = https://github.com/leafgarland/typescript-vim.git
