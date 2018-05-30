@@ -62,6 +62,15 @@
     gerrit = !ssh -p 29418 echrgys@gerrit gerrit
     reviewers = !git gerrit set-reviewers -a
     conflict = !vim $(git diff --name-only --diff-filter=U)
+    #xclone = "!\
+    #    repo=$1 && \
+    #    project=${2:-advtp} && \
+    #    cd ${GIT_PREFIX:-.} && \
+    #    git -C \"${repo}\" config remote.pushDefault origin && \
+    #    :"
+
+[remote]
+    #pushDefault = origin
 
 [color]
     branch = auto
@@ -94,6 +103,9 @@
 
 [diff "odf"]
     textconv = odt2txt
+
+[diff "json"]
+    textconv = json_pp
 
 [diff]
     #algorithm = patience
