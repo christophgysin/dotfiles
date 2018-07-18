@@ -25,3 +25,6 @@
 [submodule "/home/chris/.vim/bundle/typescript"]
 	path = /home/chris/.vim/bundle/typescript
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule ".vim/bundle/solidity"]
+	path = .vim/bundle/solidity
+	url = https://github.com/tomlion/vim-solidity.git
