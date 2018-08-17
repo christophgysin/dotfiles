@@ -16,6 +16,7 @@ bindsym --whole-window $win+button2 floating toggle
 bindsym $win+Return exec $term
 bindsym $win+Shift+q kill
 bindsym $win+r exec dmenu-frecency
+bindsym $win+space exec dmenu-frecency
 bindsym $win+d exec --no-startup-id i3-dmenu-desktop
 
 # focus
@@ -49,7 +50,6 @@ bindsym $win+f fullscreen toggle
 
 # toggle tiling / floating
 bindsym $win+q floating toggle
-bindsym $win+space focus mode_toggle
 
 # switch to workspace
 bindsym $alt+h workspace prev
