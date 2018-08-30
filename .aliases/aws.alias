@@ -9,7 +9,7 @@ ssm() {
       aws ssm get-parameters-by-path \
         --recursive \
         --path "$1" \
-        --query 'join(`"\n"`, Parameters[].Name)' \
+        --query 'Parameters[].Name | join(`"\n"`, @)' \
         --output text
     ;;
     get)
