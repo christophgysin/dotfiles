@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+ssm() {
+  local action=$1
+  shift
+
+  case $action in
+    ls)
+      aws ssm get-parameters-by-path \
+        --recursive \
+        --path "$1" \
+        --query 'join(`"\n"`, Parameters[].Name)' \
+        --output text
+    ;;
+    get)
+      aws ssm get-parameter \
+        --name "$1" \
+        --with-decryption \
+        --query Parameter.Value \
+        --output text
+    ;;
+  esac
+}
