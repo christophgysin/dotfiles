@@ -4,7 +4,10 @@ device=$1
 shift
 args=("$@")
 
-brightnessctl -d "$device" "${args[@]}"
+brightnessctl \
+  --min-value=1 \
+  --device "$device" \
+  "${args[@]}"
 
 cur=$(brightnessctl -d "$device" get)
 max=$(brightnessctl -d "$device" max)
