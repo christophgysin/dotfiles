@@ -9,16 +9,16 @@ function init_env() {
 }
 
 function parse_xinput_devices() {
-    local REGEX="↳ (.*[^ ]) *	id=([0-9]*)"
+  local REGEX="↳ (.*[^ ]) *	id=([0-9]*).*\[(master|slave) +([a-z]+) \(([0-9]+)\)\]"
 
-    while read -r line; do
-        if [[ "$line" =~ $REGEX ]]; then
-            local name=${BASH_REMATCH[1]}
-            local id=${BASH_REMATCH[2]}
+  while read -r line; do
+      [[ "$line" =~ $REGEX ]] || continue
+      local name=${BASH_REMATCH[1]}
+      local id=${BASH_REMATCH[2]}
+      local type=${BASH_REMATCH[4]}
 
-            echo "$id" "$name"
-        fi
-    done <<<"$(xinput list)"
+      echo "$type" "$id" "$name"
+  done <<<"$(xinput list)"
 }
 
 function apply_keymap() {
@@ -51,6 +51,6 @@ function apply_keymap() {
 
 init_env
 
-while read -r id name; do
-    apply_keymap "$id" "$name"
+while read -r type id name; do
+  [ "$type" == keyboard ] && apply_keymap "$id" "$name"
 done <<< "$(parse_xinput_devices)"
