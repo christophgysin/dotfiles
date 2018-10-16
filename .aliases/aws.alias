@@ -8,16 +8,28 @@ ssm() {
     ls)
       aws ssm get-parameters-by-path \
         --recursive \
-        --path "$1" \
+        --path "${1:-/}" \
         --query 'Parameters[].Name | join(`"\n"`, @)' \
         --output text
     ;;
-    get)
+    cat)
       aws ssm get-parameter \
         --name "$1" \
         --with-decryption \
         --query Parameter.Value \
         --output text
+    ;;
+    put)
+      aws ssm put-parameter \
+        --name "$1" \
+        --type String \
+        --value "$2"
+    ;;
+    put-enc)
+      aws ssm put-parameter \
+        --name "$1" \
+        --type SecureString \
+        --value "$2"
     ;;
   esac
 }
