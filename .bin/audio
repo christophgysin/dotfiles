@@ -1,6 +1,6 @@
 #!/bin/bash
 
-card=alsa_card.pci-0000_00_1f.3
+card=0
 int=output:analog-stereo+input:analog-stereo
 ext=output:hdmi-stereo-extra1
 
