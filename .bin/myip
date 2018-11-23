@@ -1,3 +1,2 @@
 #!/bin/bash
-wget -qO- whatismyip.org
-echo
+curl -s https://httpbin.org/get | jq -r .origin
