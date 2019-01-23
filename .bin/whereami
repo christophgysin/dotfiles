@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
 ip=$(myip)
-echo $ip $(geoiplookup $ip)
+
+echo $ip
+geoiplookup $ip
