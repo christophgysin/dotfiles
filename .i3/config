@@ -80,8 +80,8 @@ bindsym $win+Delete exec i3-msg exit
 bindsym $win+$alt+Delete exec poweroff
 bindsym $win+$alt+BackSpace exec reboot
 bindsym $win+$alt+F12 exec xset dpms force standby
-bindsym $win+8 exec xset s off -dpms
-bindsym $win+9 exec "outputs ext"
+bindsym $win+8 exec xset s 0 0 && xset s off noblank && xset dpms 0 0 0 -dpms
+bindsym $win+9 exec "outputs ext && audio ext"
 bindsym $win+0 exec sh -c "autorandr --change && autokeymap"
 
 exec xautolock -time 12 -locker 'screenlock' &
