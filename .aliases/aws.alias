@@ -1,5 +1,25 @@
 #!/usr/bin/env bash
 
+cf() {
+  if [ "${#@}" == 0 ]; then
+    aws cloudformation describe-stacks \
+      | jq '.Stacks[]
+        | {
+          stack: .StackName,
+          outputs: (.Outputs // [])
+            | map({key: .OutputKey, value: .OutputValue})
+            | from_entries
+          }'
+  else
+    local stack=$1
+    aws cloudformation describe-stacks \
+      --stack-name "$stack" \
+      | jq '.Stacks[0].Outputs
+        | map({key: .OutputKey, value: .OutputValue})
+        | from_entries'
+  fi
+}
+
 ssm() {
   local action=$1
   shift
