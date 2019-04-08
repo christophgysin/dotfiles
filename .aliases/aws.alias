@@ -26,30 +26,45 @@ ssm() {
 
   case $action in
     ls)
+      local path=${1:-/}
+      shift || :
+
       aws ssm get-parameters-by-path \
         --recursive \
-        --path "${1:-/}" \
+        --path "$path" \
         --query 'Parameters[].Name | join(`"\n"`, @)' \
         --output text
     ;;
     cat)
+      local path=$1
+
       aws ssm get-parameter \
-        --name "$1" \
+        --name "$path" \
         --with-decryption \
         --query Parameter.Value \
         --output text
     ;;
     put)
+      local path=$1
+      local value=$2
+      shift 2
+
       aws ssm put-parameter \
-        --name "$1" \
+        --name "$path" \
         --type String \
-        --value "$2"
+        --value "$value" \
+        "$@"
     ;;
     put-enc)
+      local path=$1
+      local value=$2
+      shift 2
+
       aws ssm put-parameter \
-        --name "$1" \
+        --name "$path" \
         --type SecureString \
-        --value "$2"
+        --value "$value" \
+        "$@"
     ;;
   esac
 }
