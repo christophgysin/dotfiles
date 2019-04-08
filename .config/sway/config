@@ -13,7 +13,7 @@ output WLC-2 position 500,0
 output WLC-2 resolution 500x500
 
 output * background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
-gaps 2
+gaps inner 2
 
 font pango:Terminus 14
 
@@ -21,7 +21,8 @@ focus_follows_mouse no
 mouse_warping none
 
 set $alt Mod1
-set $win Mod4
+#set $win Mod4
+set $win Mod1
 set $term terminology
 
 # Use Mouse+$win to drag floating windows to their wanted position
