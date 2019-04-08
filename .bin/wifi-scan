@@ -1,3 +1,5 @@
 #!/bin/sh
 
-sudo iwlist wlp2s0 scan | grep -E 'ESSID|Quality|WPA'
+dev=${1:-wlp2s0}
+
+sudo iw dev "$dev" scan | grep -E 'SSID:|signal:|Authentication suites:'
