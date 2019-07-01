@@ -19,11 +19,11 @@
 [submodule ".vim/bundle/logstash"]
 	path = .vim/bundle/logstash
 	url = https://github.com/robbles/logstash.vim.git
-[submodule "/home/chris/.vim/bundle/pkgbuild"]
-	path = /home/chris/.vim/bundle/pkgbuild
+[submodule ".vim/bundle/pkgbuild"]
+	path = .vim/bundle/pkgbuild
 	url = https://github.com/Firef0x/PKGBUILD.vim.git
-[submodule "/home/chris/.vim/bundle/typescript"]
-	path = /home/chris/.vim/bundle/typescript
+[submodule ".vim/bundle/typescript"]
+	path = .vim/bundle/typescript
 	url = https://github.com/leafgarland/typescript-vim.git
 [submodule ".vim/bundle/solidity"]
 	path = .vim/bundle/solidity
@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/graphql"]
 	path = .vim/bundle/graphql
 	url = https://github.com/jparise/vim-graphql
+[submodule ".vim/bundle/alternate"]
+	path = .vim/bundle/alternate
+	url = https://github.com/vim-scripts/a.vim
