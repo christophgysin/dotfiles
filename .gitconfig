@@ -106,7 +106,7 @@
     textconv = odt2txt
 
 [diff "json"]
-    textconv = json_pp
+    textconv = json-prettify
 
 [diff]
     #algorithm = patience
