@@ -38,6 +38,8 @@ syntax on
 set switchbuf=useopen,usetab,newtab
 set undodir=~/.vim/undo
 set undofile
+" backupcopy=auto breaks parcel
+set backupcopy=yes
 
 set secure
 set exrc
