@@ -2,6 +2,7 @@
 
 int=eDP-1
 ext=DP-2
+ext2=DP-1
 
 mode=$1
 
@@ -13,26 +14,31 @@ case $1 in
         xrandr \
             --output $int --auto \
             --output $ext --off \
+            --output $ext2 --off \
             ;;
     ext*)
         xrandr \
             --output $int --off \
             --output $ext --auto \
+            --output $ext2 --auto \
             ;;
     dup*)
         xrandr \
             --output $int --auto \
             --output $ext --auto --same-as $int \
+            --output $ext2 --off \
             ;;
     dual|right)
         xrandr \
             --output $int --auto \
             --output $ext --auto --right-of $int \
+            --output $ext2 --off \
             ;;
     above)
         xrandr \
             --output $int --auto --pos 640x2560 \
             --output $ext --auto --pos 0x0 \
+            --output $ext2 --off \
             ;;
     standby)
         sleep 0.5 && xset dpms force standby
