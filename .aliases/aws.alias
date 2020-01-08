@@ -40,6 +40,14 @@ ssm() {
 
       aws ssm get-parameter \
         --name "$path" \
+        --query Parameter.Value \
+        --output text
+    ;;
+    cat-dec)
+      local path=$1
+
+      aws ssm get-parameter \
+        --name "$path" \
         --with-decryption \
         --query Parameter.Value \
         --output text
@@ -66,5 +74,31 @@ ssm() {
         --value "$value" \
         "$@"
     ;;
+    rm)
+      local path=$1
+      shift 1
+
+      aws ssm delete-parameter \
+        --name "$path" \
+        "$@"
+    ;;
+    *)
+      echo >&2 "usage: ssm <command> [optios...]"
+      echo >&2 ""
+      echo >&2 "       ssm ls [path]"
+      echo >&2 "       ssm cat <path>"
+      echo >&2 "       ssm cat-dec <path>"
+      echo >&2 "       ssm put <path> <value>"
+      echo >&2 "       ssm put-enc <path> <value>"
+      echo >&2 "       ssm rm <path>"
+      ;;
   esac
+}
+
+aws-login() {
+  local profile=$1
+
+  url=$(aws-vault login --stdout "$profile")
+
+  firefox "ext+container:name=$profile&url=${url//&/%26}"
 }
