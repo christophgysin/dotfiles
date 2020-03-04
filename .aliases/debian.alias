@@ -17,5 +17,5 @@ alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
 complete -F _quilt_completion ${_quilt_complete_opt:-} dquilt
 
 # devscripts
-export DEBEMAIL="christoph.gysin@ericsson.com"
+export DEBEMAIL="christoph.gysin@gmail.com"
 export DEBNAME="Christoph Gysin"

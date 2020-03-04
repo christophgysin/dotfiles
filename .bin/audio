@@ -1,0 +1,19 @@
+#!/bin/bash
+
+card=0
+int=output:analog-stereo+input:analog-stereo
+ext=output:hdmi-stereo-extra1
+
+mode=$1
+
+case $mode in
+    int*)
+        pactl set-card-profile $card $int
+        ;;
+    ext*)
+        pactl set-card-profile $card $ext
+        ;;
+    *)
+        echo "usage: $(basename "$0") [ int(ernal) | ext(ernal) ]";
+        exit 1;;
+esac

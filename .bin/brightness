@@ -6,7 +6,7 @@ backlights=(
 )
 
 function find_backlight() {
-    for backlight in ${backlights[@]}; do
+    for backlight in "${backlights[@]}"; do
         if [ -d /sys/class/backlight/$backlight ]; then
             d=/sys/class/backlight/$backlight
             return

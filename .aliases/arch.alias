@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # arch
-[ $(id -u) = 0 ] || SUDO=sudo
+[ $(id -u) = 0 ] || SUDO="sudo -E"
 function pacu() { $SUDO pacman -Syu "${@}" && pacnew-update; }
 alias pacs="pacsearch"
 alias pacI="pacman -Qi"
@@ -17,7 +17,10 @@ function pacyu() { yaourt -Syua "${@}" && pacnew-update; }
 alias pacys="yaourt -Ss"
 alias pacyi="yaourt -S"
 alias pacyr="yaourt -R"
-function pacro() { sudo pacman -Rs $(pacman -Qtdq); }
-alias pacclean="sudo find /var/cache/pacman/pkg -type f -mtime +0 -exec rm {} +"
-alias pacyg="yaourt -G"
+function pacro() {
+    local pkgs=($(pacman -Qtdq))
+    (( ${#pkgs[@]} > 0 )) && $SUDO pacman -Rs "${pkgs[@]}"
+}
+alias pacclean="$SUDO find /var/cache/pacman/pkg -type f -mtime +0 -exec rm {} +"
+alias pacyg="yaourt -uG"
 function pacyR() { pacyi $(pacman -Qsq -- '-git$'); }

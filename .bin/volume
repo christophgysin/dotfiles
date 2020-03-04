@@ -2,16 +2,19 @@
 #
 # increase pulseaudio volume beyond 153%
 
-read cmd sink volume < <(pacmd dump | grep -m1 sink-volume)
-read _ _ mute < <(pacmd dump | grep -m1 sink-mute)
+read _ sink < <(pacmd dump | grep ^set-default-sink)
+read _ _ volume < <(pacmd dump | grep -m1 "^set-sink-volume $sink")
+read _ _ mute < <(pacmd dump | grep -m1 "^set-sink-mute $sink")
 
 step=3
 
 case ${1} in
     up)
+        cmd='set-sink-volume'
         arg=$(( volume + step * 0x10000 / 100 ))
         ;;
     down)
+        cmd='set-sink-volume'
         arg=$(( volume - step * 0x10000 / 100 ))
         ;;
     [-+][0-9]*|[0-9]*)

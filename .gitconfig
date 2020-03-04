@@ -15,8 +15,9 @@
     sl = shortlog
     br = branch
     bv = branch -vv
+    bn = rev-parse --abbrev-ref HEAD
     rv = remote -v
-    tb = !git checkout -tb ${1} ${2:-origin/master} || :
+    tb = !git checkout -tb ${1} ${2:-$(git upstream)} || :
     rst = reset
     rh = reset --hard
     pick = cherry-pick
@@ -58,9 +59,19 @@
     sg = !git-submodule-grep
     find = !git ls-files | grep
     f = !git find
-    gerrit = !ssh -p 29418 echrgys@gerrit.ericsson.se gerrit
+    fe = !args=(\"$@\") && vim $(git f \"${args[@]}\")
+    gerrit = !ssh -p 29418 echrgys@gerrit gerrit
     reviewers = !git gerrit set-reviewers -a
     conflict = !vim $(git diff --name-only --diff-filter=U)
+    #xclone = "!\
+    #    repo=$1 && \
+    #    project=${2:-advtp} && \
+    #    cd ${GIT_PREFIX:-.} && \
+    #    git -C \"${repo}\" config remote.pushDefault origin && \
+    #    :"
+
+[remote]
+    #pushDefault = origin
 
 [color]
     branch = auto
@@ -93,6 +104,9 @@
 
 [diff "odf"]
     textconv = odt2txt
+
+[diff "json"]
+    textconv = json-prettify
 
 [diff]
     #algorithm = patience

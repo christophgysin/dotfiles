@@ -1,0 +1,14 @@
+#!/bin/bash
+
+case $1 in
+    on)
+        xset s 120
+        xset dpms 120 300 600
+        ;;
+    off)
+        xset s off -dpms
+        ;;
+    *)
+        echo "usage: $(basename "$0") [on|off]"
+        exit 1;;
+esac

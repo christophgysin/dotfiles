@@ -1,54 +1,52 @@
 #!/bin/bash
 
-int=LVDS-1
+int=eDP-1
 ext=DP-2
-vga=VGA-1
-pos=left
+ext2=DP-1
 
-case ${1} in
-    int)
+mode=$1
+
+screenlayout=~/.screenlayout/$mode.sh
+[ -r "$screenlayout" ] && exec sh "$screenlayout"
+
+case $1 in
+    int*)
         xrandr \
             --output $int --auto \
             --output $ext --off \
-            --output $vga --off \
+            --output $ext2 --off \
             ;;
-    ext)
+    ext*)
         xrandr \
             --output $int --off \
             --output $ext --auto \
-            --output $vga --off \
+            --output $ext2 --auto \
             ;;
-    dup)
+    dup*)
         xrandr \
             --output $int --auto \
             --output $ext --auto --same-as $int \
-            --output $vga --off \
+            --output $ext2 --off \
             ;;
-    dual)
+    dual|right)
         xrandr \
             --output $int --auto \
-            --output $ext --auto --$pos-of $int --primary \
-            --output $vga --off \
+            --output $ext --auto --right-of $int \
+            --output $ext2 --off \
             ;;
-    vga)
+    above)
         xrandr \
-            --output $int --auto --primary \
-            --output $ext --off \
-            --output $vga --auto --above $int \
+            --output $int --auto --pos 640x2560 \
+            --output $ext --auto --pos 0x0 \
+            --output $ext2 --off \
             ;;
-    projector)
-        xrandr \
-            --output $int --off \
-            --output $ext --off \
-            --output $vga --auto \
-            ;;
-    all)
-        xrandr \
-            --output $int --auto \
-            --output $ext --left-of $int --primary \
-            --output $vga --above $ext \
-            ;;
+    standby)
+        sleep 0.5 && xset dpms force standby
+        ;;
     *)
-        echo "usage: $(basename $0) [ int | ext | dup | dual | vga | projector | all ]";
+        echo "usage: $(basename "$0") [" \
+            "int(ernal) | ext(ernal) | dup(licate) |" \
+            "dual | right | left | above | standby" \
+            "]";
         exit 1;;
 esac

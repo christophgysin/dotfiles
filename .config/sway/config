@@ -2,22 +2,25 @@
 
 #debuglog on
 
-output DP-1 position 0,0
-output LVDS-1 position 1680,0
+input "0:0:Apple_SPI_Touchpad" pointer_accel 1
+input "0:0:Apple_SPI_Touchpad" click_method clickfinger
+
+output DP-2 position 0,0
+output eDP-1 position 640,1600
 
 output WLC-1 position 0,0
 output WLC-2 position 500,0
 output WLC-2 resolution 500x500
 
-output * background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-gaps 2
+output * background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
+gaps inner 2
 
 font pango:Terminus 14
 
 focus_follows_mouse no
 mouse_warping none
 
-set $alt Mod1
+#set $win Mod4
 set $win Mod1
 set $term terminology
 
@@ -61,37 +64,42 @@ bindsym $win+q floating toggle
 bindsym $win+space focus mode_toggle
 
 # switch to workspace
-#bindsym $alt+h workspace prev
-#bindsym $alt+l workspace next
-bindsym $alt+1 workspace number 1
-bindsym $alt+2 workspace number 2
-bindsym $alt+3 workspace number 3
-bindsym $alt+4 workspace number 4
-bindsym $alt+5 workspace number 5
-bindsym $alt+6 workspace number 6
-bindsym $alt+7 workspace number 7
-bindsym $alt+8 workspace number 8
-bindsym $alt+9 workspace number 9
-bindsym $alt+0 workspace number 10
+#bindsym $win+h workspace prev
+#bindsym $win+l workspace next
+bindsym $win+1 workspace number 1
+bindsym $win+2 workspace number 2
+bindsym $win+3 workspace number 3
+bindsym $win+4 workspace number 4
+bindsym $win+5 workspace number 5
+#bindsym $win+6 workspace number 6
+#bindsym $win+7 workspace number 7
+#bindsym $win+8 workspace number 8
+#bindsym $win+9 workspace number 9
+#bindsym $win+0 workspace number 10
 
-# move focused container to workspace
-#bindsym $alt+Shift+1 move container to workspace number 1; workspace number 1
-#bindsym $alt+Shift+2 move container to workspace number 2; workspace number 2
-#bindsym $alt+Shift+3 move container to workspace number 3; workspace number 3
-#bindsym $alt+Shift+4 move container to workspace number 4; workspace number 4
-#bindsym $alt+Shift+5 move container to workspace number 5; workspace number 5
-#bindsym $alt+Shift+6 move container to workspace number 6; workspace number 6
-#bindsym $alt+Shift+7 move container to workspace number 7; workspace number 7
-#bindsym $alt+Shift+8 move container to workspace number 8; workspace number 8
-#bindsym $alt+Shift+9 move container to workspace number 9; workspace number 9
-#bindsym $alt+Shift+0 move container to workspace number 10; workspace number 10
-
-bindsym $alt+BackSpace reload
-bindsym $alt+Shift+Delete exit
+# mac
+#bindsym --release $win+7 exec --no-startup-id xdotool key backslash
+#bindsym --release $win+8 exec --no-startup-id xdotool key braceleft
+#bindsym --release $win+9 exec --no-startup-id xdotool key braceright
 
 #exec xautolock -time 12 -locker 'screenlock' &
 exec setxkbmap ch
-bindsym $alt+period exec swaylock --image /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill --scaling fill
+
+bindsym $win+Shift+1 move container to workspace number 1; workspace number 1
+bindsym $win+Shift+2 move container to workspace number 2; workspace number 2
+bindsym $win+Shift+3 move container to workspace number 3; workspace number 3
+bindsym $win+Shift+4 move container to workspace number 4; workspace number 4
+bindsym $win+Shift+5 move container to workspace number 5; workspace number 5
+bindsym $win+Shift+6 move container to workspace number 6; workspace number 6
+#bindsym $win+Shift+7 move container to workspace number 7; workspace number 7
+#bindsym $win+Shift+8 move container to workspace number 8; workspace number 8
+#bindsym $win+Shift+9 move container to workspace number 9; workspace number 9
+#bindsym $win+Shift+0 move container to workspace number 10; workspace number 10
+
+bindsym $win+BackSpace reload
+bindsym $win+Delete exit
+
+bindsym $win+period exec swaylock --image /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png --scaling fill
 
 # resize
 bindsym $win+w mode "resize"

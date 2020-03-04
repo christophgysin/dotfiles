@@ -4,6 +4,7 @@ d=$PWD
 cd /etc
 
 case $1 in
+    init) exec sudo sh -c 'git init && find .git -exec chmod go-rwx {} \+';;
     st) set status "${@:2}";;
     ci) set commit "${@:2}";;
     di) set diff "${@:2}";;

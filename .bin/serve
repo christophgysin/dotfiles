@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+port=${1:-8000}
+
+busybox httpd -f -p $port &
+sleep 0.1
+xdg-open http://localhost:$port

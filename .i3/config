@@ -1,6 +1,6 @@
 # vim: set ft=conf
 
-font pango:Terminus 14
+font pango:Terminus 8
 
 focus_follows_mouse no
 mouse_warping none
@@ -15,7 +15,8 @@ bindsym --whole-window $win+button2 floating toggle
 
 bindsym $win+Return exec $term
 bindsym $win+Shift+q kill
-bindsym $win+r exec dmenu_run
+bindsym $win+r exec dmenu-frecency
+bindsym $win+space exec dmenu-frecency
 bindsym $win+d exec --no-startup-id i3-dmenu-desktop
 
 # focus
@@ -34,8 +35,11 @@ bindsym XF86AudioLowerVolume exec volume down
 bindsym XF86AudioRaiseVolume exec volume up
 bindsym XF86AudioMute exec volume toggle-mute
 bindsym XF86TouchpadToggle exec touchpad-toggle
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+bindsym XF86MonBrightnessUp exec brightness-wrap acpi_video0 set +5
+bindsym XF86MonBrightnessDown exec brightness-wrap acpi_video0 set 5-
+bindsym XF86KbdBrightnessUp exec brightness-wrap spi::kbd_backlight set +32
+bindsym XF86KbdBrightnessDown exec brightness-wrap spi::kbd_backlight set 32-
 
 # split
 bindsym $win+i split h
@@ -46,7 +50,6 @@ bindsym $win+f fullscreen toggle
 
 # toggle tiling / floating
 bindsym $win+q floating toggle
-bindsym $win+space focus mode_toggle
 
 # switch to workspace
 bindsym $alt+h workspace prev
@@ -57,30 +60,32 @@ bindsym $win+3 workspace number 3
 bindsym $win+4 workspace number 4
 bindsym $win+5 workspace number 5
 bindsym $win+6 workspace number 6
-bindsym $win+7 workspace number 7
-bindsym $win+8 workspace number 8
-bindsym $win+9 workspace number 9
-bindsym $win+0 workspace number 10
 
 # move focused container to workspace
-bindsym $win+Shift+1 move container to workspace number 1; workspace number  1
-bindsym $win+Shift+2 move container to workspace number 2; workspace number  2
-bindsym $win+Shift+3 move container to workspace number 3; workspace number  3
-bindsym $win+Shift+4 move container to workspace number 4; workspace number  4
-bindsym $win+Shift+5 move container to workspace number 5; workspace number  5
-bindsym $win+Shift+6 move container to workspace number 6; workspace number  6
-bindsym $win+Shift+7 move container to workspace number 7; workspace number  7
-bindsym $win+Shift+8 move container to workspace number 8; workspace number  8
-bindsym $win+Shift+9 move container to workspace number 9; workspace number  9
-bindsym $win+Shift+0 move container to workspace number 10; workspace number  10
+bindsym $win+Shift+1 move container to workspace number 1; workspace number 1
+bindsym $win+Shift+2 move container to workspace number 2; workspace number 2
+bindsym $win+Shift+3 move container to workspace number 3; workspace number 3
+bindsym $win+Shift+4 move container to workspace number 4; workspace number 4
+bindsym $win+Shift+5 move container to workspace number 5; workspace number 5
+bindsym $win+Shift+6 move container to workspace number 6; workspace number 6
+
+# mac
+#bindsym --release $win+7 exec --no-startup-id xdotool key backslash
+#bindsym --release $win+8 exec --no-startup-id xdotool key braceleft
+#bindsym --release $win+9 exec --no-startup-id xdotool key braceright
 
 bindsym $win+Escape reload
 bindsym $win+BackSpace restart
 bindsym $win+Delete exec i3-msg exit
+bindsym $win+$alt+Delete exec poweroff
+bindsym $win+$alt+BackSpace exec reboot
+bindsym $win+$alt+F12 exec xset dpms force standby
+bindsym $win+8 exec xset s 0 0 && xset s off noblank && xset dpms 0 0 0 -dpms
+bindsym $win+9 exec "outputs ext && audio ext"
+bindsym $win+0 exec sh -c "autorandr --change && autokeymap"
 
 exec xautolock -time 12 -locker 'screenlock' &
-exec redshift &
-exec dunst &
+#exec xss-lock screenlock &
 bindsym $win+period exec screenlock
 
 # resize
@@ -95,16 +100,17 @@ mode "resize" {
 }
 
 bar {
-    status_command i3status
+    status_command i3status # | ~/.i3status.py
 }
 
+for_window [window_type="splash"] floating enable
 for_window [class=".*"] border pixel 2
 for_window [class="Crags.py"] floating enable
 for_window [class="Onboard"] floating enable
 for_window [class="wlc-x11"] floating enable
 for_window [class="Android SDK Manager"] floating enable
 for_window [class="Pasystray"] floating enable
-for_window [window_type="splash"] floating enable
+for_window [class="Sloth"] floating enable
 
 # class                  border  backgr. text    indicator
 client.focused           #004400 #007700 #00dddd #000099

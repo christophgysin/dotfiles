@@ -1,5 +1,0 @@
-#!/bin/bash
-
-alias ericsson='agent && ssh -fN ericsson'
-
-# sshuttle --python /app/vbuild/sys/python/3.5.0/bin/python --dns -r ericsson 0/0

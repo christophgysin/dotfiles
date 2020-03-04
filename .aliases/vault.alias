@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+export PS1="\[\033[01;32m\]\u \[\033[01;31m\]\\h\[\033[01;34m\] \w\[\033[00m\]${AWS_VAULT:+ \[\033[01;31m\](${AWS_VAULT})\[\033[01;00m\]} \$ "
+
+# https://github.com/99designs/aws-vault/blob/master/USAGE.md#environment-variables
+export AWS_SESSION_TTL=9h
+export AWS_ASSUME_ROLE_TTL=1h
+export AWS_FEDERATION_TOKEN_TTL=9h
+
+export ENV=${AWS_VAULT#*-}

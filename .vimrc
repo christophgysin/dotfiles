@@ -5,10 +5,10 @@ execute pathogen#infect()
 
 set nocompatible
 set mouse=a
-set tabstop=4
-set softtabstop=4
+set tabstop=2
+set softtabstop=2
 set smarttab
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 set list listchars=tab:>-,trail:·
 set viminfo='1000,f1,:1000,/1000
@@ -38,6 +38,8 @@ syntax on
 set switchbuf=useopen,usetab,newtab
 set undodir=~/.vim/undo
 set undofile
+" backupcopy=auto breaks parcel
+set backupcopy=yes
 
 set secure
 set exrc

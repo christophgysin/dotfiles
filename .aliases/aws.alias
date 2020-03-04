@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+
+cf() {
+  if [ "${#@}" == 0 ]; then
+    aws cloudformation describe-stacks \
+      | jq '.Stacks[]
+        | {
+          stack: .StackName,
+          outputs: (.Outputs // [])
+            | map({key: .OutputKey, value: .OutputValue})
+            | from_entries
+          }'
+  else
+    local stack=$1
+    aws cloudformation describe-stacks \
+      --stack-name "$stack" \
+      | jq '.Stacks[0].Outputs
+        | map({key: .OutputKey, value: .OutputValue})
+        | from_entries'
+  fi
+}
+
+ssm() {
+  local action=$1
+  shift
+
+  case $action in
+    ls)
+      local path=${1:-/}
+      shift || :
+
+      aws ssm get-parameters-by-path \
+        --recursive \
+        --path "$path" \
+        --query 'Parameters[].Name | join(`"\n"`, @)' \
+        --output text
+    ;;
+    cat)
+      local path=$1
+
+      aws ssm get-parameter \
+        --name "$path" \
+        --query Parameter.Value \
+        --output text
+    ;;
+    cat-dec)
+      local path=$1
+
+      aws ssm get-parameter \
+        --name "$path" \
+        --with-decryption \
+        --query Parameter.Value \
+        --output text
+    ;;
+    put)
+      local path=$1
+      local value=$2
+      shift 2
+
+      aws ssm put-parameter \
+        --name "$path" \
+        --type String \
+        --value "$value" \
+        "$@"
+    ;;
+    put-enc)
+      local path=$1
+      local value=$2
+      shift 2
+
+      aws ssm put-parameter \
+        --name "$path" \
+        --type SecureString \
+        --value "$value" \
+        "$@"
+    ;;
+    rm)
+      local path=$1
+      shift 1
+
+      aws ssm delete-parameter \
+        --name "$path" \
+        "$@"
+    ;;
+    *)
+      echo >&2 "usage: ssm <command> [optios...]"
+      echo >&2 ""
+      echo >&2 "       ssm ls [path]"
+      echo >&2 "       ssm cat <path>"
+      echo >&2 "       ssm cat-dec <path>"
+      echo >&2 "       ssm put <path> <value>"
+      echo >&2 "       ssm put-enc <path> <value>"
+      echo >&2 "       ssm rm <path>"
+      ;;
+  esac
+}
+
+aws-login() {
+  local profile=$1
+
+  url=$(aws-vault login --stdout "$profile")
+
+  firefox "ext+container:name=$profile&url=${url//&/%26}"
+}
