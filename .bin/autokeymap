@@ -34,7 +34,8 @@ function apply_keymap() {
                 '-layout' 'ch'
             )
             ;;
-        'Apple SPI Keyboard')
+        'Apple SPI Keyboard' | \
+        'AT Translated Set 2 keyboard')
             args=(
                 '-layout' 'fi'
                 # '-variant' 'mac'
