@@ -8,6 +8,8 @@ xset b off
 autocutsel -fork
 autocutsel -selection PRIMARY -fork
 
+setxkbmap -layout 'fi'
+
 if [ "$(</sys/class/drm/card0-DP-2/status)" != connected ]; then
     export ELM_SCALE=1.5
     export GDK_SCALE=2
