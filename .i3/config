@@ -34,12 +34,11 @@ bindsym $win+Shift+l move right
 bindsym XF86AudioLowerVolume exec volume down
 bindsym XF86AudioRaiseVolume exec volume up
 bindsym XF86AudioMute exec volume toggle-mute
+bindsym XF86AudioMicMute exec volume mic-toggle-mute
 bindsym XF86TouchpadToggle exec touchpad-toggle
 
-bindsym XF86MonBrightnessUp exec brightness-wrap acpi_video0 set +5
-bindsym XF86MonBrightnessDown exec brightness-wrap acpi_video0 set 5-
-bindsym XF86KbdBrightnessUp exec brightness-wrap spi::kbd_backlight set +32
-bindsym XF86KbdBrightnessDown exec brightness-wrap spi::kbd_backlight set 32-
+bindsym XF86MonBrightnessUp exec brightness-wrap intel_backlight set +5%
+bindsym XF86MonBrightnessDown exec brightness-wrap intel_backlight set 5%-
 
 # split
 bindsym $win+i split h
