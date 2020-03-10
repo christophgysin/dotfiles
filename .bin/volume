@@ -11,6 +11,10 @@ read _ _ source_mute < <(pacmd dump | grep -m1 "^set-source-mute $source")
 step=3
 
 case ${1} in
+    init)
+        brightnessctl -q -d platform::mute set $( [ $sink_mute == yes ] && echo 1 || echo 0 )
+        brightnessctl -q -d platform::micmute set $( [ $source_mute == yes ] && echo 1 || echo 0 )
+        ;;
     up)
         pacmd set-sink-volume $(( volume + step * 0x10000 / 100 ));;
     down)

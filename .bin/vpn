@@ -10,10 +10,13 @@ case $action in
   off)
     sudo systemctl stop openvpn-client@protonvpn
     ;;
+  toggle)
+    [ -d /proc/sys/net/ipv4/conf/tun0 ] && $0 off || $0 on
+    ;;
   status)
     sudo systemctl status openvpn-client@protonvpn
     ;;
   *)
-    echo "Usage: vpn <on|off|status>"
+    echo "Usage: vpn <on|off|toggle|status>"
     ;;
 esac
