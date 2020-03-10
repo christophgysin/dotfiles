@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+action=${1:-}
+
+case $action in
+  on)
+    sudo systemctl start openvpn-client@protonvpn
+    ;;
+  off)
+    sudo systemctl stop openvpn-client@protonvpn
+    ;;
+  status)
+    sudo systemctl status openvpn-client@protonvpn
+    ;;
+  *)
+    echo "Usage: vpn <on|off|status>"
+    ;;
+esac
