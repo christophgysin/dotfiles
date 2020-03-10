@@ -41,6 +41,11 @@ bindsym XF86TouchpadToggle exec touchpad-toggle
 bindsym XF86MonBrightnessUp exec brightness-wrap intel_backlight set +5%
 bindsym XF86MonBrightnessDown exec brightness-wrap intel_backlight set 5%-
 
+bindsym XF86Display exec arandr
+# bindsym XF86Tools exec
+# bindsym XF86Bluetooth exec
+# bindsym XF86Favorites exec
+
 # split
 bindsym $win+i split h
 bindsym $win+o split v
@@ -112,6 +117,7 @@ for_window [class="wlc-x11"] floating enable
 for_window [class="Android SDK Manager"] floating enable
 for_window [class="Pasystray"] floating enable
 for_window [class="Sloth"] floating enable
+for_window [class="Arandr"] floating enable
 
 # class                  border  backgr. text    indicator
 client.focused           #004400 #007700 #00dddd #000099
