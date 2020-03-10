@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# This script relies on the fact that the autorandr config files are touch'ed
+# when activated. So by repeatedly activating the least recently used profile,
+# we can cycle through them
+
+CURRENT_POSSIBLE_PROFILES=$(autorandr 2>&1 | grep "(detected)" | cut -d " " -f 1)
+
+# ls -t -1 = sort by modification time, newest first, output one entry per line
+# this will look like `$HOME/.config/autorandr/<name>/config`
+# dirname gives: `$HOME/.config/autorandr/<name>`
+# basename gives: `<name>`
+LEAST_RECENTLY_USED=$(\
+  echo "${CURRENT_POSSIBLE_PROFILES}"| \
+  xargs -I "%" echo "$HOME/.config/autorandr/%/config" | \
+  xargs ls -t -1 | tail -1 | \
+  xargs dirname | xargs basename
+)
+
+echo "autorandr --load ${LEAST_RECENTLY_USED}"
+
+autorandr --load "${LEAST_RECENTLY_USED}"
