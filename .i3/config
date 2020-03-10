@@ -85,6 +85,7 @@ bindsym $win+0 exec sh -c "autorandr --change && autokeymap"
 
 exec xautolock -time 12 -locker 'screenlock' &
 #exec xss-lock screenlock &
+exec screenrotator &
 bindsym $win+period exec screenlock
 
 # resize
