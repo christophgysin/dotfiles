@@ -2,19 +2,23 @@
 set -euo pipefail
 
 action=${1:-}
+shift || :
 
 case $action in
   on)
-    sudo systemctl start openvpn-client@protonvpn
+    #sudo systemctl start openvpn-client@protonvpn
+    sudo protonvpn connect "$@"
     ;;
   off)
-    sudo systemctl stop openvpn-client@protonvpn
+    #sudo systemctl stop openvpn-client@protonvpn
+    sudo protonvpn disconnect
     ;;
   toggle)
-    [ -d /proc/sys/net/ipv4/conf/tun0 ] && $0 off || $0 on
+    [ -d /proc/sys/net/ipv4/conf/proton0 ] && $0 off || $0 on
     ;;
   status)
-    sudo systemctl status openvpn-client@protonvpn
+    #sudo systemctl status openvpn-client@protonvpn
+    protonvpn status
     ;;
   *)
     echo "Usage: vpn <on|off|toggle|status>"
