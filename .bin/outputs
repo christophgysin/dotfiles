@@ -1,8 +1,8 @@
 #!/bin/bash
 
-int=eDP-1
-ext=DP-2
-ext2=DP-1
+int=eDP1
+ext=DP2
+ext2=DP1
 
 mode=$1
 
