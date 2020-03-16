@@ -98,7 +98,10 @@ ssm() {
 aws-login() {
   local profile=$1
 
-  url=$(aws-vault login --stdout "$profile")
+  url=$(aws-vault login --stdout "$profile") || {
+    echo "$url"
+    return
+  }
 
   firefox "ext+container:name=$profile&url=${url//&/%26}"
 }
