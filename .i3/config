@@ -40,6 +40,7 @@ bindsym $win+Shift+j move down
 bindsym $win+Shift+k move up
 bindsym $win+Shift+l move right
 
+# audio
 exec (systemctl --user start pulseaudio && volume init)
 bindsym XF86AudioLowerVolume exec volume down
 bindsym XF86AudioRaiseVolume exec volume up
@@ -50,7 +51,7 @@ bindsym XF86TouchpadToggle exec touchpad-toggle
 bindsym XF86MonBrightnessUp exec brightness-wrap intel_backlight set +5%
 bindsym XF86MonBrightnessDown exec brightness-wrap intel_backlight set 5%-
 
-bindsym XF86Display exec arandr
+bindsym XF86Display exec video cycle
 # bindsym XF86Tools exec
 # bindsym XF86Bluetooth exec
 # bindsym XF86Favorites exec
@@ -83,11 +84,6 @@ bindsym $win+Shift+4 move container to workspace number 4; workspace number 4
 bindsym $win+Shift+5 move container to workspace number 5; workspace number 5
 bindsym $win+Shift+6 move container to workspace number 6; workspace number 6
 
-# mac
-#bindsym --release $win+7 exec --no-startup-id xdotool key backslash
-#bindsym --release $win+8 exec --no-startup-id xdotool key braceleft
-#bindsym --release $win+9 exec --no-startup-id xdotool key braceright
-
 bindsym $win+Escape reload
 bindsym $win+BackSpace restart
 bindsym $win+Delete exec i3-msg exit
@@ -95,12 +91,9 @@ bindsym $win+$alt+Delete exec poweroff
 bindsym $win+$alt+BackSpace exec reboot
 bindsym $win+$alt+F12 exec xset dpms force standby
 bindsym $win+8 exec xset s 0 0 && xset s off noblank && xset dpms 0 0 0 -dpms
-bindsym $win+9 exec "outputs ext && audio ext"
 bindsym $win+0 exec sh -c "autorandr --change && autokeymap"
 
 exec xautolock -time 12 -locker 'screenlock' &
-#exec xss-lock screenlock &
-exec screenrotator &
 bindsym $win+period exec screenlock
 
 # resize
