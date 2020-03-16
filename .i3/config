@@ -111,6 +111,9 @@ bar {
     status_command i3status # | ~/.i3status.py
 }
 
+assign [class="firefox"] 1
+assign [class="Slack"] 3
+
 for_window [window_type="splash"] floating enable
 for_window [class=".*"] border pixel 2
 for_window [class="Crags.py"] floating enable
