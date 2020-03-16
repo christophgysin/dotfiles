@@ -1,19 +1,26 @@
 #!/bin/bash
 
-card=0
-int=output:analog-stereo+input:analog-stereo
-ext=output:hdmi-stereo-extra1
-
 mode=$1
 
 case $mode in
-    int*)
-        pactl set-card-profile $card $int
+    speakers)
+      amixer -c0 sset Speaker unmute
+      amixer -c0 sset "Bass Speaker" unmute
+      amixer -c0 sset Headphone mute
+      pactl unload-module module-combine-sink
         ;;
-    ext*)
-        pactl set-card-profile $card $ext
+    jack)
+      amixer -c0 sset Speaker mute
+      amixer -c0 sset "Bass Speaker" mute
+      amixer -c0 sset Headphone unmute
+      pactl unload-module module-combine-sink
+        ;;
+    headphones)
+        audio jack
+        pactl load-module module-combine-sink
+        pactl set-default-sink combined
         ;;
     *)
-        echo "usage: $(basename "$0") [ int(ernal) | ext(ernal) ]";
+        echo "usage: $(basename "$0") [ speakers | jack | headphones ]";
         exit 1;;
 esac
