@@ -4,6 +4,11 @@ workspace 1 output DP2 eDP1
 workspace 2 output HDMI1 eDP1
 workspace 3 output eDP1
 
+# freedesktop autostart
+exec dex -a
+
+exec sleep 1 && libinput-gestures-setup restart
+
 font pango:Terminus 8
 
 focus_follows_mouse no
