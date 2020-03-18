@@ -41,7 +41,7 @@ bindsym $win+Shift+k move up
 bindsym $win+Shift+l move right
 
 # audio
-exec (systemctl --user start pulseaudio && volume init)
+exec (systemctl --user start pulseaudio && pulseaudio-mute-leds &)
 bindsym XF86AudioLowerVolume exec volume down
 bindsym XF86AudioRaiseVolume exec volume up
 bindsym XF86AudioMute exec volume toggle-mute

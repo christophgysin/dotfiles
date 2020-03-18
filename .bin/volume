@@ -2,19 +2,17 @@
 #
 # increase pulseaudio volume beyond 153%
 
-read _ sink < <(pacmd dump | grep ^set-default-sink)
-read _ source < <(pacmd dump | grep ^set-default-source)
-read _ _ volume < <(pacmd dump | grep -m1 "^set-sink-volume $sink")
-read _ _ sink_mute < <(pacmd dump | grep -m1 "^set-sink-mute $sink")
-read _ _ source_mute < <(pacmd dump | grep -m1 "^set-source-mute $source")
+dump=$(pacmd dump)
+
+read _ sink < <(grep ^set-default-sink <<< $dump)
+read _ source < <(grep ^set-default-source <<< $dump)
+read _ _ volume < <(grep -m1 "^set-sink-volume $sink" <<< $dump)
+read _ _ sink_mute < <(grep -m1 "^set-sink-mute $sink" <<< $dump)
+read _ _ source_mute < <(grep -m1 "^set-source-mute $source" <<< $dump)
 
 step=3
 
 case ${1} in
-    init)
-        brightnessctl -q -d platform::mute set $( [ $sink_mute == yes ] && echo 1 || echo 0 )
-        brightnessctl -q -d platform::micmute set $( [ $source_mute == yes ] && echo 1 || echo 0 )
-        ;;
     up)
         pacmd set-sink-volume "$sink" $(( volume + step * 0x10000 / 100 ));;
     down)
@@ -22,22 +20,18 @@ case ${1} in
     [-+][0-9]*|[0-9]*)
         pacmd set-sink-volume "$sink" $(( volume + $1 * 0x10000 / 100 ));;
     mute)
-        pacmd set-sink-mute "$sink" yes &&
-        brightnessctl -q -d platform::mute set 1
+        pacmd set-sink-mute "$sink" yes
         ;;
     unmute)
-        pacmd set-sink-mute "$sink" no &&
-        brightnessctl -q -d platform::mute set 0
+        pacmd set-sink-mute "$sink" no
         ;;
     toggle-mute)
         [ $sink_mute == yes ] && "$0" unmute || "$0" mute;;
     mic-mute)
-        pacmd set-source-mute "$source" yes &&
-        brightnessctl -q -d platform::micmute set 1
+        pacmd set-source-mute "$source" yes
         ;;
     mic-unmute)
-        pacmd set-source-mute "$source" no &&
-        brightnessctl -q -d platform::micmute set 0
+        pacmd set-source-mute "$source" no
         ;;
     mic-toggle-mute)
         [ $source_mute == yes ] && "$0" mic-unmute || "$0" mic-mute;;
