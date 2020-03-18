@@ -7,7 +7,7 @@ action=${1:-status}
 shift || :
 
 based() {
-    based-connect $QC35_ADDRESS "$@"
+    based-connect $QC35_ADDRESS "$@" || true
 }
 
 case $action in
