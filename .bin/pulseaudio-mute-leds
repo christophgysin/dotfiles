@@ -27,4 +27,4 @@ while read _ event _ type id; do
   esac
 
   brightnessctl -q -d $led set $([ $mute = yes ] && echo 1 || echo 0)
-done < <(pactl subscribe)
+done < <(exec pactl subscribe)
