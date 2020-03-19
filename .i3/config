@@ -14,6 +14,7 @@ exec slack
 exec dex -a
 
 exec sleep 1 && libinput-gestures-setup restart
+exec sleep 1 && wacom
 
 font pango:Terminus 8
 
