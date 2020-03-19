@@ -2,23 +2,31 @@
 
 mode=$1
 
+_amixer() {
+  amixer --quiet --card 0 "$@"
+}
+
+_pactl() {
+  pactl "$@" 2>/dev/null
+}
+
 case $mode in
     speakers)
-      amixer -c0 sset Speaker unmute
-      amixer -c0 sset "Bass Speaker" unmute
-      amixer -c0 sset Headphone mute
-      pactl unload-module module-combine-sink
+      _amixer sset Speaker unmute
+      _amixer sset "Bass Speaker" unmute
+      _amixer sset Headphone mute
+      _pactl unload-module module-combine-sink
         ;;
     jack)
-      amixer -c0 sset Speaker mute
-      amixer -c0 sset "Bass Speaker" mute
-      amixer -c0 sset Headphone unmute
-      pactl unload-module module-combine-sink
+      _amixer sset Speaker mute
+      _amixer sset "Bass Speaker" mute
+      _amixer sset Headphone unmute
+      _pactl unload-module module-combine-sink
         ;;
     headphones)
         audio jack
-        pactl load-module module-combine-sink
-        pactl set-default-sink combined
+        _pactl load-module module-combine-sink
+        _pactl set-default-sink combined
         ;;
     *)
         echo "usage: $(basename "$0") [ speakers | jack | headphones ]";
