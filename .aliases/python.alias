@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+alias venv='python3 -m venv'
