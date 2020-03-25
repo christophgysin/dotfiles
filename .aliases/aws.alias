@@ -105,3 +105,18 @@ aws-login() {
 
   firefox "ext+container:name=$profile&url=${url//&/%26}"
 }
+
+s3-delete-versioned-bucket() {
+  bucket=$1
+  read -p "Deleting bucket '$bucket'! Are you sure??? (Ctrl-C to abort)"
+
+  aws s3api delete-objects \
+    --bucket "$bucket" \
+    --delete "$(
+      aws s3api list-object-versions \
+        --bucket "$bucket" \
+        --output=json \
+        --query='{Objects: *[].{Key:Key,VersionId:VersionId}}'
+    )" \
+  && aws s3 rb "s3://$bucket_name"
+}
