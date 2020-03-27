@@ -1,6 +1,3 @@
-[submodule ".vim/bundle/node"]
-	path = .vim/bundle/node
-	url = https://github.com/moll/vim-node.git
 [submodule ".vim/bundle/gitgutter"]
 	path = .vim/bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
@@ -13,27 +10,21 @@
 [submodule ".vim/bundle/editorconfig"]
 	path = .vim/bundle/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
-[submodule ".vim/bundle/tickscript"]
-	path = .vim/bundle/tickscript
-	url = https://github.com/nathanielc/vim-tickscript.git
 [submodule ".vim/bundle/docker"]
 	path = .vim/bundle/docker
 	url = https://github.com/ekalinin/Dockerfile.vim.git
-[submodule ".vim/bundle/logstash"]
-	path = .vim/bundle/logstash
-	url = https://github.com/robbles/logstash.vim.git
-[submodule ".vim/bundle/pkgbuild"]
-	path = .vim/bundle/pkgbuild
-	url = https://github.com/Firef0x/PKGBUILD.vim.git
-[submodule ".vim/bundle/typescript"]
-	path = .vim/bundle/typescript
-	url = https://github.com/leafgarland/typescript-vim.git
-[submodule ".vim/bundle/solidity"]
-	path = .vim/bundle/solidity
-	url = https://github.com/tomlion/vim-solidity.git
 [submodule ".vim/bundle/graphql"]
 	path = .vim/bundle/graphql
 	url = https://github.com/jparise/vim-graphql
 [submodule ".vim/bundle/alternate"]
 	path = .vim/bundle/alternate
 	url = https://github.com/vim-scripts/a.vim
+[submodule ".vim/bundle/node"]
+	path = .vim/bundle/node
+	url = https://github.com/moll/vim-node.git
+[submodule ".vim/bundle/pkgbuild"]
+	path = .vim/bundle/pkgbuild
+	url = https://github.com/Firef0x/PKGBUILD.vim.git
+[submodule ".vim/bundle/typescript"]
+	path = .vim/bundle/typescript
+	url = https://github.com/leafgarland/typescript-vim.git
