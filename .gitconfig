@@ -114,3 +114,6 @@
 
 [include]
     path = .gitconfig.local
+
+[url "git@bitbucket.org:nordcloud/"]
+    insteadOf = https://bitbucket.org/nordcloud/
