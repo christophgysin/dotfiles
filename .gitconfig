@@ -117,3 +117,10 @@
 
 [url "git@bitbucket.org:nordcloud/"]
     insteadOf = https://bitbucket.org/nordcloud/
+[url "git@github.com:nordcloud/"]
+    insteadOf = https://github.com/nordcloud/
+[url "git@github.com:christophgysin/"]
+    insteadOf = https://github.com/christophgysin/
+[credential]
+	helper = !aws codecommit credential-helper $@
+	UseHttpPath = true
