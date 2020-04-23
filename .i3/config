@@ -1,8 +1,8 @@
 # vim: set ft=conf
 
-workspace 1 output DP2 eDP1
-workspace 2 output HDMI1 eDP1
-workspace 3 output eDP1
+workspace 1 output DP-2 eDP-1
+workspace 2 output HDMI-1 eDP-1
+workspace 3 output eDP-1
 
 assign [class="firefox"] 1
 assign [class="Slack"] 2
