@@ -108,15 +108,17 @@ aws-login() {
 
 s3-delete-versioned-bucket() {
   bucket=$1
-  read -p "Deleting bucket '$bucket'! Are you sure??? (Ctrl-C to abort)"
+  token=$2
+  read -p "Deleting bucket '$bucket'! Are you sure? (Ctrl-C to abort) "
 
   aws s3api delete-objects \
     --bucket "$bucket" \
     --delete "$(
       aws s3api list-object-versions \
+        --max-items 500 \
         --bucket "$bucket" \
         --output=json \
         --query='{Objects: *[].{Key:Key,VersionId:VersionId}}'
     )" \
-  && aws s3 rb "s3://$bucket_name"
+  && aws s3 rb "s3://$bucket"
 }
