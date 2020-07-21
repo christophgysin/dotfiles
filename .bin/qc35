@@ -11,6 +11,9 @@ based() {
 }
 
 case $action in
+    connect)
+      bluetoothctl connect $QC35_ADDRESS
+      ;;
     status)
         based -d
         sleep 0.01
