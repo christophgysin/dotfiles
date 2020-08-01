@@ -1,5 +1,0 @@
-#!/bin/sh
-
-dev=${1:-wlp2s0}
-
-sudo iw dev "$dev" scan | grep -E 'SSID:|signal:|Authentication suites:'

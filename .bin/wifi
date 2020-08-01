@@ -1,0 +1,16 @@
+#!/bin/sh
+dev=$(sed -n 3s/:.*//p /proc/net/wireless)
+
+action=${1:-list}
+
+case $action in
+  list)
+    sed -n '3,$s/:.*//p' /proc/net/wireless
+    ;;
+  scan)
+    sudo iw dev "$dev" scan | grep -E 'SSID:|signal:|Authentication suites:'
+    ;;
+  restart)
+    sudo systemctl restart wpa_supplicant@dev
+    ;;
+esac
