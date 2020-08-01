@@ -118,7 +118,7 @@ s3-delete-versioned-bucket() {
         --max-items 500 \
         --bucket "$bucket" \
         --output=json \
-        --query='{Objects: *[].{Key:Key,VersionId:VersionId}}'
+        --query='{Objects: DeleteMarkers[].{Key:Key,VersionId:VersionId}}'
     )" \
   && aws s3 rb "s3://$bucket"
 }
