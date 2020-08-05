@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+version=$1
+dir=${2:-$PWD}
+pkg=${dir##*/}
+pkgbuild="$dir"/PKGBUILD
+
+[ -r "$pkgbuild" ]
+
+old=$(sed -n 's/^pkgver=//p' "$pkgbuild")
+
+echo "Upgrading $pkg: $old -> $version"
+
+sed -i "s/^pkgver=.*/pkgver=$version/" "$pkgbuild"
+cd $dir
+updpkgsums
+makepkg -si
