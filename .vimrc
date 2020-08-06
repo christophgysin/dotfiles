@@ -16,7 +16,6 @@ set backspace=indent,eol,start
 set showcmd
 set showmatch
 set incsearch
-set ignorecase
 set infercase
 set hlsearch
 set showfulltag
