@@ -15,6 +15,6 @@ echo "Upgrading $pkg: $old -> $version"
 sed -i "s/^pkgver=.*/pkgver=$version/" "$pkgbuild"
 cd $dir
 updpkgsums
-mksrcinfo
+makepkg --printsrcinfo > .SRCINFO
 makepkg -si
 git commit -am "Update to $version"
