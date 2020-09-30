@@ -11,6 +11,6 @@ case $action in
     sudo iw dev "$dev" scan | grep -E 'SSID:|signal:|Authentication suites:'
     ;;
   restart)
-    sudo systemctl restart wpa_supplicant@dev
+    sudo systemctl restart wpa_supplicant@$dev
     ;;
 esac
