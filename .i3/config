@@ -127,6 +127,7 @@ for_window [class="Android SDK Manager"] floating enable
 for_window [class="Pasystray"] floating enable
 for_window [class="Sloth"] floating enable
 for_window [class="Arandr"] floating enable
+for_window [class="Solaar"] floating enable
 
 # class                  border  backgr. text    indicator
 client.focused           #004400 #007700 #00dddd #000099
