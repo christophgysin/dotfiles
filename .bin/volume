@@ -14,9 +14,21 @@ step=3
 
 case ${1} in
     up)
-        pacmd set-sink-volume "$sink" $(( volume + step * 0x10000 / 100 ));;
+        volume=$((volume + step * 0x10000 / 100))
+        pacmd set-sink-volume "$sink" $volume
+        volume=$((volume * 100 / 0x10000))
+        volume=$((volume < 0 ? 0 : volume))
+        volume=$((volume > 100 ? 100 : volume))
+        echo $volume
+        ;;
     down)
-        pacmd set-sink-volume "$sink" $(( volume - step * 0x10000 / 100 ));;
+        volume=$((volume - step * 0x10000 / 100))
+        pacmd set-sink-volume "$sink" $volume
+        volume=$((volume * 100 / 0x10000))
+        volume=$((volume < 0 ? 0 : volume))
+        volume=$((volume > 100 ? 100 : volume))
+        echo $volume
+        ;;
     [-+][0-9]*|[0-9]*)
         pacmd set-sink-volume "$sink" $(( volume + $1 * 0x10000 / 100 ));;
     mute)
