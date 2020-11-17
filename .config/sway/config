@@ -2,36 +2,98 @@
 
 #debuglog on
 
-input "0:0:Apple_SPI_Touchpad" pointer_accel 1
-input "0:0:Apple_SPI_Touchpad" click_method clickfinger
+#output * background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
+output * background "#000000" solid_color
 
-output DP2 position 0,0
-output eDP1 position 640,1600
+output eDP-1 {
+  mode 3840x2160
+  position 4281,1788
+  scale 2
+}
+output DP-2 {
+  position 1080,188
+  mode 3480x1600
+}
+output HDMI-A-1 {
+  mode 1920x1080
+  position 0,0
+  transform 270
+}
 
-output WLC-1 position 0,0
-output WLC-2 position 500,0
-output WLC-2 resolution 500x500
+input * {
+  xkb_layout fi
+}
+input 1130:17:HID_046a:0011 {
+  xkb_layout ch
+}
+input 1739:52620:SYNA8005:00_06CB:CD8C_Touchpad {
+  pointer_accel 1
+  click_method clickfinger
+}
+input 1386:20922:Wacom_Pen_and_multitouch_sensor_Pen {
+  map_to_output eDP-1
+}
+input 1386:20922:Wacom_Pen_and_multitouch_sensor_Finger {
+  map_to_output eDP-1
+}
 
-output * background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
-gaps inner 2
+#seat wacom {
+#  attach 1386:20922:Wacom_Pen_and_multitouch_sensor_Pen
+#  hide_cursor 100
+#}
 
-font pango:Terminus 14
+workspace 1 output DP-2 eDP-1
+workspace 2 output HDMI-A-1 eDP-1
+workspace 3 output eDP-1
 
+assign [class="firefox"] 1
+assign [class="Slack"] 2
+
+exec firefox
+exec slack &>/dev/null
+
+default_border pixel 2
+#gaps inner 0
+font pango:Terminus 8
 focus_follows_mouse no
 mouse_warping none
 
-#set $win Mod4
-set $win Mod1
-set $term terminology
+set $alt Mod1
+set $win Mod4
 
 # Use Mouse+$win to drag floating windows to their wanted position
 floating_modifier $win
 #bindsym --whole-window $win+button2 floating toggle
 
-bindsym $win+Return exec $term
+bindsym $win+Return exec xterm
+bindsym $alt+Return exec terminology
 bindsym $win+Shift+q kill
 bindsym $win+r exec dmenu_run
 bindsym $win+d exec --no-startup-id i3-dmenu-desktop
+
+# audio
+exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
+exec systemctl --user start pulseaudio && exec pulseaudio-mute-leds
+bindsym XF86AudioLowerVolume exec volume down > $SWAYSOCK.wob
+bindsym XF86AudioRaiseVolume exec volume up > $SWAYSOCK.wob
+bindsym XF86AudioMute exec volume toggle-mute
+bindsym XF86AudioMicMute exec volume mic-toggle-mute
+bindsym XF86MonBrightnessUp exec brightness-wrap intel_backlight set +5% > $SWAYSOCK.wob
+bindsym XF86MonBrightnessDown exec brightness-wrap intel_backlight set 5%- > $SWAYSOCK.wob
+
+#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+#bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+#bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+#bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+bindsym XF86Display exec video cycle
+# bindsym XF86WakeUp exec
+# bindsym XF86WLAN exec
+#bindsym XF86Tools exec env > /tmp/sway.log
+# bindsym XF86Bluetooth exec
+# bindsym XF86Favorites exec
 
 # focus
 bindsym $win+h focus left
@@ -44,13 +106,6 @@ bindsym $win+Shift+h move left
 bindsym $win+Shift+j move down
 bindsym $win+Shift+k move up
 bindsym $win+Shift+l move right
-
-bindsym XF86AudioLowerVolume exec volume down
-bindsym XF86AudioRaiseVolume exec volume up
-bindsym XF86AudioMute exec volume toggle-mute
-bindsym XF86TouchpadToggle exec touchpad-toggle
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # split
 bindsym $win+i split h
@@ -71,19 +126,19 @@ bindsym $win+2 workspace number 2
 bindsym $win+3 workspace number 3
 bindsym $win+4 workspace number 4
 bindsym $win+5 workspace number 5
-#bindsym $win+6 workspace number 6
-#bindsym $win+7 workspace number 7
-#bindsym $win+8 workspace number 8
-#bindsym $win+9 workspace number 9
-#bindsym $win+0 workspace number 10
+bindsym $win+6 workspace number 6
+bindsym $win+7 workspace number 7
+bindsym $win+8 workspace number 8
+bindsym $win+9 workspace number 9
+bindsym $win+0 workspace number 10
 
 # mac
-#bindsym --release $win+7 exec --no-startup-id xdotool key backslash
 #bindsym --release $win+8 exec --no-startup-id xdotool key braceleft
 #bindsym --release $win+9 exec --no-startup-id xdotool key braceright
 
 #exec xautolock -time 12 -locker 'screenlock' &
-exec setxkbmap ch
+
+exec kanshi
 
 bindsym $win+Shift+1 move container to workspace number 1; workspace number 1
 bindsym $win+Shift+2 move container to workspace number 2; workspace number 2
@@ -91,10 +146,10 @@ bindsym $win+Shift+3 move container to workspace number 3; workspace number 3
 bindsym $win+Shift+4 move container to workspace number 4; workspace number 4
 bindsym $win+Shift+5 move container to workspace number 5; workspace number 5
 bindsym $win+Shift+6 move container to workspace number 6; workspace number 6
-#bindsym $win+Shift+7 move container to workspace number 7; workspace number 7
-#bindsym $win+Shift+8 move container to workspace number 8; workspace number 8
-#bindsym $win+Shift+9 move container to workspace number 9; workspace number 9
-#bindsym $win+Shift+0 move container to workspace number 10; workspace number 10
+bindsym $win+Shift+7 move container to workspace number 7; workspace number 7
+bindsym $win+Shift+8 move container to workspace number 8; workspace number 8
+bindsym $win+Shift+9 move container to workspace number 9; workspace number 9
+bindsym $win+Shift+0 move container to workspace number 10; workspace number 10
 
 bindsym $win+BackSpace reload
 bindsym $win+Delete exit
@@ -113,16 +168,18 @@ mode "resize" {
 }
 
 bar {
-    swaybar_command swaybar -d
+    #swaybar_command swaybar -d
     status_command i3status
-    font pango:Terminus 14
+    font pango:Terminus 10
 }
 
-for_window [class=".*"] border pixel 2
-for_window [class="Crags.py"] floating enable
+for_window [window_type="splash"] floating enable
+for_window [app_id="wdisplays"] floating enable
 
-# class                  border  backgr. text    indicator
-#client.focused           #004400 #007700 #00dddd #000099
-#client.focused_inactive  #002200 #004400 #009999 #000066
-#client.unfocused        #333333 #222222 #888888 #292d2e
-#client.urgent           #2f343a #900000 #ffffff #90
+for_window [class="Crags.py"] floating enable
+for_window [class="Onboard"] floating enable
+for_window [class="Android SDK Manager"] floating enable
+for_window [class="Pasystray"] floating enable
+for_window [class="Sloth"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [class="Solaar"] floating enable
