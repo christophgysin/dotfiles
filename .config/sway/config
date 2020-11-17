@@ -78,7 +78,7 @@ bindsym $win+r exec dmenu_run
 bindsym $win+d exec --no-startup-id i3-dmenu-desktop
 
 # audio
-exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
+exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob --output eDP-1
 exec systemctl --user start pulseaudio && exec pulseaudio-mute-leds
 bindsym XF86AudioLowerVolume exec volume down > $SWAYSOCK.wob
 bindsym XF86AudioRaiseVolume exec volume up > $SWAYSOCK.wob
