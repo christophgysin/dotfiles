@@ -5,6 +5,7 @@ shift
 args=("$@")
 
 brightnessctl \
+  --quiet \
   --min-value=1 \
   --device "$device" \
   "${args[@]}"
@@ -12,4 +13,4 @@ brightnessctl \
 cur=$(brightnessctl -d "$device" get)
 max=$(brightnessctl -d "$device" max)
 
-notify-send -t 500 "$device" "brightness: $[100 * $cur / $max ]%"
+echo $[100 * $cur / $max ]
