@@ -28,6 +28,7 @@ input 1130:17:HID_046a:0011 {
 }
 input 1739:52620:SYNA8005:00_06CB:CD8C_Touchpad {
   pointer_accel 1
+  tap enabled
   click_method clickfinger
 }
 input 1386:20922:Wacom_Pen_and_multitouch_sensor_Pen {
