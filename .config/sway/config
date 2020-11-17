@@ -173,13 +173,5 @@ bar {
     font pango:Terminus 10
 }
 
-for_window [window_type="splash"] floating enable
 for_window [app_id="wdisplays"] floating enable
-
-for_window [class="Crags.py"] floating enable
-for_window [class="Onboard"] floating enable
-for_window [class="Android SDK Manager"] floating enable
-for_window [class="Pasystray"] floating enable
-for_window [class="Sloth"] floating enable
-for_window [class="Arandr"] floating enable
-for_window [class="Solaar"] floating enable
+for_window [app_id="solaar"] floating enable
