@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-scrot \
-  -s '/tmp/%F_%T_$wx$h.png' \
-  -e 'xclip -selection clipboard -target image/png -i $f' \
-  "$@"
+if [ $WAYLAND_DISPLAY ]; then
+  grim -g "$(slurp)" - | wl-copy
+else
+  scrot \
+    -s '/tmp/%F_%T_$wx$h.png' \
+    -e 'xclip -selection clipboard -target image/png -i $f' \
+    "$@"
+fi
