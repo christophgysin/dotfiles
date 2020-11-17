@@ -50,6 +50,11 @@ workspace 3 output eDP-1
 assign [class="firefox"] 1
 assign [class="Slack"] 2
 
+exec --no-startup-id swayidle \
+  timeout 240 'brightnessctl get > /tmp/brightness && brightnessctl set 10%' \
+  resume 'brightnessctl set $(\[ -f /tmp/brightness \] && cat /tmp/brightness || echo 100%)' \
+  timeout 300 'systemctl suspend'
+
 exec firefox
 exec slack &>/dev/null
 
