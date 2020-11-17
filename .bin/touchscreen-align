@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-xrandr --output eDP-1 --scale 1
-xinput --map-to-output "Wacom Pen and multitouch sensor Pen eraser" "eDP-1"
-xinput --map-to-output "Wacom Pen and multitouch sensor Pen stylus" "eDP-1"
-xinput --map-to-output "Wacom Pen and multitouch sensor Finger touch" "eDP-1"
-xrandr --output eDP-1 --scale 0.5
+xinput --map-to-output "Wacom Pen and multitouch sensor Pen eraser" "eDP-1" --scale 0.5
+xinput --map-to-output "Wacom Pen and multitouch sensor Pen stylus" "eDP-1" --scale 0.5
+xinput --map-to-output "Wacom Pen and multitouch sensor Finger touch" "eDP-1" --scale 0.5
