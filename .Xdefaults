@@ -67,7 +67,7 @@ XTerm*scrollBar:            false
 !XTerm*faceName:             ter-v16b
 XTerm*faceName:             Terminus
 XTerm*faceSize:             11
-XTerm*termName:             xterm
+XTerm*termName:             xterm-256color
 
 ! xcalc
 xcalc*geometry: 200x275
