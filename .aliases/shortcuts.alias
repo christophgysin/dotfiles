@@ -11,5 +11,6 @@ alias sx='exec startx'
 alias sys="sudo systemctl"
 type vim &>/dev/null || if type vim.tiny &>/dev/null; then alias vim=vim.tiny; fi
 alias g=git
+alias open=xdg-open
 
 # vim:ft=sh
