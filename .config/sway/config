@@ -184,5 +184,7 @@ bar {
     font pango:Terminus 10
 }
 
+for_window [window_type="splash"] floating enable
 for_window [app_id="wdisplays"] floating enable
 for_window [app_id="solaar"] floating enable
+for_window [title="Firefox — Sharing Indicator"] floating enable
