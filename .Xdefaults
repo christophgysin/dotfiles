@@ -10,25 +10,26 @@ urxvt.tintColor:white
 urxvt.shading:0
 urxvt.fading:20
 urxvt.saveLines:10000
-urxvt.geometry:140x29
 urxvt.scrollTtyOutput:false
 urxvt.scrollWithBuffer:true
 urxvt.scrollTtyKeypress:true
-!urxvt.font:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
-!urxvt.boldFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
-!urxvt.italicFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
-!urxvt.boldItalicFont:-*-terminus-*-r-*-*-24-*-*-*-*-*-*-*
+urxvt.font: xft:Hack:size=11
+
+# use same colors as xterm
+urxvt.color12: rgb:5c/5c/ff
 
 urxvt.perl-ext-common: default,matcher,clipboard
-urxvt.keysym.C-Up:     perl:font-size:increase
-urxvt.keysym.C-Down:   perl:font-size:decrease
-urxvt.keysym.C-S-Up:   perl:font-size:incglobal
-urxvt.keysym.C-S-Down: perl:font-size:decglobal
+
+urxvt.url-launcher: /usr/bin/xdg-open
+urxvt.matcher.button: 1
+urxvt.colorUL: #86a2be
+
+# needed to make resize-font shortcuts work
+urxvt.iso14755: false
+urxvt.iso14755_52: false
+
 urxvt.keysym.Mod4-c: perl:clipboard:copy
 urxvt.keysym.Mod4-v: perl:clipboard:paste
-urxvt.urlLauncher: chromium-browser
-!urxvt.matcher.button:   3
-urxvt.colorUL: #86a2be
 
 ! xpdf
 xpdf*initialZoom: width
