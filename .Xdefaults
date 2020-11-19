@@ -13,7 +13,7 @@ urxvt.saveLines:10000
 urxvt.scrollTtyOutput:false
 urxvt.scrollWithBuffer:true
 urxvt.scrollTtyKeypress:true
-urxvt.font: xft:Hack:size=11
+urxvt.font: xft:Hack:size=12
 
 # use same colors as xterm
 urxvt.color12: rgb:5c/5c/ff
