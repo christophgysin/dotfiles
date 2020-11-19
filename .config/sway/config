@@ -53,6 +53,7 @@ workspace 3 output eDP-1
 assign [class="firefox"] 1
 assign [class="Slack"] 2
 
+exec kanshi
 exec --no-startup-id swayidle \
   timeout 180 'brightnessctl get > /tmp/brightness && brightnessctl set 10%' \
   resume 'brightnessctl set $(\[ -f /tmp/brightness \] && cat /tmp/brightness || echo 100%)' \
