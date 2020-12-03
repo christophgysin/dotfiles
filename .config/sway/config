@@ -165,6 +165,8 @@ bindsym $win+Shift+0 move container to workspace number 10; workspace number 10
 bindsym $win+BackSpace reload
 bindsym $win+Delete exit
 
+bindsym $win+Print screenshot
+
 bindsym $win+period exec swaylock --screenshots --effect-blur 4x4 # using swaylock-effects
 
 # resize
