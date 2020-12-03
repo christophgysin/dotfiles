@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+swaymsg output HDMI-A-1 disable
+sleep 1
+swaymsg output HDMI-A-1 enable
