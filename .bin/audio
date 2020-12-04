@@ -31,6 +31,6 @@ case $mode in
     _pactl unload-module module-combine-sink
     ;;
   *)
-    echo "usage: $(basename "$0") [ speakers | combine | uncombine ]";
+    echo "usage: $(basename "$0") [ speakers | stereo | combine | uncombine ]";
     exit 1;;
 esac
