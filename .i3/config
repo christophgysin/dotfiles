@@ -30,6 +30,7 @@ floating_modifier $win
 bindsym --whole-window $win+button2 floating toggle
 
 bindsym $win+Return exec $term
+bindsym $alt+Return exec xterm
 bindsym $win+Shift+q kill
 bindsym $win+r exec dmenu-frecency
 bindsym $win+space exec dmenu-frecency
