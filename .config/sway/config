@@ -81,6 +81,8 @@ bindsym $alt+Return exec urxvt
 bindsym $win+Shift+q kill
 bindsym $win+r exec bemenu-run
 #bindsym $win+d exec --no-startup-id i3-dmenu-desktop
+bindsym $win+0 exec fix-outputs
+bindsym $win+9 exec swaymsg output HDMI-A-1 transform 270
 
 # audio
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob --output eDP-1
@@ -140,8 +142,8 @@ bindsym $win+5 workspace number 5
 bindsym $win+6 workspace number 6
 bindsym $win+7 workspace number 7
 bindsym $win+8 workspace number 8
-bindsym $win+9 workspace number 9
-bindsym $win+0 workspace number 10
+#bindsym $win+9 workspace number 9
+#bindsym $win+0 workspace number 10
 
 # mac
 #bindsym --release $win+8 exec --no-startup-id xdotool key braceleft
@@ -159,8 +161,8 @@ bindsym $win+Shift+5 move container to workspace number 5; workspace number 5
 bindsym $win+Shift+6 move container to workspace number 6; workspace number 6
 bindsym $win+Shift+7 move container to workspace number 7; workspace number 7
 bindsym $win+Shift+8 move container to workspace number 8; workspace number 8
-bindsym $win+Shift+9 move container to workspace number 9; workspace number 9
-bindsym $win+Shift+0 move container to workspace number 10; workspace number 10
+#bindsym $win+Shift+9 move container to workspace number 9; workspace number 9
+#bindsym $win+Shift+0 move container to workspace number 10; workspace number 10
 
 bindsym $win+BackSpace reload
 bindsym $win+Delete exit
