@@ -1,10 +1,7 @@
 # vim: set ft=conf
-
 #debuglog on
 
-#output * background /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
 output * background "#000000" solid_color
-
 output eDP-1 {
   mode 3840x2160
   position 4281,1788
@@ -54,7 +51,7 @@ assign [class="firefox"] 1
 assign [class="Slack"] 2
 
 exec kanshi
-exec --no-startup-id swayidle \
+exec swayidle \
   timeout 180 'brightnessctl get > /tmp/brightness && brightnessctl set 10%' \
   resume 'brightnessctl set $(\[ -f /tmp/brightness \] && cat /tmp/brightness || echo 100%)' \
   timeout 240 'swaylock --screenshots --effect-blur 4x4' \
@@ -64,7 +61,6 @@ exec firefox
 exec slack &>/dev/null
 
 default_border pixel 2
-#gaps inner 0
 font pango:Terminus 8
 focus_follows_mouse no
 mouse_warping none
@@ -74,13 +70,11 @@ set $win Mod4
 
 # Use Mouse+$win to drag floating windows to their wanted position
 floating_modifier $win
-#bindsym --whole-window $win+button2 floating toggle
 
 bindsym $win+Return exec termite
 bindsym $alt+Return exec urxvt
 bindsym $win+Shift+q kill
 bindsym $win+r exec bemenu-run
-#bindsym $win+d exec --no-startup-id i3-dmenu-desktop
 bindsym $win+8 exec pavucontrol
 bindsym $win+9 exec swaymsg output HDMI-A-1 transform 270
 bindsym $win+0 exec fix-outputs
@@ -145,12 +139,6 @@ bindsym $win+7 workspace number 7
 #bindsym $win+8 workspace number 8
 #bindsym $win+9 workspace number 9
 #bindsym $win+0 workspace number 10
-
-# mac
-#bindsym --release $win+8 exec --no-startup-id xdotool key braceleft
-#bindsym --release $win+9 exec --no-startup-id xdotool key braceright
-
-#exec xautolock -time 12 -locker 'screenlock' &
 
 exec kanshi
 
