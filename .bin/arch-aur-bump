@@ -2,6 +2,7 @@
 set -euo pipefail
 
 version=$1
+rel=1
 dir=${2:-$PWD}
 pkg=${dir##*/}
 pkgbuild="$dir"/PKGBUILD
@@ -9,10 +10,12 @@ pkgbuild="$dir"/PKGBUILD
 [ -r "$pkgbuild" ]
 
 old=$(sed -n 's/^pkgver=//p' "$pkgbuild")
+oldrel=$(sed -n 's/^pkgrel=//p' "$pkgbuild")
 
-echo "Upgrading $pkg: $old -> $version"
+echo "Upgrading $pkg: $old-$oldrel -> $version-$rel"
 
 sed -i "s/^pkgver=.*/pkgver=$version/" "$pkgbuild"
+sed -i "s/^pkgrel=.*/pkgrel=$rel/" "$pkgbuild"
 cd $dir
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
