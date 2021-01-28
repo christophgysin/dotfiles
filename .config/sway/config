@@ -57,6 +57,9 @@ exec swayidle \
   timeout 240 'swaylock --screenshots --effect-blur 4x4' \
   timeout 300 'systemctl suspend'
 
+# clipboard sync
+exec wl-paste -pw wl-copy
+
 exec firefox
 exec slack &>/dev/null
 
