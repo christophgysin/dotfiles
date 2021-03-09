@@ -2,52 +2,61 @@
 #
 # increase pulseaudio volume beyond 153%
 
-dump=$(pacmd dump)
-
-read _ sink < <(grep ^set-default-sink <<< $dump)
-read _ source < <(grep ^set-default-source <<< $dump)
-read _ _ volume < <(grep -m1 "^set-sink-volume $sink" <<< $dump)
-read _ _ sink_mute < <(grep -m1 "^set-sink-mute $sink" <<< $dump)
-read _ _ source_mute < <(grep -m1 "^set-source-mute $source" <<< $dump)
-
 step=3
 
-case ${1} in
-    up)
-        volume=$((volume + step * 0x10000 / 100))
-        pacmd set-sink-volume "$sink" $volume
-        volume=$((volume * 100 / 0x10000))
-        volume=$((volume < 0 ? 0 : volume))
-        volume=$((volume > 100 ? 100 : volume))
-        echo $volume
-        ;;
-    down)
-        volume=$((volume - step * 0x10000 / 100))
-        pacmd set-sink-volume "$sink" $volume
-        volume=$((volume * 100 / 0x10000))
-        volume=$((volume < 0 ? 0 : volume))
-        volume=$((volume > 100 ? 100 : volume))
-        echo $volume
-        ;;
-    [-+][0-9]*|[0-9]*)
-        pacmd set-sink-volume "$sink" $(( volume + $1 * 0x10000 / 100 ));;
-    mute)
-        pacmd set-sink-mute "$sink" yes
-        ;;
-    unmute)
-        pacmd set-sink-mute "$sink" no
-        ;;
-    toggle-mute)
-        [ $sink_mute == yes ] && "$0" unmute || "$0" mute;;
-    mic-mute)
-        pacmd set-source-mute "$source" yes
-        ;;
-    mic-unmute)
-        pacmd set-source-mute "$source" no
-        ;;
-    mic-toggle-mute)
-        [ $source_mute == yes ] && "$0" mic-unmute || "$0" mic-mute;;
-    *)
-        echo "usage: $0 <up|down|[+]n|-n|mute|unmute|toggle-mute>"
-        exit 1;;
+get_volume() {
+  local type=$1
+
+  name=$(
+    pactl info \
+      | sed -n "s/^Default ${type^}: //p"
+  )
+  volume=$(
+    pactl list ${type}s \
+      | sed -n "/Name: $name/,/Volume:/p" \
+      | tail -n1 \
+      | sed -rn "s/.* ([0-9]+)%.*/\1/p"
+  )
+  volume=$((volume < 0 ? 0 : volume))
+  volume=$((volume > 100 ? 100 : volume))
+  echo $volume
+}
+
+case $1 in
+  up)
+    pactl set-sink-volume @DEFAULT_SINK@ +$step%
+    get_volume sink
+    ;;
+  down)
+    pactl set-sink-volume @DEFAULT_SINK@ -$step%
+    get_volume sink
+    ;;
+  [-+][0-9]*|[0-9]*)
+    pactl set-sink-volume @DEFAULT_SINK@ $1%
+    get_volume sink
+    ;;
+  mute)
+    pactl set-sink-mute @DEFAULT_SINK@ yes
+    echo 0
+    ;;
+  unmute)
+    pactl set-sink-mute @DEFAULT_SINK@ no
+    get_volume sink
+    ;;
+  toggle-mute)
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+    ;;
+
+  mic-mute)
+    pactl set-source-mute @DEFAULT_SOURCE@ yes
+    ;;
+  mic-unmute)
+    pactl set-source-mute @DEFAULT_SOURCE@ no
+    ;;
+  mic-toggle-mute)
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    ;;
+  *)
+    echo "usage: $0 <up|down|[+]n|-n|mute|unmute|toggle-mute>"
+    exit 1;;
 esac
