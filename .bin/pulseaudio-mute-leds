@@ -1,11 +1,22 @@
 #!/usr/bin/env bash
 
-dump=$(pacmd dump)
+get_default() {
+  type=$1
+  name=$(
+    pactl info |
+      sed -n "s/^Default ${type^}: //p"
+  )
+  mute=$(
+    pactl list ${type}s |
+      sed -n "/Name: $name/,/Mute:/p" |
+      tail -n1 |
+      sed -n "s/^\tMute: //p"
+  )
+  echo $name $mute
+}
 
-read _ sink < <(grep ^set-default-sink <<< $dump)
-read _ source < <(grep ^set-default-source <<< $dump)
-read _ _ sink_mute < <(grep -m1 "^set-sink-mute $sink" <<< $dump)
-read _ _ source_mute < <(grep -m1 "^set-source-mute $source" <<< $dump)
+read sink sink_mute < <(get_default sink)
+read source source_mute < <(get_default source)
 
 brightnessctl -q -d platform::mute set $([ $sink_mute == yes ] && echo 1 || echo 0)
 brightnessctl -q -d platform::micmute set $([ $source_mute == yes ] && echo 1 || echo 0)
@@ -16,9 +27,10 @@ while read _ event _ type id; do
 
   [ $event = change ] || continue
 
-  dump=$(pacmd dump)
-  read _ name < <(grep -m1 ^set-default-$type <<< $dump)
-  read _ _ mute < <(grep -m1 "^set-$type-mute $name" <<< $dump)
+  case $type in
+    sink|source) read name mute < <(get_default $type);;
+    *) continue;;
+  esac
 
   case $type in
     sink) led=platform::mute;;
