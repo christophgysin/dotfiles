@@ -11,7 +11,7 @@ alias pacl="pacman -Ql"
 alias pacm="makepkg -si"
 alias pacb="mkaurball"
 alias pacp="$SUDO pacman -U"
-alias pacf="pacman -Fs"
+alias pacf="pacman -F"
 alias pacfu="sudo pacman -Fy"
 function pacyu() { yaourt -Syua "${@}" && pacnew-update; }
 alias pacys="yaourt -Ss"
