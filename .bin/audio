@@ -24,11 +24,15 @@ case $mode in
     _pactl set-default-sink alsa_output.${speakers}__sink
     ;;
   combine)
-    _pactl load-module module-combine-sink
-    _pactl set-default-sink combined
+    _pactl load-module module-null-sink sink_name=combine object.linger=1 media.class=Audio/Duplex channel_map=FL,FR
+    _pactl set-default-sink combine
+    pw-jack jack_connect "combine Audio/Duplex sink:capture_1" "Cannon Point-LP High Definition Audio Controller Speaker + Headphones:playback_FL"
+    pw-jack jack_connect "combine Audio/Duplex sink:capture_2" "Cannon Point-LP High Definition Audio Controller Speaker + Headphones:playback_FR"
+    pw-jack jack_connect "combine Audio/Duplex sink:capture_1" cans:playback_FL
+    pw-jack jack_connect "combine Audio/Duplex sink:capture_2" cans:playback_FR
     ;;
   uncombine)
-    _pactl unload-module module-combine-sink
+    _pactl unload-module module-null-sink
     ;;
   *)
     echo "usage: $(basename "$0") [ speakers | stereo | combine | uncombine ]";
