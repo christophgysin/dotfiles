@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+usage() {
+  echo >&2 "Usage: $0 [ capture | preview ]"
+  exit 1
+}
+
+load() {
+  lsmod | grep -q ^v4l2loopback ||
+    sudo modprobe v4l2loopback \
+      card_label="Fuji X-T30" \
+      exclusive_caps=1 \
+      max_buffers=2
+}
+
+capture() {
+  gphoto2 --stdout --capture-movie |
+    ffmpeg \
+      -i - \
+      -vcodec rawvideo \
+      -pix_fmt yuv420p \
+      -f v4l2 \
+      /dev/video4 \
+      "$@"
+}
+
+preview() {
+  mpv \
+    --no-cache \
+    --untimed \
+    --no-demuxer-thread \
+    --video-sync=audio \
+    --vd-lavc-threads=1 \
+    --vf=hflip \
+    av://v4l2://dev/video4 \
+    "$@"
+}
+
+action=${1:-capture}
+shift
+
+case $action in
+  preview)
+    preview "$@"
+    ;;
+  capture)
+    load
+    capture "$@"
+    ;;
+  *)
+    usage
+    ;;
+esac
