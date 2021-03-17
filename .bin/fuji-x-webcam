@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 usage() {
-  echo >&2 "Usage: $0 [ capture | preview ]"
+  echo >&2 "Usage: $0 [ c(apture) | p(review) ]"
   exit 1
 }
 
@@ -14,14 +14,18 @@ load() {
 }
 
 capture() {
-  gphoto2 --stdout --capture-movie |
-    ffmpeg \
-      -i - \
-      -vcodec rawvideo \
-      -pix_fmt yuv420p \
-      -f v4l2 \
-      /dev/video4 \
-      "$@"
+  gphoto2 \
+    --quiet \
+    --stdout \
+    --capture-movie \
+    | gst-launch-1.0 \
+      --quiet \
+      --no-position \
+      fdsrc fd=0 \
+      ! decodebin name=dec \
+      ! queue \
+      ! videoconvert \
+      ! v4l2sink device=/dev/video4
 }
 
 preview() {
@@ -40,10 +44,10 @@ action=${1:-capture}
 shift
 
 case $action in
-  preview)
+  p*)
     preview "$@"
     ;;
-  capture)
+  c*)
     load
     capture "$@"
     ;;
