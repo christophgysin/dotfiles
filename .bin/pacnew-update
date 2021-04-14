@@ -3,13 +3,14 @@
 [ $(id -u) = 0 ] || SUDO=sudo
 
 config_dirs=(
-    /etc
-    /boot
-    /usr
-    /var
+  /etc
+  /boot
+  /usr
+  /var
 )
 
 $SUDO \
-    find "${config_dirs[@]}" \
-        -name "*.pacnew" \
-        -exec pacnew-update-1 '{}' ';'
+  find "${config_dirs[@]}" \
+    \( -not -path /var/lib/docker/btrfs -or -prune \) \
+    -name "*.pacnew" \
+    -exec pacnew-update-1 '{}' ';'
