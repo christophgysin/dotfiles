@@ -10,9 +10,6 @@
 [submodule ".vim/bundle/docker"]
 	path = .vim/bundle/docker
 	url = https://github.com/ekalinin/Dockerfile.vim.git
-[submodule ".vim/bundle/graphql"]
-	path = .vim/bundle/graphql
-	url = https://github.com/jparise/vim-graphql
 [submodule ".vim/bundle/alternate"]
 	path = .vim/bundle/alternate
 	url = https://github.com/vim-scripts/a.vim
