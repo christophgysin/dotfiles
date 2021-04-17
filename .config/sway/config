@@ -187,3 +187,7 @@ for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [instance="spotify"] inhibit_idle focus
+
+include /etc/sway/config.d/*
+
+exec systemctl --user start libinput-gestures
