@@ -143,8 +143,6 @@ bindsym $win+7 workspace number 7
 #bindsym $win+9 workspace number 9
 #bindsym $win+0 workspace number 10
 
-exec kanshi
-
 bindsym $win+Shift+1 move container to workspace number 1; workspace number 1
 bindsym $win+Shift+2 move container to workspace number 2; workspace number 2
 bindsym $win+Shift+3 move container to workspace number 3; workspace number 3
