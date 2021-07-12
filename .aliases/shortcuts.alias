@@ -9,6 +9,7 @@ alias mfs='m -fs'
 alias tv='m -fs dvb://'
 alias sx='exec startx'
 alias sw='\
+LIBSEAT_BACKEND=logind \
 CLUTTER_BACKEND=wayland \
 ELM_DISPLAY=wl \
 _JAVA_AWT_WM_NONREPARENTING=1 \
