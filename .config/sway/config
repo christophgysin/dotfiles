@@ -48,6 +48,8 @@ workspace 2 output HDMI-A-1 eDP-1
 workspace 3 output eDP-1
 
 assign [class="firefox"] 1
+assign [class="Chromium"] 1
+assign [class="Google-chrome"] 1
 assign [class="Slack"] 2
 
 exec kanshi
