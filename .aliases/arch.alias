@@ -23,6 +23,6 @@ function pacro() {
 }
 alias pacclean="$SUDO find /var/cache/pacman/pkg -type f -mtime +0 -exec rm {} +"
 alias pacyg="yay -uG"
-function pacyR() { pacyi $(pacman -Qsq -- '-git$'); }
+function pacyR() { pacyi $(pacman -Qsq -- '-(git|hg|svn)$'); }
 
 alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'
