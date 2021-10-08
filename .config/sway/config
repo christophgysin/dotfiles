@@ -46,7 +46,7 @@ input 1386:20922:Wacom_Pen_and_multitouch_sensor_Finger {
 #  hide_cursor 100
 #}
 
-workspace 1 output DP-2 eDP-1
+workspace 1 output DP-1 DP-2 eDP-1
 workspace 2 output HDMI-A-1 eDP-1
 workspace 3 output eDP-1
 
