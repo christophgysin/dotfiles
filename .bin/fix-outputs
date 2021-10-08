@@ -2,6 +2,3 @@
 
 swaymsg output eDP-1 disable
 swaymsg output eDP-1 enable
-swaymsg output HDMI-A-1 disable
-sleep 1
-swaymsg output HDMI-A-1 enable
