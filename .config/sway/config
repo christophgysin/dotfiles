@@ -7,6 +7,10 @@ output eDP-1 {
   position 4281,1788
   scale 2
 }
+output DP-1 {
+  position 1080,188
+  mode 3840x1600
+}
 output DP-2 {
   position 1080,188
   mode 3840x1600
