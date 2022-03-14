@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/coc"]
 	path = .vim/bundle/coc
 	url = https://github.com/neoclide/coc.nvim
+[submodule "/home/chris/.config/nvim/pack/github/start/copilot.vim"]
+	path = /home/chris/.config/nvim/pack/github/start/copilot.vim
+	url = https://github.com/github/copilot.vim.git
