@@ -1,0 +1,4 @@
+alias sys="sudo systemctl"
+alias usys="systemctl --user"
+
+# vim:ft=sh

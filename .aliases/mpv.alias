@@ -1,0 +1,5 @@
+alias m=mpv
+alias mfs='m -fs'
+alias tv='m -fs dvb://'
+
+# vim:ft=sh

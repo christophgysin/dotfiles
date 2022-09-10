@@ -2,24 +2,7 @@
 alias l='ls -lh --color=auto'
 alias ll='ls -la --color=auto'
 alias c=clear
-alias t='v ~/todo'
-alias v=vim
-alias m=mpv
-alias mfs='m -fs'
-alias tv='m -fs dvb://'
 alias sx='exec startx'
-alias sw='\
-LIBSEAT_BACKEND=logind \
-CLUTTER_BACKEND=wayland \
-ELM_DISPLAY=wl \
-_JAVA_AWT_WM_NONREPARENTING=1 \
-XDG_CURRENT_DESKTOP=sway \
-MOZ_ENABLE_WAYLAND=1 \
-MOZ_DBUS_REMOTE=1 \
-QT_QPA_PLATFORM=xcb \
-exec sway'
-alias sys="sudo systemctl"
-type vim &>/dev/null || if type vim.tiny &>/dev/null; then alias vim=vim.tiny; fi
 alias g=git
 alias open=xdg-open
 
