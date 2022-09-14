@@ -28,6 +28,9 @@ input 1386:20922:Wacom_Pen_and_multitouch_sensor_Finger {
   map_to_output eDP-1
 }
 
+bindswitch --reload --locked lid:on output eDP-1 disable
+bindswitch --reload --locked lid:off output eDP-1 enable
+
 #seat wacom {
 #  attach 1386:20922:Wacom_Pen_and_multitouch_sensor_Pen
 #  hide_cursor 100
