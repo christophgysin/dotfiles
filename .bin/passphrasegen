@@ -1,0 +1,4 @@
+#!/bin/sh
+
+shuf -n3 /usr/share/dict/words | tr '\n' ' '
+echo
