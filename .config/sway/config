@@ -2,24 +2,7 @@
 #debuglog on
 
 output * background "#000000" solid_color
-output eDP-1 {
-  mode 3840x2160
-  position 4281,1788
-  scale 2
-}
-output DP-1 {
-  position 1080,188
-  mode 3840x1600
-}
-output DP-2 {
-  position 1080,188
-  mode 3840x1600
-}
-output HDMI-A-1 {
-  mode 1920x1080
-  position 0,0
-  transform 270
-}
+output eDP-1 mode 3840x2160 position 4281,1788 scale 2
 
 input * {
   xkb_layout fi
