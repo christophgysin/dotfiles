@@ -16,8 +16,7 @@ capture() {
       --quiet \
       --no-position \
       fdsrc fd=0 \
-      ! decodebin name=dec \
-      ! queue \
+      ! decodebin \
       ! videoconvert \
       ! v4l2sink device=$DEVICE
 }
