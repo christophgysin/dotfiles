@@ -70,7 +70,6 @@ set $win Mod4
 floating_modifier $win
 
 bindsym $win+Return exec termite
-bindsym control+Return exec termite
 bindsym $win+Shift+q kill
 bindsym $win+r exec bemenu-run
 bindsym $win+8 exec pavucontrol
