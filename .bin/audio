@@ -24,17 +24,20 @@ case $mode in
     _pactl set-default-sink alsa_output.${speakers}__sink
     ;;
   combine)
+    # pw-loopback -m '[ FL FR ]' --capture-props='media.class=Audio/Sink node.name=my_sink'
     pw-cli create-node adapter { \
       factory.name=support.null-audio-sink \
       node.name=combine \
       media.class=Audio/Duplex \
       object.linger=1 \
-      audio.position=FL,FR \
+      audio.position=[FL FR] \
     }
-    pw-jack jack_connect combine:capture_FL Onboard:playback_FL
-    pw-jack jack_connect combine:capture_FR Onboard:playback_FR
+    #pw-jack jack_connect combine:capture_FL Speakers:playback_FL
+    #pw-jack jack_connect combine:capture_FR Speakers:playback_FR
     pw-jack jack_connect combine:capture_FL cans:playback_FL
     pw-jack jack_connect combine:capture_FR cans:playback_FR
+    pw-jack jack_connect combine:capture_FL silver:playback_FL
+    pw-jack jack_connect combine:capture_FR silver:playback_FR
     _pactl set-default-sink combine
     ;;
   uncombine)
