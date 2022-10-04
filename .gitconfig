@@ -127,3 +127,6 @@
 [credential]
     helper = !aws codecommit credential-helper $@
     UseHttpPath = true
+
+[init]
+    defaultBranch = main
