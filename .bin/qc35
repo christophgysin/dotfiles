@@ -19,6 +19,8 @@ case $action in
         sleep 0.01
         bat=$(based -b)
         echo "Battery: $bat%"
+        sleep 0.01
+        based -a
         ;;
     fw)
         based -f
@@ -29,8 +31,14 @@ case $action in
     bat)
         based -b
         ;;
-    paired)
+    connected)
         based -a
+        ;;
+    connect)
+        based --connect-device "$@"
+        ;;
+    disconnect)
+        based --disconnect-device "$@"
         ;;
     nc)
         if [ $# -ne 1 ]; then
