@@ -37,3 +37,6 @@
 [submodule ".config/nvim/pack/github/start/copilot.vim"]
 	path = .config/nvim/pack/github/start/copilot.vim
 	url = https://github.com/github/copilot.vim.git
+[submodule ".vim/pack/plugins/start/rust.vim"]
+	path = .vim/pack/plugins/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim
