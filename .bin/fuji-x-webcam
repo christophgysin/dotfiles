@@ -8,10 +8,7 @@ usage() {
 }
 
 capture() {
-  gphoto2 \
-    --quiet \
-    --stdout \
-    --capture-movie \
+  fuji-x-webcam-capture \
     | gst-launch-1.0 \
       --quiet \
       --no-position \
