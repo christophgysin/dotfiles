@@ -22,8 +22,8 @@
 [submodule ".vim/bundle/typescript"]
 	path = .vim/bundle/typescript
 	url = https://github.com/leafgarland/typescript-vim.git
-[submodule "/home/chris/.vim/bundle/tsuquyomi"]
-	path = /home/chris/.vim/bundle/tsuquyomi
+[submodule ".vim/bundle/tsuquyomi"]
+	path = .vim/bundle/tsuquyomi
 	url = https://github.com/Quramy/tsuquyomi.git
 [submodule ".vim/plugin/terraform"]
 	path = .vim/bundle/terraform
@@ -34,6 +34,6 @@
 [submodule ".vim/bundle/coc"]
 	path = .vim/bundle/coc
 	url = https://github.com/neoclide/coc.nvim
-[submodule "/home/chris/.config/nvim/pack/github/start/copilot.vim"]
-	path = /home/chris/.config/nvim/pack/github/start/copilot.vim
+[submodule ".config/nvim/pack/github/start/copilot.vim"]
+	path = .config/nvim/pack/github/start/copilot.vim
 	url = https://github.com/github/copilot.vim.git
