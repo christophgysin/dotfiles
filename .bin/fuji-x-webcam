@@ -9,13 +9,13 @@ usage() {
 
 capture() {
   fuji-x-webcam-capture \
-    | gst-launch-1.0 \
-      --quiet \
-      --no-position \
-      fdsrc fd=0 \
-      ! decodebin \
-      ! videoconvert \
-      ! v4l2sink device=$DEVICE
+    | ffmpeg \
+      -loglevel quiet \
+      -i - \
+      -vcodec rawvideo \
+      -pix_fmt yuv420p \
+      -f v4l2 \
+      $DEVICE
 }
 
 preview() {
