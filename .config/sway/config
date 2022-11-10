@@ -57,6 +57,7 @@ exec wl-paste -pw wl-copy
 
 exec firefox
 exec slack &>/dev/null
+exec fuji-x-webcam
 
 default_border pixel 2
 font pango:Terminus 8
