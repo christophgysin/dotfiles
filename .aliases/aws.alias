@@ -111,29 +111,16 @@ aws-logs() {
   shift
 
   case $action in
-    ls)
+    groups|'')
       aws logs describe-log-groups \
         --query logGroups[].logGroupName \
         --output text \
         | tr '\t' '\n'
       ;;
-    streams)
-      local group=$1
-      shift
-      aws logs describe-log-streams \
-        --log-group-name $group \
-        "$@" \
-        --query logStreams[].logStreamName \
-        --output text \
-        | tr '\t' '\n'
-      ;;
     tail)
       local group=$1
-      local stream=$2
       shift 2
-      aws logs get-log-events \
-        --log-group-name $group \
-        --log-stream-name $stream \
+      aws logs tail $group \
         "$@"
       ;;
   esac
