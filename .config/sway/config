@@ -181,6 +181,8 @@ for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating ena
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [instance="spotify"] inhibit_idle focus
 for_window [app_id="org.stronnag.wayfarer"] floating enable
+for_window [title="velocidrone"] inhibit_idle
+for_window [class="RVGL"] inhibit_idle
 
 include /etc/sway/config.d/*
 
