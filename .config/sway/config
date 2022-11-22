@@ -78,7 +78,7 @@ bindsym $win+9 exec swaymsg output HDMI-A-1 transform 270
 bindsym $win+0 exec fix-outputs
 
 # audio
-exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob --output eDP-1
+exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
 exec systemctl --user start pulseaudio && exec pulseaudio-mute-leds
 bindsym XF86AudioLowerVolume exec volume down > $SWAYSOCK.wob
 bindsym XF86AudioRaiseVolume exec volume up > $SWAYSOCK.wob
@@ -183,6 +183,7 @@ for_window [instance="spotify"] inhibit_idle focus
 for_window [app_id="org.stronnag.wayfarer"] floating enable
 for_window [title="velocidrone"] inhibit_idle
 for_window [class="RVGL"] inhibit_idle
+for_window [class="transmission"] inhibit_idle
 
 include /etc/sway/config.d/*
 
