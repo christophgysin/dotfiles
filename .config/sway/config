@@ -184,6 +184,8 @@ for_window [app_id="org.stronnag.wayfarer"] floating enable
 for_window [title="velocidrone"] inhibit_idle
 for_window [class="RVGL"] inhibit_idle
 for_window [class="transmission"] inhibit_idle
+for_window [app_id="org.twosheds.iwgtk"] floating enable
+for_window [app_id="iwgtk"] floating enable
 
 include /etc/sway/config.d/*
 
