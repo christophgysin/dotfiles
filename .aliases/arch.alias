@@ -13,7 +13,7 @@ alias pacb="mkaurball"
 alias pacp="$SUDO pacman -U"
 alias pacf="pacman -F"
 alias pacfu="sudo pacman -Fy"
-function pacyu() { yay -Syua "${@}" && pacnew-update; }
+function pacyu() { yay -Syua --devel "${@}" && pacnew-update; }
 alias pacys="yay -Ss"
 alias pacyi="yay -S"
 alias pacyr="yay -R"
