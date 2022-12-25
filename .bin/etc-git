@@ -13,7 +13,7 @@ case $1 in
         cmd="umask 277;"
         cmd+=" git archive --prefix etc/ HEAD"
         cmd+=" | bzip2"
-        cmd+=" > $d/$(hostname)-$(date +%Y-%m-%d)-etc.tar.bz2"
+        cmd+=" > $d/$(hostnamectl hostname)-$(date +%Y-%m-%d)-etc.tar.bz2"
         exec sudo su -c "$cmd"
 esac
 
