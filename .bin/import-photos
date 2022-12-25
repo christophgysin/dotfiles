@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+[ $# -lt 1 ] && echo >&2 "Usage: $0 <name> [days]" && exit 1
+
+dir=~/photos/$(date +%Y-%m-%d)-$1
+days=${2:-1}
+
+[ -d "$dir" ] && echo >&2 "directory $dir exists"
+
+mkdir $dir
+
+mountpoint /mnt/usb || sudo mount /mnt/usb
+
+find /mnt/usb -mtime -$days -exec cp -v --preserve=timestamps {} $dir/ \;
