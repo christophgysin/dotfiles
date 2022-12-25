@@ -12,8 +12,8 @@ case $1 in
     backup)
         cmd="umask 277;"
         cmd+=" git archive --prefix etc/ HEAD"
-        cmd+=" | bzip2"
-        cmd+=" > $d/$(hostnamectl hostname)-$(date +%Y-%m-%d)-etc.tar.bz2"
+        cmd+=" | zstd"
+        cmd+=" > $d/$(hostnamectl hostname)-$(date +%Y-%m-%d)-etc.tar.zst"
         exec sudo su -c "$cmd"
 esac
 
