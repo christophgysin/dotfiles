@@ -122,9 +122,9 @@
 [url "git@bitbucket.org:"]
     insteadOf = https://bitbucket.org
 [url "ssh://git@3stepgitssh.eficode.com:7999/"]
-    insteadOf = https://3stepgit.eficode.com/scm/
+    insteadOf = https://3stepgit.eficode.com/scm
 [url "aur@aur.archlinux.org:"]
-    insteadOf = https://aur.archlinux.org/
+    insteadOf = https://aur.archlinux.org
 
 [credential]
     helper = !aws codecommit credential-helper $@
