@@ -98,7 +98,30 @@ ssm() {
 aws-login() {
   local profile=$1
 
-  url=$(aws-vault login --stdout "$profile")
+  url=$(aws-vault login --stdout "$profile") || {
+    echo "$url"
+    return
+  }
 
   firefox "ext+container:name=$profile&url=${url//&/%26}"
+}
+
+aws-logs() {
+  local action=$1
+  shift
+
+  case $action in
+    groups|'')
+      aws logs describe-log-groups \
+        --query logGroups[].logGroupName \
+        --output text \
+        | tr '\t' '\n'
+      ;;
+    tail)
+      local group=$1
+      shift 2
+      aws logs tail $group \
+        "$@"
+      ;;
+  esac
 }

@@ -29,12 +29,14 @@ function apply_keymap() {
     case "$name" in
         'HID 046a:0011' | \
         'Cypress  PS2toUSB KBM Bridge V2.02a' | \
+        'Logitech MX Keys' | \
         'Logitech USB Keyboard')
             args=(
                 '-layout' 'ch'
             )
             ;;
-        'Apple SPI Keyboard')
+        'Apple SPI Keyboard' | \
+        'AT Translated Set 2 keyboard')
             args=(
                 '-layout' 'fi'
                 # '-variant' 'mac'

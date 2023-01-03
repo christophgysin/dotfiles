@@ -1,3 +1,4 @@
 alias man='man -a'
+alias diff='diff --color'
 
 # vim:ft=sh

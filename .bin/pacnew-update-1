@@ -13,7 +13,7 @@ while true; do
 
     $DIFF "$old" "$new"
 
-    if diff -q "$old" "$new" >/dev/null; then
+    if diff --color=auto -q "$old" "$new" >/dev/null; then
         rm "$new" && break
     else
         echo

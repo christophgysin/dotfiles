@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+while read device; do
+  xsetwacom set "$device" MapToOutput eDP1
+done < <(xsetwacom --list devices | cut -f1)

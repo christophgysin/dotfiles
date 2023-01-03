@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+swaymsg output eDP-1 disable
+swaymsg output eDP-1 enable

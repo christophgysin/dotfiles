@@ -7,15 +7,20 @@ action=${1:-status}
 shift || :
 
 based() {
-    based-connect $QC35_ADDRESS "$@"
+    based-connect $QC35_ADDRESS "$@" || true
 }
 
 case $action in
+    connect)
+      bluetoothctl connect $QC35_ADDRESS
+      ;;
     status)
         based -d
         sleep 0.01
         bat=$(based -b)
         echo "Battery: $bat%"
+        sleep 0.01
+        based -a
         ;;
     fw)
         based -f
@@ -26,8 +31,14 @@ case $action in
     bat)
         based -b
         ;;
-    paired)
+    connected)
         based -a
+        ;;
+    connect)
+        based --connect-device "$@"
+        ;;
+    disconnect)
+        based --disconnect-device "$@"
         ;;
     nc)
         if [ $# -ne 1 ]; then

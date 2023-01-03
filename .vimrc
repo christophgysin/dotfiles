@@ -16,7 +16,6 @@ set backspace=indent,eol,start
 set showcmd
 set showmatch
 set incsearch
-set ignorecase
 set infercase
 set hlsearch
 set showfulltag
@@ -197,7 +196,7 @@ command -nargs=+ MapToggle call MapToggle(<f-args>)
 MapToggle <F1> paste
 nmap <F2> :AT<CR>
 MapToggle <F3> hlsearch
-map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q . && cscope -Rb<CR>
+map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extras=+q . && cscope -Rb<CR>
 map <F6> :bprev<CR>
 map <F7> :bnext<CR>
 nmap <F8> :make<CR>

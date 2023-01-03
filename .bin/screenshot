@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+slurp | grim -g- screenshot-$(date +"%Y-%m-%dT%H%M%S").png "$@"

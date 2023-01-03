@@ -1,0 +1,15 @@
+profile home3 {
+  output eDP-1 mode 3840x2160 position 4281,1788 scale 2
+  output "Dell Inc. DELL U3818DW 5KC0375R0G8L" mode 3840x1600 position 1080,188
+  output "Dell Inc. DELL U2713HM GK0KD312508L" mode 1920x1080 position 0,0 transform 90
+}
+
+profile home {
+  output eDP-1 mode 3840x2160 position 4281,1788 scale 2
+  output "Dell Inc. DELL U3818DW 5KC0375R0G8L" mode 3840x1600 position 1080,188
+}
+
+profile work {
+  output eDP-1 mode 3840x2160 position 4520,548 scale 2
+  output "Samsung Electric Company C34H89x HTJKC00346" mode 3440x1440 position 1080,188
+}

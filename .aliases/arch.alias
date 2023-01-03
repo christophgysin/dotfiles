@@ -2,7 +2,7 @@
 
 # arch
 [ $(id -u) = 0 ] || SUDO="sudo -E"
-function pacu() { $SUDO pacman -Syu "${@}" && pacnew-update; }
+function pacu() { $SUDO pacman --color=auto -Syu "${@}" && pacnew-update; }
 alias pacs="pacsearch"
 alias pacI="pacman -Qi"
 alias paci="$SUDO pacman -S"
@@ -11,15 +11,18 @@ alias pacl="pacman -Ql"
 alias pacm="makepkg -si"
 alias pacb="mkaurball"
 alias pacp="$SUDO pacman -U"
-alias pacf="pacman -Fs"
-function pacyu() { yaourt -Syua "$@" && pacnew-update; }
-alias pacys="yaourt -Ss"
-alias pacyi="yaourt -S"
-alias pacyr="yaourt -R"
+alias pacf="pacman -F"
+alias pacfu="sudo pacman -Fy"
+function pacyu() { yay -Syua --devel "${@}" && pacnew-update; }
+alias pacys="yay -Ss"
+alias pacyi="yay -S"
+alias pacyr="yay -R"
 function pacro() {
     local pkgs=($(pacman -Qtdq))
     (( ${#pkgs[@]} > 0 )) && $SUDO pacman -Rs "${pkgs[@]}"
 }
 alias pacclean="$SUDO find /var/cache/pacman/pkg -type f -mtime +0 -exec rm {} +"
-alias pacyg="yaourt -uG"
-function pacyR() { pacyi $(pacman -Qsq -- '-git$'); }
+alias pacyg="yay -uG"
+function pacyR() { pacyi $(pacman -Qsq -- '-(git|hg|svn)$'); }
+
+alias mksrcinfo='makepkg --printsrcinfo > .SRCINFO'

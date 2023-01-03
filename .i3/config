@@ -1,5 +1,21 @@
 # vim: set ft=conf
 
+workspace 1 output DP-2 eDP-1
+workspace 2 output HDMI-1 eDP-1
+workspace 3 output eDP-1
+
+assign [class="firefox"] 1
+assign [class="Slack"] 2
+
+exec firefox
+exec slack
+
+# freedesktop autostart
+exec dex -a
+
+exec sleep 1 && libinput-gestures-setup restart
+exec sleep 1 && wacom
+
 font pango:Terminus 8
 
 focus_follows_mouse no
@@ -7,13 +23,13 @@ mouse_warping none
 
 set $alt Mod1
 set $win Mod4
-set $term terminology
 
 # Use Mouse+$win to drag floating windows to their wanted position
 floating_modifier $win
 bindsym --whole-window $win+button2 floating toggle
 
-bindsym $win+Return exec $term
+bindsym $win+Return exec termite
+bindsym $alt+Return exec xterm
 bindsym $win+Shift+q kill
 bindsym $win+r exec dmenu-frecency
 bindsym $win+space exec dmenu-frecency
@@ -31,15 +47,21 @@ bindsym $win+Shift+j move down
 bindsym $win+Shift+k move up
 bindsym $win+Shift+l move right
 
+# audio
+exec (systemctl --user start pulseaudio && exec pulseaudio-mute-leds) &
 bindsym XF86AudioLowerVolume exec volume down
 bindsym XF86AudioRaiseVolume exec volume up
 bindsym XF86AudioMute exec volume toggle-mute
+bindsym XF86AudioMicMute exec volume mic-toggle-mute
 bindsym XF86TouchpadToggle exec touchpad-toggle
 
-bindsym XF86MonBrightnessUp exec brightness-wrap acpi_video0 set +5
-bindsym XF86MonBrightnessDown exec brightness-wrap acpi_video0 set 5-
-bindsym XF86KbdBrightnessUp exec brightness-wrap spi::kbd_backlight set +32
-bindsym XF86KbdBrightnessDown exec brightness-wrap spi::kbd_backlight set 32-
+bindsym XF86MonBrightnessUp exec brightness-wrap intel_backlight set +5%
+bindsym XF86MonBrightnessDown exec brightness-wrap intel_backlight set 5%-
+
+bindsym XF86Display exec video cycle
+# bindsym XF86Tools exec
+# bindsym XF86Bluetooth exec
+# bindsym XF86Favorites exec
 
 # split
 bindsym $win+i split h
@@ -69,11 +91,6 @@ bindsym $win+Shift+4 move container to workspace number 4; workspace number 4
 bindsym $win+Shift+5 move container to workspace number 5; workspace number 5
 bindsym $win+Shift+6 move container to workspace number 6; workspace number 6
 
-# mac
-#bindsym --release $win+7 exec --no-startup-id xdotool key backslash
-#bindsym --release $win+8 exec --no-startup-id xdotool key braceleft
-#bindsym --release $win+9 exec --no-startup-id xdotool key braceright
-
 bindsym $win+Escape reload
 bindsym $win+BackSpace restart
 bindsym $win+Delete exec i3-msg exit
@@ -81,11 +98,9 @@ bindsym $win+$alt+Delete exec poweroff
 bindsym $win+$alt+BackSpace exec reboot
 bindsym $win+$alt+F12 exec xset dpms force standby
 bindsym $win+8 exec xset s 0 0 && xset s off noblank && xset dpms 0 0 0 -dpms
-bindsym $win+9 exec "outputs ext && audio ext"
 bindsym $win+0 exec sh -c "autorandr --change && autokeymap"
 
 exec xautolock -time 12 -locker 'screenlock' &
-#exec xss-lock screenlock &
 bindsym $win+period exec screenlock
 
 # resize
@@ -100,7 +115,7 @@ mode "resize" {
 }
 
 bar {
-    status_command i3status | ~/.i3status.py
+    status_command i3status # | ~/.i3status.py
 }
 
 for_window [window_type="splash"] floating enable
@@ -111,6 +126,8 @@ for_window [class="wlc-x11"] floating enable
 for_window [class="Android SDK Manager"] floating enable
 for_window [class="Pasystray"] floating enable
 for_window [class="Sloth"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [class="Solaar"] floating enable
 
 # class                  border  backgr. text    indicator
 client.focused           #004400 #007700 #00dddd #000099

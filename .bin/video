@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+statefile=/tmp/video.state
+command=$1
+
+internal=eDP-1
+
+getOutputs() {
+  while read output state _; do
+    [ $output = $internal ] && continue
+    [ $state = "connected" ] && echo $output
+  done < <(xrandr)
+}
+
+case $command in
+  cycle)
+    state=$(<$statefile)
+    echo state:$state
+    case ${state:=internal} in
+      internal) video mirror;;
+      mirror) video extend;;
+      extend) video external;;
+      external) video internal;;
+    esac
+    ;;
+
+  internal)
+    echo $command > $statefile
+    notify-send -t 1000 -a video "Mode: $command"
+    getOutputs | xargs -n1 -I {} xrandr --output {} --off
+    xrandr --output $internal --auto
+    ;;
+  mirror)
+    echo $command > $statefile
+    notify-send -t 1000 -a video "Mode: $command"
+    getOutputs | xargs -n1 -I {} xrandr --output {} --auto
+    ;;
+  extend)
+    echo $command > $statefile
+    notify-send -t 1000 -a video "Mode: $command"
+    getOutputs | xargs -n1 -I {} xrandr --output {} --auto --right-of $internal
+    ;;
+  external)
+    echo $command > $statefile
+    notify-send -t 1000 -a video "Mode: $command"
+    xrandr --output $internal --off
+    getOutputs | xargs -n1 -I {} xrandr --output {} --auto
+    ;;
+  *)
+    echo >&2 "Usage: video [internal|external|mirror|extend|cycle]"
+    ;;
+esac

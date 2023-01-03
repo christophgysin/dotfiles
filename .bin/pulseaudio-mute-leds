@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+get_default() {
+  type=$1
+  name=$(
+    pactl info |
+      sed -n "s/^Default ${type^}: //p"
+  )
+  mute=$(
+    pactl list ${type}s |
+      sed -n "/Name: $name/,/Mute:/p" |
+      tail -n1 |
+      sed -n "s/^\tMute: //p"
+  )
+  echo $name $mute
+}
+
+read sink sink_mute < <(get_default sink)
+read source source_mute < <(get_default source)
+
+brightnessctl -q -d platform::mute set $([ $sink_mute == yes ] && echo 1 || echo 0)
+brightnessctl -q -d platform::micmute set $([ $source_mute == yes ] && echo 1 || echo 0)
+
+while read _ event _ type id; do
+  event=${event//\'/}
+  id=${id#\#}
+
+  [ $event = change ] || continue
+
+  case $type in
+    sink|source) read name mute < <(get_default $type);;
+    *) continue;;
+  esac
+
+  case $type in
+    sink) led=platform::mute;;
+    source) led=platform::micmute;;
+    *) continue;;
+  esac
+
+  brightnessctl -q -d $led set $([ $mute = yes ] && echo 1 || echo 0)
+done < <(exec pactl subscribe)

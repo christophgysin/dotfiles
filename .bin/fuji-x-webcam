@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+DEVICE=/dev/video6
+
+usage() {
+  echo >&2 "Usage: $0 [ c(apture) | p(review) ]"
+  exit 1
+}
+
+capture() {
+  fuji-x-webcam-capture \
+    | ffmpeg \
+      -loglevel quiet \
+      -i - \
+      -vcodec rawvideo \
+      -pix_fmt yuv420p \
+      -f v4l2 \
+      $DEVICE
+}
+
+preview() {
+  mpv \
+    --no-cache \
+    --untimed \
+    --no-demuxer-thread \
+    --video-sync=audio \
+    --vd-lavc-threads=1 \
+    --vf=hflip \
+    av://v4l2:/$DEVICE \
+    "$@"
+}
+
+action=${1:-capture}
+shift
+
+case $action in
+  p*)
+    preview "$@"
+    ;;
+  c*)
+    capture "$@"
+    ;;
+  *)
+    usage
+    ;;
+esac
