@@ -194,18 +194,12 @@ command -nargs=+ MapToggle call MapToggle(<f-args>)
 
 " Commonly used commands
 MapToggle <F1> paste
-nmap <F2> :AT<CR>
 MapToggle <F3> hlsearch
-map <F4> :!ctags -R --c++-kinds=+p --fields=+iaS --extras=+q . && cscope -Rb<CR>
 map <F6> :bprev<CR>
 map <F7> :bnext<CR>
-nmap <F8> :make<CR>
-nnoremap <silent> <F9> :Tlist<CR>
 map <silent> <F10> :QFix<CR>
 map <silent> <F11> :redo<CR>
 nmap <F12> :bd<CR>
-map <S-PageUp> :cprev<CR>
-map <S-PageDown> :cnext<CR>
 
 " Insert a single char
 noremap <Leader>i i<Space><Esc>r
