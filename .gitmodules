@@ -40,3 +40,6 @@
 [submodule ".vim/pack/plugins/start/rust.vim"]
 	path = .vim/pack/plugins/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule ".vim/bundle/jenkinsfile"]
+	path = .vim/bundle/jenkinsfile
+	url = https://github.com/martinda/Jenkinsfile-vim-syntax.git
