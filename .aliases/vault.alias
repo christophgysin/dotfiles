@@ -7,6 +7,4 @@ export AWS_SESSION_TTL=9h
 export AWS_ASSUME_ROLE_TTL=1h
 export AWS_FEDERATION_TOKEN_TTL=9h
 
-export ENV=${AWS_VAULT#*-}
-
 export AWS_VAULT_PROMPT=ykman
