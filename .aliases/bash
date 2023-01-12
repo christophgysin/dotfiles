@@ -7,6 +7,9 @@ complete -cf sudo
 bash_completion=/usr/share/bash-completion/bash_completion
 [ -r $bash_completion ] && . $bash_completion
 
+bash_completion=/opt/homebrew/etc/profile.d/bash_completion.sh
+[ -r $bash_completion ] && . $bash_completion
+
 cnf_hook=/usr/share/doc/pkgfile/command-not-found.bash
 [ -r $cnf_hook ] && . $cnf_hook
 
