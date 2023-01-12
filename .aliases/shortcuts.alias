@@ -4,7 +4,6 @@ alias ll='ls -la --color=auto'
 alias c=clear
 alias sx='exec startx'
 alias g=git
-alias open=xdg-open
 alias n='vim ~/projects/*.md'
 
 # vim:ft=sh
