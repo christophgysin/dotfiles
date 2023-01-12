@@ -25,7 +25,7 @@ set visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 set scrolloff=3
 set sidescrolloff=2
-set nowrap
+set wrap
 set whichwrap+=<,>,[,]
 set wildmenu
 set wildmode=list:longest
