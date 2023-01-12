@@ -1,3 +1,6 @@
+[include]
+  path = ~/.gitconfig.local
+
 [user]
     name = Christoph Gysin
     email = christoph.gysin@gmail.com
@@ -5,6 +8,7 @@
 [core]
     editor = vim
     #whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesFile = ~/.gitignore.global
 
 [alias]
     st = status
