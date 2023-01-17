@@ -1,5 +1,4 @@
 alias sw='\
-LIBSEAT_BACKEND=logind \
 CLUTTER_BACKEND=wayland \
 ELM_DISPLAY=wl \
 _JAVA_AWT_WM_NONREPARENTING=1 \
