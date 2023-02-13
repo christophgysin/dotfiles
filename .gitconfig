@@ -52,7 +52,7 @@
     frbi = !git fetch origin && git rebase -i $(git upstream)
     brl = !git branch | cut -c3-
     reball = !"for b in $(git brl); do git co $b && git rb || git rb --abort; done"
-    freball = !git fetch origin && git reball
+    freball = !git fetch && git reball
     backup = push -f --mirror echrgys-bare
     log-grep = !git log --color=always --grep \"${1}\" | sed \"s/${1}/$(tput setaf 1)\\\\0$(tput sgr0)/g\" && :
     rewind = reset --soft HEAD^
@@ -75,7 +75,7 @@
     #    :"
 
 [remote]
-    #pushDefault = origin
+    pushDefault = origin
 
 [color]
     branch = auto
