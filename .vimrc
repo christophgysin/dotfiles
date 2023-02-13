@@ -32,7 +32,7 @@ set wildmode=list:longest
 set wildignore=*.o,*~
 set hidden
 set winminheight=1
-set textwidth=80
+set textwidth=120
 syntax on
 set switchbuf=useopen,usetab,newtab
 set undodir=~/.vim/undo
