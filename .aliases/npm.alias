@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#
+export NPM_CONFIG_UPDATE_NOTIFIER=false
