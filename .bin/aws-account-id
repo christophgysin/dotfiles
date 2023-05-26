@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+aws sts get-caller-identity --query Account --output text
