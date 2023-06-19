@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-QC35_ADDRESS=04:52:C7:C6:77:0F
+# cans
+#QC35_ADDRESS=04:52:C7:C6:77:0F
+# silver
+QC35_ADDRESS=04:52:C7:34:F5:90
 
 action=${1:-status}
 shift || :
