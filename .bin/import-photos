@@ -9,6 +9,6 @@ days=${2:-1}
 
 mkdir $dir
 
-mountpoint /mnt/usb || sudo mount /mnt/usb
+mountpoint /mnt/usb 2>/dev/null || sudo mount /mnt/usb
 
 find /mnt/usb -mtime -$days -exec cp -v --preserve=timestamps {} $dir/ \;
