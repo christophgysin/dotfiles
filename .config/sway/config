@@ -13,6 +13,9 @@ input 1130:17:HID_046a:0011 {
 input 1204:255:Cypress__PS2toUSB_KBM_Bridge_V2.02a {
   xkb_layout ch
 }
+input 1133:16522:Logitech_Wireless_Device_PID:408a {
+  xkb_layout ch
+}
 input 1133:16522:Logitech_MX_Keys {
   xkb_layout ch
 }
