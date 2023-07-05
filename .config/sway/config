@@ -19,6 +19,9 @@ input 1133:16522:Logitech_Wireless_Device_PID:408a {
 input 1133:16522:Logitech_MX_Keys {
   xkb_layout ch
 }
+input 1133:50504:Logitech_USB_Receiver {
+  xkb_layout ch
+}
 input 1739:52620:SYNA8005:00_06CB:CD8C_Touchpad {
   pointer_accel 1
   tap enabled
