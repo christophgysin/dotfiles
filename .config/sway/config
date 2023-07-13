@@ -19,6 +19,9 @@ input 1133:16522:Logitech_Wireless_Device_PID:408a {
 input 1133:16522:Logitech_MX_Keys {
   xkb_layout ch
 }
+input 1133:45926:MX_MCHNCL_Keyboard {
+  xkb_layout ch
+}
 input 1133:50504:Logitech_USB_Receiver {
   xkb_layout ch
 }
