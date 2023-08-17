@@ -7,7 +7,7 @@ cf() {
   case $action in
     ls)
       aws cloudformation list-stacks \
-        --query StackSummaries[].StackName \
+        --query "StackSummaries[?StackStatus != 'DELETE_COMPLETE'].StackName" \
         --output text \
       | tr '\t' '\n'
       ;;
