@@ -6,7 +6,7 @@ import boto3
 args = sys.argv[1:]
 bucket_name = args[0]
 
-print("Deleting bucket 'datalakestack-preparedbucketc06afe9d-1v5rbtmxhajui'! Are you sure? (Ctrl-C to abort) ")
+print("Deleting bucket! Are you sure? (Ctrl-C to abort) ")
 input()
 
 s3 = boto3.resource('s3')
