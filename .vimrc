@@ -100,6 +100,7 @@ filetype plugin on
 filetype indent on
 
 set modeline
+set modelines=2
 
 " Nice statusbar
 set laststatus=2
