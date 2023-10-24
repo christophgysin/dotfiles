@@ -142,12 +142,29 @@ s3() {
 
       aws s3 rm $s3url
     ;;
+    head)
+      local path=$1
+      local bucketkey=${path#s3://}
+      local bucket=${bucketkey%%/*}
+      local key=${bucketkey#*/}
+
+      aws s3api head-object --bucket "$bucket" --key "$key"
+    ;;
+    tags)
+      local path=$1
+      local bucketkey=${path#s3://}
+      local bucket=${bucketkey%%/*}
+      local key=${bucketkey#*/}
+
+      aws s3api get-object-tagging --bucket "$bucket" --key "$key"
+    ;;
     *)
       echo >&2 "Usage: s3 <command> [optios...]"
       echo >&2 ""
       echo >&2 "       s3 cat <s3url>"
       echo >&2 "       s3 zcat <s3url>"
       echo >&2 "       s3 rm <s3url>"
+      echo >&2 "       s3 head <s3url>"
       ;;
   esac
 }
