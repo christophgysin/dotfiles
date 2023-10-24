@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/jenkinsfile"]
 	path = .vim/bundle/jenkinsfile
 	url = https://github.com/martinda/Jenkinsfile-vim-syntax.git
+[submodule ".vim/bundle/fugitive"]
+	path = .vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive
