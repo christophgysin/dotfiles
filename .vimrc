@@ -193,7 +193,9 @@ endfunction
 command -nargs=+ MapToggle call MapToggle(<f-args>)
 
 " Commonly used commands
-MapToggle <F1> paste
+"MapToggle <F1> paste
+map <F1> <esc>
+imap <F1> <esc>
 MapToggle <F3> hlsearch
 map <F6> :bprev<CR>
 map <F7> :bnext<CR>
