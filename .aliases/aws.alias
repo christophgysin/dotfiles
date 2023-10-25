@@ -35,12 +35,28 @@ cf() {
             }'
       fi
       ;;
+    protect)
+      local stack=$1
+      shift 1
+      aws cloudformation update-termination-protection \
+        --stack-name $stack \
+        --enable-termination-protection
+      ;;
+    unprotect)
+      local stack=$1
+      shift 1
+      aws cloudformation update-termination-protection \
+        --stack-name $stack \
+        --no-enable-termination-protection
+      ;;
     *)
       echo >&2 "Usage: cf <command> [optios...]"
       echo >&2 ""
       echo >&2 "       cf ls"
       echo >&2 "       cf destroy <stack>"
       echo >&2 "       cf outputs [stack]"
+      echo >&2 "       cf protect [stack]"
+      echo >&2 "       cf unprotect [stack]"
       ;;
   esac
 }
