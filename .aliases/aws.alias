@@ -200,7 +200,7 @@ ecr() {
       aws ecr list-images --repository $repo
     ;;
     *)
-      echo >&2 "Usage: ecr <command> <repo>  [optios...]"
+      echo >&2 "Usage: ecr <command> <repo> [optios...]"
       echo >&2 ""
       echo >&2 "       ecr ls <repo>"
       echo >&2 "       ecr rmi <repo> <images...>"
@@ -237,4 +237,61 @@ aws-logs() {
         "$@"
       ;;
   esac
+}
+
+lambda-at-edge() {
+  local action=$1
+  shift
+
+  case $action in
+    ''|logs)
+      local IFS=$'\n'
+      local region
+      for region in $(aws ec2 describe-regions | jq -r .Regions[].RegionName); do
+        echo "Region: $region"
+        aws --region "$region" \
+          logs describe-log-groups \
+            --log-group-name-prefix /aws/lambda/us-east-1. \
+            | jq -r .logGroups[].logGroupName
+      done
+      ;;
+    *)
+      echo >&2 "Usage: lambda-at-edge <command>"
+      echo >&2 ""
+      echo >&2 "       lambda-at-edge logs"
+      ;;
+  esac
+}
+
+ecr() {
+  local action=$1
+  shift
+
+  case $action in
+    ls)
+      aws ecr describe-repositories \
+        --query repositories[].repositoryName \
+        --output text \
+        | tr '\t' '\n'
+      ;;
+
+    lsi)
+      local repo=$1
+      shift
+      aws ecr describe-images \
+        --repository-name $repo \
+        --query imageDetails |
+          jq -r '.[] | [.imagePushedAt, .imageTags[0], .imageSizeInBytes/1024/1024] | @tsv' |
+          sort -k 2 -r
+      ;;
+
+    *)
+      echo >&2 "Usage: ecr <command>"
+      echo >&2 ""
+      echo >&2 "       ecr ls"
+      echo >&2 "       ecr lsi"
+      ;;
+  esac
+
+
 }
