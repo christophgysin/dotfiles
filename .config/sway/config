@@ -5,7 +5,7 @@ output * background "#000000" solid_color
 output eDP-1 mode 3840x2160 position 4281,1788 scale 2
 
 input * {
-  xkb_layout fi
+  xkb_layout ch
 }
 input 1130:17:HID_046a:0011 {
   xkb_layout ch
