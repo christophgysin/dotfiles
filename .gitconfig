@@ -70,7 +70,7 @@
     #    git -C \"${repo}\" config remote.pushDefault origin && \
     #    :"
     web = !open $(GIT_CONFIG_GLOBAL=/dev/null git remote get-url origin)
-    ghpr = !git tb "pull-${1}" && git fetch upstream refs/pull/${1}/head && git rh FETCH_HEAD && :
+    ghpr = !git tb "pr${1}" && git fetch $(git upstream | cut -d/ -f1) refs/pull/${1}/head && git rh FETCH_HEAD && :
 
 [remote]
     #pushDefault = origin
