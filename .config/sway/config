@@ -177,7 +177,10 @@ mode "resize" {
 
 bar {
     #swaybar_command swaybar -d
-    status_command i3status
+    #status_command i3status
+    status_command /home/chris/projects/i3status/build/i3status
+
+    pango_markup enabled
     font pango:Terminus 10
 }
 
